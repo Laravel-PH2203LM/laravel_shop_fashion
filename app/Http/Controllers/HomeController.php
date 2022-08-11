@@ -40,25 +40,23 @@ class HomeController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show the form for creating a new resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function blog()
     {
-        //
+        return view('blog');
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for creating a new resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function blog_detail()
     {
-        //
+        return view('blog_detail');
     }
 
     /**

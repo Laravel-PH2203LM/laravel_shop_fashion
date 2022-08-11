@@ -46,17 +46,6 @@
             </div>
             <div class="ht-right">
                 <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
-                <div class="lan-selector">
-                    <select class="language_drop" name="countries" id="countries" style="width:300px;">
-                        <option value='yt' data-image="{{asset('fontend/img/flag-1.jpg')}}" data-imagecss="flag yt"
-                                data-title="English">English</option>
-                    </select>
-                </div>
-                <div class="top-social">
-                    <a href="#"><i class="ti-facebook"></i></a>
-                    <a href="#"><i class="ti-twitter-alt"></i></a>
-                    <a href="#"><i class="ti-linkedin"></i></a>
-                    <a href="#"><i class="ti-pinterest"></i></a>
                 </div>
             </div>
         </div>
@@ -66,7 +55,7 @@
             <div class="row">
                 <div class="col-lg-2 col-md-2">
                     <div class="logo">
-                        <a href="./index.html">
+                        <a href="{{url('/')}}">
                             <img src="{{asset('fontend/img/logo.png')}}" alt="">
                         </a>
                     </div>
@@ -160,7 +149,7 @@
             </div>
             <nav class="nav-menu mobile-menu">
                 <ul>
-                    <li class="active"><a href="./index.html">Home</a></li>
+                    <li class="active"><a href="{{url('/')}}">Home</a></li>
                     <li><a href="{{url('/shop')}}">Shop</a></li>
                     <li><a href="#">Collection</a>
                         <ul class="dropdown">
@@ -169,11 +158,10 @@
                             <li><a href="#">Kid's</a></li>
                         </ul>
                     </li>
-                    <li><a href="./blog.html">Blog</a></li>
+                    <li><a href="{{url('/blog')}}">Blog</a></li>
                     <li><a href="{{route('contact')}}">Contact</a></li>
                     <li><a href="#">Pages</a>
                         <ul class="dropdown">
-                            <li><a href="./blog-details.html">Blog Details</a></li>
                             <li><a href="./shopping-cart.html">Shopping Cart</a></li>
                             <li><a href="./check-out.html">Checkout</a></li>
                             <li><a href="./faq.html">Faq</a></li>
@@ -189,41 +177,9 @@
 </header>
 <!-- Header End -->
 
+<!-- Body-->
 @yield('main')
-
-<!-- Partner Logo Section Begin -->
-<div class="partner-logo">
-    <div class="container">
-        <div class="logo-carousel owl-carousel">
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="{{asset('fontend/img/logo-carousel/logo-1.png')}}" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="{{asset('fontend/img/logo-carousel/logo-2.png')}}" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="{{asset('fontend/img/logo-carousel/logo-3.png')}}" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="{{asset('fontend/img/logo-carousel/logo-4.png')}}" alt="">
-                </div>
-            </div>
-            <div class="logo-item">
-                <div class="tablecell-inner">
-                    <img src="{{asset('fontend/img/logo-carousel/logo-5.png')}}" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Partner Logo Section End -->
+<!-- Body End-->
 
 <!-- Footer Section Begin -->
 <footer class="footer-section">

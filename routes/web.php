@@ -22,5 +22,6 @@ Route::group(['prefix' => '/'], function() {
     Route::get('/blog-detail',[HomeController::class,'blog_detail'])->name('blog_detail');
     Route::get('/cart',[HomeController::class,'cart'])->name('cart');
     Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
+    Route::get('/login',[HomeController::class,'login'])->name('login');
 
 });

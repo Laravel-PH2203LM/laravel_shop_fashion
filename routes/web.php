@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use \App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,5 @@ Route::group(['prefix' => '/'], function() {
     Route::get('/cart',[HomeController::class,'cart'])->name('cart');
     Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
     Route::get('/login',[HomeController::class,'login'])->name('login');
-
+    Route::get('/product/{id}',[ShopController::class,'index'])->name('index');
 });

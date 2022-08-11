@@ -14,4 +14,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/home',[HomeController::class,'index'])->name('home');
+Route::group(['prefix' => '/'], function() {
+    Route::get('/',[HomeController::class,'index'])->name('index');
+    Route::get('/contact',[HomeController::class,'contact'])->name('contact');
+});

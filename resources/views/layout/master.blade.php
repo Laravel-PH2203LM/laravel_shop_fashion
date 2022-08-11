@@ -170,7 +170,7 @@
                         </ul>
                     </li>
                     <li><a href="./blog.html">Blog</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a href="{{route('contact')}}">Contact</a></li>
                     <li><a href="#">Pages</a>
                         <ul class="dropdown">
                             <li><a href="./blog-details.html">Blog Details</a></li>
@@ -253,7 +253,7 @@
                     <ul>
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Checkout</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="{{route('contact')}}">Contact</a></li>
                         <li><a href="#">Serivius</a></li>
                     </ul>
                 </div>
@@ -263,7 +263,7 @@
                     <h5>My Account</h5>
                     <ul>
                         <li><a href="#">My Account</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="{{route('contact')}}">Contact</a></li>
                         <li><a href="#">Shopping Cart</a></li>
                         <li><a href="#">Shop</a></li>
                     </ul>

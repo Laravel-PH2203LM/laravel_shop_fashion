@@ -30,14 +30,13 @@ class HomeController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the form for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function shop()
     {
-        //
+        return view('shop');
     }
 
     /**

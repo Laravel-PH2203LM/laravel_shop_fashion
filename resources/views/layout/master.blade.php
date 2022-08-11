@@ -161,7 +161,7 @@
             <nav class="nav-menu mobile-menu">
                 <ul>
                     <li class="active"><a href="./index.html">Home</a></li>
-                    <li><a href="./shop.html">Shop</a></li>
+                    <li><a href="{{url('/shop')}}">Shop</a></li>
                     <li><a href="#">Collection</a>
                         <ul class="dropdown">
                             <li><a href="#">Men's</a></li>
@@ -265,7 +265,7 @@
                         <li><a href="#">My Account</a></li>
                         <li><a href="{{route('contact')}}">Contact</a></li>
                         <li><a href="#">Shopping Cart</a></li>
-                        <li><a href="#">Shop</a></li>
+                        <li><a href="{{url('/shop')}}">Shop</a></li>
                     </ul>
                 </div>
             </div>

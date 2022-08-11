@@ -70,13 +70,12 @@ class HomeController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Show the form for creating a new resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function checkout()
     {
-        //
+        return view('checkout');
     }
 }

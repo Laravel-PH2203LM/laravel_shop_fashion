@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="select-button">
                                     <a href="{{url('cart')}}" class="primary-btn view-card">VIEW CARD</a>
-                                    <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                    <a href="{{url('checkout')}}" class="primary-btn checkout-btn">CHECK OUT</a>
                                 </div>
                             </div>
                         </li>
@@ -157,7 +157,7 @@
                     <li><a href="#">Pages</a>
                         <ul class="dropdown">
                             <li><a href="{{url('cart')}}">Shopping Cart</a></li>
-                            <li><a href="./check-out.html">Checkout</a></li>
+                            <li><a href="{{url('checkout')}}">Checkout</a></li>
                             <li><a href="./faq.html">Faq</a></li>
                             <li><a href="./register.html">Register</a></li>
                             <li><a href="./login.html">Login</a></li>

@@ -31,24 +31,25 @@
                     <div class="blog-catagory">
                         <h4>Categories</h4>
                         <ul>
-                            <li><a href="#">Fashion</a></li>
-                            <li><a href="#">Travel</a></li>
-                            <li><a href="#">Picnic</a></li>
-                            <li><a href="#">Model</a></li>
+                            @foreach($blog_recents as $blog_recent)
+                            <li><a href="#">{{$blog_recent->category}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="recent-post">
                         <h4>Recent Post</h4>
                         <div class="recent-blog">
+                            @foreach($blog_recents as $blog_recent)
                             <a href="#" class="rb-item">
                                 <div class="rb-pic">
-                                    <img src="{{asset('fontend/img/blog/recent-1.jpg')}}" alt="">
+                                    <img src="fontend/img/blog/{{$blog_recent->image}}" alt="">
                                 </div>
                                 <div class="rb-text">
-                                    <h6>The Personality Trait That Makes...</h6>
-                                    <p>Fashion <span>- May 19, 2019</span></p>
+                                    <h6>{{$blog_recent->title}}...</h6>
+                                    <p>{{$blog_recent->category}} <span>- {{$blog_recent->created_at}}</span></p>
                                 </div>
                             </a>
+                            @endforeach
                         </div>
                     </div>
                     <div class="blog-tags">
@@ -69,15 +70,17 @@
                 <div class="row">
                     <div class="col-lg-6 col-sm-6">
                         <div class="blog-item">
+                            @foreach($blogs as $blog)
                             <div class="bi-pic">
-                                <img src="{{asset('fontend/img/blog/blog-1.jpg')}}" alt="">
+                                <img src="fontend/img/blog/{{$blog->image}}" alt="">
                             </div>
                             <div class="bi-text">
                                 <a href="{{url('blog-detail')}}">
-                                    <h4>The Personality Trait That Makes People Happier</h4>
+                                    <h4>{{$blog->title}}</h4>
                                 </a>
-                                <p>travel <span>- May 19, 2019</span></p>
+                                <p>{{$blog->category}}<span>-{{$blog->created_at}} </span></p>
                             </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-lg-12">

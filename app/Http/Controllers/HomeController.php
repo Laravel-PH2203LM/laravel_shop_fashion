@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,9 @@ class HomeController extends Controller
      */
     public function blog()
     {
-        return view('blog');
+        $blogs = Blog::limit(6)->get();
+        $blog_recents = Blog::orderBy('id','DESC')->limit(3)->get();
+        return view('blog',compact('blogs','blog_recents'));
     }
 
     /**

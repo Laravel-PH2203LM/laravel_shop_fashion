@@ -71,14 +71,8 @@
                 </div>
                 <div class="col-lg-3 text-right col-md-3">
                     <ul class="nav-right">
-                        <li class="heart-icon">
-                            <a href="#">
-                                <i class="icon_heart_alt"></i>
-                                <span>1</span>
-                            </a>
-                        </li>
                         <li class="cart-icon">
-                            <a href="#">
+                            <a href="{{url('cart')}}">
                                 <i class="icon_bag_alt"></i>
                                 <span>3</span>
                             </a>
@@ -118,7 +112,7 @@
                                     <h5>$120.00</h5>
                                 </div>
                                 <div class="select-button">
-                                    <a href="#" class="primary-btn view-card">VIEW CARD</a>
+                                    <a href="{{url('cart')}}" class="primary-btn view-card">VIEW CARD</a>
                                     <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
                                 </div>
                             </div>
@@ -162,7 +156,7 @@
                     <li><a href="{{route('contact')}}">Contact</a></li>
                     <li><a href="#">Pages</a>
                         <ul class="dropdown">
-                            <li><a href="./shopping-cart.html">Shopping Cart</a></li>
+                            <li><a href="{{url('cart')}}">Shopping Cart</a></li>
                             <li><a href="./check-out.html">Checkout</a></li>
                             <li><a href="./faq.html">Faq</a></li>
                             <li><a href="./register.html">Register</a></li>
@@ -243,7 +237,10 @@
                 <div class="col-lg-12">
                     <div class="copyright-text">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        Copyright &copy;<script>document.write(new Date().getFullYear());
+                        </script> All rights reserved |
+                        <i class="fa fa-heart-o" aria-hidden="true">
+                        </i> by <a href="#" target="_blank">Đinh Trọng San</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </div>
                     <div class="payment-pic">

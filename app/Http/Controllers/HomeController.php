@@ -60,15 +60,13 @@ class HomeController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Show the form for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function cart()
     {
-        //
+        return view('cart');
     }
 
     /**

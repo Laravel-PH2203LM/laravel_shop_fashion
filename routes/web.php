@@ -20,5 +20,6 @@ Route::group(['prefix' => '/'], function() {
     Route::get('/shop',[HomeController::class,'shop'])->name('shop');
     Route::get('/blog',[HomeController::class,'blog'])->name('blog');
     Route::get('/blog-detail',[HomeController::class,'blog_detail'])->name('blog_detail');
+    Route::get('/cart',[HomeController::class,'cart'])->name('cart');
 
 });

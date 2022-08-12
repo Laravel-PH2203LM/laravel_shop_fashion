@@ -15,8 +15,14 @@ class ShopController extends Controller
      */
     public function index($id)
     {
-        $Products = Product::findOrFail($id);
-        return view('product',compact('Products'));
+        $Products = Product::find($id);
+        $avgRating = 0;
+        $sumRating = array_sum(array_column($Products->ProductComment->toArray(),'rating'));
+        $countRating = count($Products->ProductComment);
+        if($countRating != 0) {
+            $avgRating = $sumRating/$countRating;
+        }
+        return view('product',compact('Products','avgRating'));
     }
 
     /**

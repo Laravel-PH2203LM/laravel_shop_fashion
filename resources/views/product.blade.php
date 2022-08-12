@@ -6,8 +6,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text product-more">
-                        <a href="./home.html"><i class="fa fa-home"></i> Home</a>
-                        <a href="./shop.html">Shop</a>
+                        <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
+                        <a href="{{url('/shop')}}">Shop</a>
                         <span>Detail</span>
                     </div>
                 </div>
@@ -147,78 +147,64 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="product-pic-zoom">
-                                <img class="product-big-img" src="img/product-single/product-1.jpg" alt="">
+                                <img class="product-big-img" src="fontend/img/products/{{$Products->ProductImage[0]->path}}" alt="">
                                 <div class="zoom-icon">
                                     <i class="fa fa-search-plus"></i>
                                 </div>
                             </div>
                             <div class="product-thumbs">
                                 <div class="product-thumbs-track ps-slider owl-carousel">
-                                    <div class="pt active" data-imgbigurl="img/product-single/product-1.jpg"><img
-                                            src="img/product-single/product-1.jpg" alt=""></div>
-                                    <div class="pt" data-imgbigurl="img/product-single/product-2.jpg"><img
-                                            src="img/product-single/product-2.jpg" alt=""></div>
-                                    <div class="pt" data-imgbigurl="img/product-single/product-3.jpg"><img
-                                            src="img/product-single/product-3.jpg" alt=""></div>
-                                    <div class="pt" data-imgbigurl="img/product-single/product-3.jpg"><img
-                                            src="img/product-single/product-3.jpg" alt=""></div>
+                                    @foreach($Products->ProductImage as $ProductImage)
+                                    <div class="pt active" data-imgbigurl="{{url('fontend/img/products'.'/'.$ProductImage->path)}}">
+                                        <img src="{{url('fontend/img/products'.'/'.$ProductImage->path)}}" alt="">
+                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="product-details">
                                 <div class="pd-title">
-                                    <span>oranges</span>
-                                    <h3>Pure Pineapple</h3>
+                                    <span>{{$Products->tag}}</span>
+                                    <h3>{{$Products->name}}</h3>
                                     <a href="#" class="heart-icon"><i class="icon_heart_alt"></i></a>
                                 </div>
                                 <div class="pd-rating">
+                                    @for ($i = 0; $i <= 5; $i++)
+                                        @if($i <= $avgRating)
                                     <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
+                                        @else
                                     <i class="fa fa-star-o"></i>
-                                    <span>(5)</span>
+                                        @endif
+                                    @endfor
+                                    <span>{{count($Products->ProductComment)}}</span>
                                 </div>
                                 <div class="pd-desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur ing elit, sed do eiusmod tempor sum dolor
-                                        sit amet, consectetur adipisicing elit, sed do mod tempor</p>
-                                    <h4>$495.00 <span>629.99</span></h4>
+                                    <p>{{$Products->description}}</p>
+                                    @if($Products->discount != null)
+                                    <h4>{{$Products->discount}} <span>{{$Products->price}}</span></h4>
+                                    @else
+                                        <h4>{{$Products->price}}$</h4>
+                                        @endif
                                 </div>
                                 <div class="pd-color">
                                     <h6>Color</h6>
                                     <div class="pd-color-choose">
+                                        @foreach(array_unique(array_column($Products->ProductDetail->toArray(),'color')) as $ProductColor)
                                         <div class="cc-item">
-                                            <input type="radio" id="cc-black">
-                                            <label for="cc-black"></label>
+                                            <input type="radio" id="{{$ProductColor}}">
+                                            <label for="{{$ProductColor}}" class="cc-{{$ProductColor}}"></label>
                                         </div>
-                                        <div class="cc-item">
-                                            <input type="radio" id="cc-yellow">
-                                            <label for="cc-yellow" class="cc-yellow"></label>
-                                        </div>
-                                        <div class="cc-item">
-                                            <input type="radio" id="cc-violet">
-                                            <label for="cc-violet" class="cc-violet"></label>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                 <div class="pd-size-choose">
+                                    @foreach(array_unique(array_column($Products->ProductDetail->toArray(),'size')) as $ProductSize)
                                     <div class="sc-item">
-                                        <input type="radio" id="sm-size">
-                                        <label for="sm-size">s</label>
+                                        <input type="radio" id="sm-{{$ProductSize}}">
+                                        <label for="sm-{{$ProductSize}}">{{$ProductSize}}</label>
                                     </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="md-size">
-                                        <label for="md-size">m</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="lg-size">
-                                        <label for="lg-size">l</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="xl-size">
-                                        <label for="xl-size">xs</label>
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <div class="quantity">
                                     <div class="pro-qty">
@@ -227,11 +213,11 @@
                                     <a href="#" class="primary-btn pd-cart">Add To Cart</a>
                                 </div>
                                 <ul class="pd-tags">
-                                    <li><span>CATEGORIES</span>: More Accessories, Wallets & Cases</li>
-                                    <li><span>TAGS</span>: Clothing, T-shirt, Woman</li>
+                                    <li><span>CATEGORIES</span>: {{$Products->ProductCategory->name}}</li>
+                                    <li><span>TAGS</span>: {{$Products->tag}}</li>
                                 </ul>
                                 <div class="pd-share">
-                                    <div class="p-code">Sku : 00012</div>
+                                    <div class="p-code">Sku : {{$Products->sku}}</div>
                                     <div class="pd-social">
                                         <a href="#"><i class="ti-facebook"></i></a>
                                         <a href="#"><i class="ti-twitter-alt"></i></a>
@@ -261,16 +247,8 @@
                                     <div class="product-content">
                                         <div class="row">
                                             <div class="col-lg-7">
-                                                <h5>Introduction</h5>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                                    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in </p>
-                                                <h5>Features</h5>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                                    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in </p>
+                                                <h5>Description</h5>
+                                                <p>{{$Products->description}}</p>
                                             </div>
                                             <div class="col-lg-5">
                                                 <img src="img/product-single/tab-desc.jpg" alt="">
@@ -285,19 +263,21 @@
                                                 <td class="p-catagory">Customer Rating</td>
                                                 <td>
                                                     <div class="pd-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                        <span>(5)</span>
+                                                        @for ($i = 0; $i <= 5; $i++)
+                                                            @if($i <= $avgRating)
+                                                                <i class="fa fa-star"></i>
+                                                            @else
+                                                                <i class="fa fa-star-o"></i>
+                                                            @endif
+                                                        @endfor
+                                                        <span>{{count($Products->ProductComment)}}</span>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="p-catagory">Price</td>
                                                 <td>
-                                                    <div class="p-price">$495.00</div>
+                                                    <div class="p-price">${{$Products->price}}</div>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -309,29 +289,38 @@
                                             <tr>
                                                 <td class="p-catagory">Availability</td>
                                                 <td>
-                                                    <div class="p-stock">22 in stock</div>
+                                                    <div class="p-stock">{{$Products->qty}} in stock</div>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="p-catagory">Weight</td>
                                                 <td>
-                                                    <div class="p-weight">1,3kg</div>
+                                                    <div class="p-weight">{{$Products->weight}}kg</div>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="p-catagory">Size</td>
                                                 <td>
-                                                    <div class="p-size">Xxl</div>
+
+                                                    <div class="p-size">
+                                                        @foreach(array_unique(array_column($Products->ProductDetail->toArray(),'size')) as $ProductSize)
+                                                            {{$ProductSize}}
+                                                        @endforeach
+                                                    </div>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td class="p-catagory">Color</td>
-                                                <td><span class="cs-color"></span></td>
+                                                <td>
+                                                    @foreach(array_unique(array_column($Products->ProductDetail->toArray(),'color')) as $ProductColor)
+                                                    <span class="cs-{{$ProductColor}}"></span>
+                                                    @endforeach
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td class="p-catagory">Sku</td>
                                                 <td>
-                                                    <div class="p-code">00012</div>
+                                                    <div class="p-code">{{$Products->sku}}</div>
                                                 </td>
                                             </tr>
                                         </table>

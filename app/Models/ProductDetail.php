@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductDetail extends Model
 {
     use HasFactory;
-    protected $table = 'prodcut_details';
+    protected $table = 'product_details';
     protected $primaryKey = 'id';
     protected $guarded = [];
 

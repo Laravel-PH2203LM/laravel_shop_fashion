@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class ShopController extends Controller
 {
@@ -13,18 +14,20 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $Products = Product::find($id);
-        $avgRating = 0;
-        $sumRating = array_sum(array_column($Products->ProductComment->toArray(),'rating'));
-        $countRating = count($Products->ProductComment);
-        if($countRating != 0) {
-            $avgRating = $sumRating/$countRating;
-        }
-        return view('product',compact('Products','avgRating'));
+        $products = Product::all();
+        return view('shop',compact('products'));
     }
-
+    public function search() {
+        $products = Product::all();
+        if(request('search')) {
+            $search = request('search');
+            $products = Product::where('name','like','%'.$search.'%')->get();
+        }
+        //dd($products);
+        return view('search',compact('products'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -54,7 +57,14 @@ class ShopController extends Controller
      */
     public function show($id)
     {
-
+        $Products = Product::find($id);
+        $avgRating = 0;
+        $sumRating = array_sum(array_column($Products->ProductComment->toArray(),'rating'));
+        $countRating = count($Products->ProductComment);
+        if($countRating != 0) {
+            $avgRating = $sumRating/$countRating;
+        }
+        return view('product',compact('Products','avgRating'));
     }
 
     /**

@@ -30,15 +30,15 @@ class HomeController extends Controller
         return view('contact');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function shop()
-    {
-        return view('shop');
-    }
+//    /**
+//     * Show the form for creating a new resource.
+//     *
+//     * @return \Illuminate\Http\Response
+//     */
+//    public function shop()
+//    {
+//        return view('shop');
+//    }
 
     /**
      * Show the form for creating a new resource.

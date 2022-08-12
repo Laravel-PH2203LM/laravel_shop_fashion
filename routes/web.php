@@ -14,15 +14,16 @@ use \App\Http\Controllers\ShopController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Xử lí tất cả liên quan đến trang chủ
 Route::group(['prefix' => '/'], function() {
     Route::get('/',[HomeController::class,'index'])->name('index');
     Route::get('/contact',[HomeController::class,'contact'])->name('contact');
-    Route::get('/shop',[HomeController::class,'shop'])->name('shop');
     Route::get('/blog',[HomeController::class,'blog'])->name('blog');
     Route::get('/blog-detail',[HomeController::class,'blog_detail'])->name('blog_detail');
     Route::get('/cart',[HomeController::class,'cart'])->name('cart');
     Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
     Route::get('/login',[HomeController::class,'login'])->name('login');
-    Route::get('/product/{id}',[ShopController::class,'index'])->name('index');
+    Route::get('/shop',[ShopController::class,'index'])->name('index');
+    Route::get('/search',[ShopController::class,'search'])->name('search');
+    Route::get('/product/{id}',[ShopController::class,'show'])->name('show');
 });

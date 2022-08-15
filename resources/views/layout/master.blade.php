@@ -145,18 +145,18 @@
             </div>
             <nav class="nav-menu mobile-menu">
                 <ul>
-                    <li class="active"><a href="{{url('/')}}">Home</a></li>
-                    <li><a href="{{url('/shop')}}">Shop</a></li>
-                    <li><a href="#">Collection</a>
+                    <li class="{{(request()->segment(1) == '' ? 'active' : '')}}"><a href="{{url('/')}}">Home</a></li>
+                    <li class="{{(request()->segment(1) == 'shop' ? 'active' : '')}}"><a href="{{url('/shop')}}">Shop</a></li>
+                    <li class="{{(request()->segment(1) == 'collection' ? 'active' : '')}}"><a href="#">Collection</a>
                         <ul class="dropdown">
                             <li><a href="#">Men's</a></li>
                             <li><a href="#">Women's</a></li>
                             <li><a href="#">Kid's</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{url('/blog')}}">Blog</a></li>
-                    <li><a href="{{route('contact')}}">Contact</a></li>
-                    <li><a href="#">Pages</a>
+                    <li class="{{(request()->segment(1) == 'blog' ? 'active' : '')}}"><a href="{{url('/blog')}}">Blog</a></li>
+                    <li class="{{(request()->segment(1) == 'contact' ? 'active' : '')}}"><a href="{{route('contact')}}">Contact</a></li>
+                    <li class="{{(request()->segment(1) == 'page' ? 'active' : '')}}"><a href="#">Pages</a>
                         <ul class="dropdown">
                             <li><a href="{{url('cart')}}">Shopping Cart</a></li>
                             <li><a href="{{url('checkout')}}">Checkout</a></li>

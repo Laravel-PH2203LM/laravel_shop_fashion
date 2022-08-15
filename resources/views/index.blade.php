@@ -89,7 +89,7 @@
                                 </div>
                                 <ul>
                                     <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="product/{{$Womenproduct->id}}">+ Quick View</a></li>
+                                    <li class="quick-view"><a href="shop/product/{{$Womenproduct->id}}">+ Quick View</a></li>
                                     <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                 </ul>
                             </div>
@@ -181,7 +181,7 @@
                                 </div>
                                 <ul>
                                     <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="/product/{{$Menproduct->id}}">+ Quick View</a></li>
+                                    <li class="quick-view"><a href="shop/product/{{$Menproduct->id}}">+ Quick View</a></li>
                                     <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                 </ul>
                             </div>

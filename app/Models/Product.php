@@ -30,4 +30,19 @@ class Product extends Model
     public function orderDetail() {
         return $this->hasMany(OrderDetail::class,'product_id','id');
     }
+    public function scopeSearch($query) {
+        if(request('sort_by')) {
+            $sort_by = request('sort_by');
+            $arr = explode('-', $sort_by);
+            $query = $query->orderBy($arr[0],$arr[1]);
+        }
+        if(request('show')) {
+            $show = request('show');
+            $query = $query->limit($show);
+        }
+        if(request('search')) {
+            $search = request('search');
+            $query = $query->where('name','like','%'.$search.'%')->get();
+        }
+    }
 }

@@ -23,7 +23,10 @@ Route::group(['prefix' => '/'], function() {
     Route::get('/cart',[HomeController::class,'cart'])->name('cart');
     Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
     Route::get('/login',[HomeController::class,'login'])->name('login');
-    Route::get('/shop',[ShopController::class,'index'])->name('index');
-    Route::get('/search',[ShopController::class,'search'])->name('search');
+});
+Route::group(['prefix'=>'shop'],function() {
+    Route::get('/',[ShopController::class,'index'])->name('index');
+    Route::get('/{categoryName}',[ShopController::class,'category'])->name('category');
     Route::get('/product/{id}',[ShopController::class,'show'])->name('show');
+    Route::get('/search',[ShopController::class,'search'])->name('search');
 });

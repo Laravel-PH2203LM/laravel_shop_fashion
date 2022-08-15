@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 
@@ -14,39 +16,23 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
-        return view('shop',compact('products'));
+        $categories = ProductCategory::all();
+        $products = Product::search()->paginate(6);
+        $products = $this->filter($products, $request);
+        $brands = Brand::all();
+        return view('shop',compact('products','categories','brands'));
     }
     public function search() {
-        $products = Product::all();
-        if(request('search')) {
-            $search = request('search');
-            $products = Product::where('name','like','%'.$search.'%')->get();
-        }
-        //dd($products);
+        $products = Product::search()->get();
         return view('search',compact('products'));
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function category($categoryName, Request $request) {
+        $categories = ProductCategory::all();
+        $brands = Brand::all();
+        $products = ProductCategory::where('name', $categoryName)->first()->products->toQuery()->paginate();
+        return view('shop',compact('products','categories','brands'));
     }
 
     /**
@@ -67,15 +53,11 @@ class ShopController extends Controller
         return view('product',compact('Products','avgRating'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function filter($products, Request $request) {
+        $brands = $request->brand ?? [];
+        $brand_id = array_keys($brands);
+        $products = $brand_id != null ? $products->whereIn('brand_id', $brand_id) : $products;
+        return $products;
     }
 
     /**

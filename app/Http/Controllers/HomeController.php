@@ -15,9 +15,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $Menproducts = Product::where('featured',true)->where('product_category_id',1)->get();
-        $Womenproducts = Product::where('featured',true)->where('product_category_id',2)->get();
-        return view('index',compact('Menproducts','Womenproducts'));
+        $product = Product::where('status',true)->where('product_category_id',1)->get();
+        //$Womenproducts = Product::where('status',true)->where('product_category_id',2)->get();
+//        return view('index',compact('Menproducts','Womenproducts'));
+        return response()->json($product);
     }
 
     /**

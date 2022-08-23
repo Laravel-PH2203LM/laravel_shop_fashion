@@ -20,6 +20,7 @@ class CreateProductDetailsTable extends Migration
             $table->string('color');
             $table->string('size');
             $table->integer('qty');
+            $table->tinyInteger('status');
 
             $table->timestamps();
         });

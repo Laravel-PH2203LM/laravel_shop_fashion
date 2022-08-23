@@ -21,6 +21,7 @@ class CreateBlogCommentsTable extends Migration
             $table->string('email');
             $table->string('name');
             $table->string('messages');
+            $table->tinyInteger('status')->nullable();
 
             $table->timestamps();
         });

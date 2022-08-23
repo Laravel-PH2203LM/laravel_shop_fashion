@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-7">
-                    <form action="{{route('search')}}" method="get">
+                    <form action="" method="get">
                         <div class="advanced-search">
                             <button type="submit" class="category-btn">All Categories</button>
                             <div class="input-group">

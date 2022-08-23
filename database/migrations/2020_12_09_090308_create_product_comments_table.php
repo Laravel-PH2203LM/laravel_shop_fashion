@@ -22,7 +22,6 @@ class CreateProductCommentsTable extends Migration
             $table->string('name');
             $table->string('messages');
             $table->integer('rating')->unsigned();
-
             $table->timestamps();
         });
     }

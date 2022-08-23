@@ -21,6 +21,9 @@ class Product extends Model
     public function ProductImage() {
         return $this->hasMany(ProductImage::class,'product_id','id');
     }
+    public function Image() {
+        return $this->hasOne(ProductImage::class,'product_id','id');
+    }
     public function ProductDetail() {
         return $this->hasMany(ProductDetail::class,'product_id','id');
     }
@@ -29,6 +32,12 @@ class Product extends Model
     }
     public function orderDetail() {
         return $this->hasMany(OrderDetail::class,'product_id','id');
+    }
+    public function ProductSize() {
+        return $this->hasMany(Size::class,'product_id','id');
+    }
+    public function ProductColor() {
+        return $this->hasMany(Color::class,'product_id','id');
     }
     public function scopeSearch($query) {
         if(request('sort_by')) {

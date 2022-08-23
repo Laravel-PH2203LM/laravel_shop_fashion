@@ -25,7 +25,7 @@
                         <h4 class="fw-title">Categories</h4>
                         <ul class="filter-catagories">
                             @foreach($categories as $category)
-                            <li><a href="{{$category->name}}">{{$category->name}}</a></li>
+                            <li><a href="shop/{{$category->name}}">{{$category->name}}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -97,22 +97,14 @@
                     <div class="filter-widget">
                         <h4 class="fw-title">Size</h4>
                         <div class="fw-size-choose">
+                            @foreach($proDetail as $prodetail)
                             <div class="sc-item">
-                                <input type="radio" id="s-size">
-                                <label for="s-size">s</label>
+                                <input type="radio" id="size-{{$prodetail->id}}"
+                                       name="size[{{$prodetail->id}}]"
+                                onchange="this.form.submit();">
+                                <label for="{{$prodetail->id}}-size">{{$prodetail->size}}</label>
                             </div>
-                            <div class="sc-item">
-                                <input type="radio" id="m-size">
-                                <label for="m-size">m</label>
-                            </div>
-                            <div class="sc-item">
-                                <input type="radio" id="l-size">
-                                <label for="l-size">l</label>
-                            </div>
-                            <div class="sc-item">
-                                <input type="radio" id="xs-size">
-                                <label for="xs-size">xs</label>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="filter-widget">
@@ -190,7 +182,7 @@
                         @endforeach
                         </div>
                     </div>
-                {!! $products->appends(['sort' => 'science-stream'])->links() !!}
+    {{--                {!! $products->appends(['sort' => 'science-stream'])->links() !!}--}}
                 </div>
             </div>
         </div>

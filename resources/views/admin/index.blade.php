@@ -31,7 +31,7 @@
 
 
       <!-- User Menu-->
-      <li><a class="app-nav__item" href=""><i class='bx bx-log-out bx-rotate-180'></i> </a>
+      <li><a class="app-nav__item" href="{{route('logout')}}"><i class='bx bx-log-out bx-rotate-180'></i> </a>
 
       </li>
     </ul>
@@ -61,7 +61,7 @@
         </li>
       <li><a class="app-menu__item {{ request()->is('admin/don-hang') ? 'haha' : '' }}" href=""><i class='app-menu__icon bx bx-task'></i><span
             class="app-menu__label">Quản lý đơn hàng</span></a></li>
-        <li><a class="app-menu__item" href=""><i class='app-menu__icon bx bx-user-voice'></i><span
+        <li><a class="app-menu__item {{ request()->is('admin/quan-li-nguoi-dung') ? 'haha' : '' }}" href="{{url('admin/quan-li-nguoi-dung')}}"><i class='app-menu__icon bx bx-user-voice'></i><span
                     class="app-menu__label">Quản lý khách hàng</span></a></li>
     </ul>
   </aside>

@@ -15,10 +15,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $product = Product::where('status',true)->where('product_category_id',1)->get();
-        //$Womenproducts = Product::where('status',true)->where('product_category_id',2)->get();
-//        return view('index',compact('Menproducts','Womenproducts'));
-        return response()->json($product);
+        $products = Product::where('status','1')->search()->get();
+        $data = [];
+        foreach ($products as $product) {
+            $data[] = [
+              'id' => $product->id,
+               'brand'=>$product->brand->name,
+                'category'=>$product->ProductCategory->name,
+                'name'=> $product->name,
+                'description' => $product->description,
+                'price' =>$product->price,
+                'qty'=>$product->qty,
+                'discount'=>$product->discount,
+                'status'=>$product->status,
+                'size'=>$product->Detail->size,
+                'color'=>$product->Detail->color,
+                'images' => $product->ProductImage,
+            ];
+        }
+        return response()->json($data);
     }
 
     /**

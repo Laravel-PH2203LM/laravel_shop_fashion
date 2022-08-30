@@ -7,6 +7,7 @@ use \App\Http\Controllers\ShopController;
 use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\BrandController;
+use App\Http\Controllers\admin\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,9 @@ Route::group(['prefix' => 'admin/','middleware'=>'auth'], function () {
     Route::get('/sua-thuong-hieu-{id}', [BrandController::class,'edit'])->name('brand_edit');
     Route::post('/sua-thuong-hieu-{id}', [BrandController::class,'update']);
     Route::get('/xoa-thuong-hieu-{id}', [BrandController::class,'destroy'])->name('brand_del');
+
+    Route::get('/quan-li-nguoi-dung', [CustomerController::class,'index'])->name('index');
 });
 Route::get('admin/login', [AdminHomeController::class,'login'])->name('login');
 Route::post('admin/login', [AdminHomeController::class,'postlogin']);
+Route::get('admin/dang-xuat', [AdminHomeController::class, 'logout'])->name('logout');

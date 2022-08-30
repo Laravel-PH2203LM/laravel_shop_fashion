@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Color;
 use App\Models\Product;
+use App\Models\ProductAttribute;
 use App\Models\ProductCategory;
 use App\Models\ProductDetail;
 use App\Models\ProductImage;
@@ -33,12 +34,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-//        $color = Color::all();
-//        $size = Size::all();
-        $attr = ProductDetail::all();
         $brands = Brand::all();
+        $attr = ProductDetail::all();
         $category = ProductCategory::all();
-        return view('admin/products/products_add',compact('category','attr','brands'));
+        return view('admin/products/products_add',compact('category','brands','attr'));
     }
 
     /**
@@ -51,26 +50,22 @@ class ProductController extends Controller
     //Todo Code chỉ chạy được, sẽ cần sửa lại để tối ưu hơn
     public function store(StoreRequest $request)
     {
-        $data = $request->only('name','brand_id','product_category_id','description','price','qty','discount','status');
-        $product = Product::create($data);
-        if($request->size) {
-            foreach ($request->size as $key => $value) {
-                $product->ProductSize()->create([
-                    'product_id' => $product->id,
-                    'status'=>$product->status,
-                    'size_id' => $value,
+        $product = Product::create([
+                'name'=>$request->name,
+                'brand_id'=>$request->brand_id,
+                'product_category_id'=>$request->product_category_id,
+                'description'=>$request->description,
+                'price'=>$request->price,
+                'qty'=>$request->qty,
+                'discount'=>$request->discount,
+                'status'=>$request->status,
+            ]);
+            foreach ($request->id_attr as $value) {
+                ProductAttribute::create([
+                   'product_id'=>$product->id,
+                   'id_attr'=>$value
                 ]);
             }
-        }
-        if($request->color) {
-            foreach ($request->color as $key => $value) {
-                $product->ProductColor()->create([
-                    'product_id' => $product->id,
-                    'status'=>$product->status,
-                    'color_id' => $value,
-                ]);
-            }
-        }
         if($product){
             $images = $request->images;
             if($images){
@@ -85,6 +80,7 @@ class ProductController extends Controller
                 // mã hoá sang strings và lưu vào database
                 $dataInsert['path'] = serialize($data);
                 $dataInsert['product_id'] =  $product->id;
+                $dataInsert['status'] =  $product->status;
                 $imgs = ProductImage::create($dataInsert);
             }
         }
@@ -112,13 +108,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(StoreRequest $id)
+    public function edit(Request $request, $id)
     {
         $product = Product::find($id);
-        $attr = ProductDetail::all();
         $brands = Brand::all();
+        $attr = ProductDetail::all();
         $category = ProductCategory::all();
-        return view('admin/products/products_edit',compact('category','attr','brands','product'));
+        return view('admin.products.products_edit',compact('category','attr','brands','product'));
     }
 
     /**
@@ -129,28 +125,24 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     //Todo Code chỉ chạy được, sẽ cần sửa lại để tối ưu hơn
-    public function update( StoreRequest $request, $id)
+    public function update(StoreRequest $request, $id)
     {
-        $product = Product::find($id);
-        $data = $request->only('name','brand_id','product_category_id','description','price','qty','discount','status');
-        $product = Product::create($data);
-        if($request->size) {
-            foreach ($request->size as $key => $value) {
-                $product->ProductSize()->update([
-                    'product_id' => $product->id,
-                    'status' => $product->status,
-                    'size_id' => $value,
-                ]);
-            }
-        }
-        if($request->color) {
-            foreach ($request->color as $key => $value) {
-                $product->ProductColor()->update([
-                    'product_id' => $product->id,
-                    'status' => $product->status,
-                    'color_id' => $value,
-                ]);
-            }
+        $product = new Product();
+        Product::update([
+            'name'=>$request->name,
+            'brand_id'=>$request->brand_id,
+            'product_category_id'=>$request->product_category_id,
+            'description'=>$request->description,
+            'price'=>$request->price,
+            'qty'=>$request->qty,
+            'discount'=>$request->discount,
+            'status'=>$request->status
+        ]);
+        foreach ($request->id_attr as $value) {
+            ProductAttribute::update([
+                'product_id'=>$product->id,
+                'id_attr'=>$value
+            ]);
         }
         if($product){
             $images = $request->images;
@@ -166,6 +158,7 @@ class ProductController extends Controller
                 // mã hoá sang strings và lưu vào database
                 $dataInsert['path'] = serialize($data);
                 $dataInsert['product_id'] =  $product->id;
+                $dataInsert['status'] =  $product->status;
                 $imgs = ProductImage::update($dataInsert);
             }
         }
@@ -181,8 +174,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         ProductImage::where('product_id',$id)->delete();
-        Color::where('product_id',$id)->delete();
-        Size::where('product_id',$id)->delete();
+        ProductAttribute::where('product_id',$id)->delete();
         Product::find($id)->delete();
         return redirect()->route('index');
     }

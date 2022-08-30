@@ -9,8 +9,7 @@ use App\Models\ProductDetail;
 use App\Models\Size;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
-use function MongoDB\BSON\toJSON;
-
+use App\Http\Resources\ProductResource;
 class ShopController extends Controller
 {
     /**
@@ -21,23 +20,33 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = ProductCategory::all();
-        $products = Product::search()->paginate(6);
+        $data = [];
+        $products = Product::where('status','1')->search()->get();
         $products = $this->filter($products, $request);
-        $brands = Brand::all();
-        $proDetail = ProductDetail::all();
-        $products->load('ProductCategory');
-        $products->load('brand');
-        $products->load('Image');
-        //$products->load('ProductDetail');
-        //return view('shop',compact('products','categories','brands','proDetail'));
-        return response()->json($products);
+        foreach ($products as $product) {
+            //$product->load('Image');
+            $data[] = [
+              'id' => $product->id,
+                'category'=>$product->ProductCategory->name,
+                'brand'=>$product->brand->name,
+                'name'=>$product->name,
+                'description'=>$product->description,
+                'price'=>$product->price,
+                'qty' =>$product->qty,
+                'discount'=>$product->discount,
+                'status'=>$product->status,
+                'size'=>$product->Detail->size,
+                'color'=>$product->Detail->color,
+                'images'=>$product->ProductImage
+            ];
+        }
+        return response()->json($data);
     }
     public function category($categoryName, Request $request) {
-        $categories = ProductCategory::all();
+        $categories = ProductCategory::category()->get();
         $brands = Brand::all();
         $products = ProductCategory::where('name', $categoryName)->first()->products->toQuery()->paginate();
-        return view('shop',compact('products','categories','brands'));
+        return view('shop',compact('categories','brands'));
     }
 
     /**
@@ -46,25 +55,33 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( Request $request,$id)
     {
-        $products = Product::find($id);
+        $product = Product::find($id);
         $avgRating = 0;
-        $sumRating = array_sum(array_column($products->ProductComment->toArray(),'rating'));
-        $countRating = count($products->ProductComment);
-        if($countRating != 0) {
-            $avgRating = $sumRating/$countRating;
+        $sumRating = array_sum(array_column($product->ProductComment->toArray(), 'rating'));
+        $countRating = count($product->ProductComment);
+        if ($countRating != 0) {
+            $avgRating = $sumRating / $countRating;
         }
-        $products->load('ProductCategory');
-        $products->load('brand');
-        $products->load('ProductComment');
-        $products->load('ProductSize');
-        $products->load('ProductColor');
-        $products->load('Image');
-        //return view('product',compact('products','avgRating'));
-        return response()->json($products);
-    }
-
+            $data[] = [
+                'id' => $id,
+                'category' => $product->ProductCategory->name,
+                'brand' => $product->brand->name,
+                'name' => $product->name,
+                'description' => $product->description,
+                'price' => $product->price,
+                'qty' => $product->qty,
+                'discount' => $product->discount,
+                'status' => $product->status,
+                'size' => $product->Detail->size,
+                'color' => $product->Detail->color,
+                'images' => $product->ProductImage,
+                'rateting' => $avgRating
+            ];
+            return response()->json($data);
+        }
+    //TODO BAD CODE, NHÌN KHÔNG KHÁC GÌ TRASH
     public function filter($products, Request $request) {
         $brands = $request->brand ?? [];
         $brand_id = array_keys($brands);

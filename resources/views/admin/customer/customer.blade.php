@@ -29,11 +29,11 @@
               </tr>
             </thead>
             <tbody>
-                @foreach($user as $users)
+                @foreach($users as $user)
               <tr>
                 <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                <td>{{$users->id}}</td>
-                <td>{{$users->name}}</td>
+                <td>{{$user->id}}</td>
+                <td>{{$user->name}}</td>
                 <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh </td>
                 <td>12/02/1999</td>
                 <td>Nữ</td>

@@ -15,4 +15,10 @@ class ProductCategory extends Model
     public function products() {
         return $this->hasMany(Product::class,'product_category_id','id');
     }
+    public function scopeCategory($query) {
+        if(request('category')) {
+            $category = request('category');
+            $query = $query->where('name','like','%'.$category.'%')->get();
+        }
+    }
 }

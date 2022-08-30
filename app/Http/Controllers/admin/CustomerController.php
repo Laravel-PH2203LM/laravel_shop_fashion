@@ -3,21 +3,20 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryRequest;
-use App\Models\ProductCategory;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function category()
+    public function index()
     {
-        $categories = ProductCategory::paginate(6);
-        return view('admin.category.category',compact('categories'));
+        $users = User::all();
+        return view('admin.customer.customer',compact('users'));
     }
 
     /**
@@ -27,7 +26,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.category.category_add');
+        //
     }
 
     /**
@@ -36,14 +35,9 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->all();
-        $category = new ProductCategory();
-        $category->name = $data['name'];
-        $category->status = $data['status'];
-        $category->save();
-        return redirect()->route('category');
+        //
     }
 
     /**
@@ -65,8 +59,7 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        $category = ProductCategory::find($id);
-        return view('admin/category/category_edit',compact('category'));
+        //
     }
 
     /**
@@ -76,14 +69,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $category = ProductCategory::find($id);
-        $category->name = $data['name'];
-        $category->status = $data['status'];
-        $category->save();
-        return redirect()->route('category');
+        //
     }
 
     /**
@@ -94,7 +82,6 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        ProductCategory::find($id)->delete();
-        return redirect()->route('category');
+        //
     }
 }

@@ -11,9 +11,13 @@ class Product extends Model
     protected $table = 'products';
     protected $primaryKey = 'id';
     protected $guarded = [];
+    protected $hidden = ['created_at','updated_at'];
 
     public function brand() {
         return $this->belongsTo(Brand::class,'brand_id','id');
+    }
+    public function Detail() {
+        return $this->belongsTo(ProductDetail::class,'brand_id','id');
     }
     public function ProductCategory() {
         return $this->belongsTo(ProductCategory::class,'product_category_id','id');
@@ -30,14 +34,11 @@ class Product extends Model
     public function ProductComment() {
         return $this->hasMany(ProductComment::class,'product_id','id');
     }
-    public function orderDetail() {
+    public function OrderDetail() {
         return $this->hasMany(OrderDetail::class,'product_id','id');
     }
-    public function ProductSize() {
-        return $this->hasMany(Size::class,'product_id','id');
-    }
-    public function ProductColor() {
-        return $this->hasMany(Color::class,'product_id','id');
+    public function Attribute() {
+        return $this->hasMany(ProductAttribute::class,'product_id','id');
     }
     public function scopeSearch($query) {
         if(request('sort_by')) {

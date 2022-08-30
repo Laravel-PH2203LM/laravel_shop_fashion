@@ -77,11 +77,11 @@
                         </select>
                     </div>
                     <div class="form-group col-md-3">
-                        <label class="control-label">Size</label>
+                        <label class="control-label">Color</label>
                         <div class="checkbox">
                             @foreach($attr as $value)
                                 <label>
-                                    <input type="checkbox" value="{{$value->id}}" name="color[]">
+                                    <input type="checkbox" value="{{$value->id}}" name="id_attr[]">
                                     {{$value->color}}
                                 </label>
                             @endforeach
@@ -92,7 +92,7 @@
                         <div class="checkbox">
                             @foreach($attr as $value)
                                 <label>
-                                    <input type="checkbox" value="{{$value->id}}" name="size[]">
+                                    <input type="checkbox" value="{{$value->id}}" name="id_attr[]">
                                     {{$value->size}}
                                 </label>
                             @endforeach

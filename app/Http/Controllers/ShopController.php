@@ -55,15 +55,15 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show( Request $request,$id)
+    public function show(Request $request,$id)
     {
         $product = Product::find($id);
-        $avgRating = 0;
-        $sumRating = array_sum(array_column($product->ProductComment->toArray(), 'rating'));
-        $countRating = count($product->ProductComment);
-        if ($countRating != 0) {
-            $avgRating = $sumRating / $countRating;
-        }
+//        $avgRating = 0;
+//        $sumRating = array_sum(array_column($product->ProductComment->toArray(), 'rating'));
+//        $countRating = count($product->ProductComment);
+//        if ($countRating != 0) {
+//            $avgRating = $sumRating / $countRating;
+//        }
             $data[] = [
                 'id' => $id,
                 'category' => $product->ProductCategory->name,
@@ -77,7 +77,7 @@ class ShopController extends Controller
                 'size' => $product->Detail->size,
                 'color' => $product->Detail->color,
                 'images' => $product->ProductImage,
-                'rateting' => $avgRating
+//                'rateting' => $avgRating
             ];
             return response()->json($data);
         }

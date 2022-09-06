@@ -36,7 +36,7 @@ Route::group(['prefix'=>'shop/'],function() {
 //    Route::get('/search',[ShopController::class,'search'])->name('search');
 });
 
-Route::group(['prefix' => 'admin/','middleware'=>'auth'], function () {
+Route::prefix('admin')->middleware('CheckAdminLogin')->group(function () {
     Route::get('/trang-chu', [AdminHomeController::class,'index'])->name('index');
     /* Danh mục */
     Route::get('/danh-muc', [CategoriesController::class,'category'])->name('category');
@@ -67,6 +67,6 @@ Route::group(['prefix' => 'admin/','middleware'=>'auth'], function () {
 
     Route::get('/quan-li-nguoi-dung', [CustomerController::class,'index'])->name('index');
 });
-Route::get('admin/login', [AdminHomeController::class,'login'])->name('login');
-Route::post('admin/login', [AdminHomeController::class,'postlogin']);
+Route::get('admin/login', [AdminHomeController::class,'login'])->withoutMiddleware('CheckAdminLogin')->name('login');
+Route::post('admin/login', [AdminHomeController::class,'postlogin'])->withoutMiddleware('CheckAdminLogin');
 Route::get('admin/dang-xuat', [AdminHomeController::class, 'logout'])->name('logout');

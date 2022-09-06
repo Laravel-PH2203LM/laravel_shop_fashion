@@ -28,6 +28,6 @@ class CreateTableAttributeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_attribute');
+        Schema::dropIfExists('product_attribute');
     }
 }

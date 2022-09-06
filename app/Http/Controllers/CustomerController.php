@@ -13,8 +13,7 @@ class CustomerController extends Controller
            'email'=>$request->email,
            'password'=>Hash::make($request->password),
             'name'=>$request->name,
-            'level' => 2,
-            'status' => $request->status
+            'level' => 2
         ]);
     }
     public function login(Request $request) {

@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Utiles\Constants;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,8 +21,10 @@ class CheckAdminLogin
         if(Auth::guest()) {
             return redirect()->guest('admin/login');
         }
-        if(Auth::user()->level != Constant::class && Auth::user()->level != 2);
+        if(Auth::user()->level != Constants::user_level_host && Auth::user()->level != Constants::user_level_admin);
+
         Auth::logout();
+
         return redirect()->guest('admin/login');
         return $next($request);
     }

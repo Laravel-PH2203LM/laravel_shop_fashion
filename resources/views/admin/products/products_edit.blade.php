@@ -43,7 +43,7 @@
                         <select class="form-control" name="brand_id" id="exampleSelect1">
                             <option>-- Chọn danh mục --</option>
                             @foreach ($category as $cat)
-                                <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                <option value="{{$cat->id}}" {{$cat->id = $product->product_category_id ? 'selected' : ''}}>{{$cat->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -52,7 +52,7 @@
                         <select class="form-control" name="product_category_id" id="exampleSelect1">
                             <option>-- Chọn danh mục --</option>
                             @foreach ($brands as $brand)
-                                <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                <option value="{{$brand->id}}" {{$brands->id = $product->brand_id ? 'selected' : ''}}>{{$brand->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -72,8 +72,8 @@
                         <label for="exampleSelect1" class="control-label">Trạng thái</label>
                         <select class="form-control" name="status" id="exampleSelect1">
                             <option>-- Chọn danh mục --</option>
-                            <option value="1">Hiển thị</option>
-                            <option value="0">Tạm ẩn</option>
+                            <option value="1" {{$product->status == '1' ? 'selected' : ''}}>Hiển thị</option>
+                            <option value="0" {{$product->status == '0' ? 'selected' : ''}}>Tạm ẩn</option>
                         </select>
                     </div>
                     <div class="form-group col-md-3">

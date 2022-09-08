@@ -174,7 +174,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        ProductImage::where('product_id',$id)->delete();
+        $data = ProductImage::where('product_id',$id)->delete();
         ProductAttribute::where('product_id',$id)->delete();
         Product::find($id)->delete();
         return redirect()->route('index');

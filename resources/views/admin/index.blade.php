@@ -43,27 +43,41 @@
         alt="User Image">
       <div>
         <p class="app-sidebar__user-name">{{ Auth::user()->name }}<b></b></p>
-        <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
+          <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
       </div>
     </div>
-    <hr>
-    <ul class="app-menu">
-      <li><a class="app-menu__item {{ request()->is('admin/trang-chu') ? 'haha' : '' }}" href="{{url('admin/trang-chu')}}"><i class='app-menu__icon bx bx-cart-alt'></i>
-          <span class="app-menu__label">Trang chủ</span></a></li>
-      <li><a class="app-menu__item {{ request()->is('admin/danh-muc') ? 'haha' : '' }}" href="{{url('admin/danh-muc')}}"><i
-            class='app-menu__icon bx bx-purchase-tag-alt'></i><span class="app-menu__label">Danh mục sản phẩm</span></a>
-      </li>
-      <li><a class="app-menu__item {{ request()->is('admin/san-pham') ? 'haha' : '' }}" href="{{url('admin/san-pham')}}"><i
-        class='app-menu__icon bx bx-purchase-tag-alt'></i><span class="app-menu__label">Danh sách sản phẩm</span></a>
-        </li>
-        <li><a class="app-menu__item {{ request()->is('admin/thuong-hieu') ? 'haha' : '' }}" href="{{url('admin/thuong-hieu')}}"><i
-                    class='app-menu__icon bx bx-purchase-tag-alt'></i><span class="app-menu__label">Danh sách hãng</span></a>
-        </li>
-      <li><a class="app-menu__item {{ request()->is('admin/don-hang') ? 'haha' : '' }}" href=""><i class='app-menu__icon bx bx-task'></i><span
-            class="app-menu__label">Quản lý đơn hàng</span></a></li>
-        <li><a class="app-menu__item {{ request()->is('admin/quan-li-nguoi-dung') ? 'haha' : '' }}" href="{{url('admin/quan-li-nguoi-dung')}}"><i class='app-menu__icon bx bx-user-voice'></i><span
-                    class="app-menu__label">Quản lý khách hàng</span></a></li>
-    </ul>
+      <hr>
+      <ul class="app-menu">
+          <li><a class="app-menu__item {{ request()->is('admin/trang-chu') ? 'haha' : '' }}"
+                 href="{{url('admin/trang-chu')}}"><i class='app-menu__icon bx bx-cart-alt'></i>
+                  <span class="app-menu__label">Trang chủ</span></a></li>
+          <li><a class="app-menu__item {{ request()->is('admin/danh-muc') ? 'haha' : '' }}"
+                 href="{{url('admin/danh-muc')}}"><i
+                      class='app-menu__icon bx bx-purchase-tag-alt'></i><span
+                      class="app-menu__label">Danh mục sản phẩm</span></a>
+          </li>
+          <li><a class="app-menu__item {{ request()->is('admin/thuong-hieu') ? 'haha' : '' }}"
+                 href="{{url('admin/thuong-hieu')}}"><i
+                      class='app-menu__icon bx bx-purchase-tag-alt'></i><span
+                      class="app-menu__label">Danh sách hãng</span></a>
+          </li>
+          <li><a class="app-menu__item {{ request()->is('admin/thuoc-tinh') ? 'haha' : '' }}"
+                 href="{{url('admin/thuoc-tinh')}}"><i
+                      class='app-menu__icon bx bx-purchase-tag-alt'></i><span
+                      class="app-menu__label">Danh sách thuộc tính</span></a>
+          </li>
+          <li><a class="app-menu__item {{ request()->is('admin/san-pham') ? 'haha' : '' }}"
+                 href="{{url('admin/san-pham')}}"><i
+                      class='app-menu__icon bx bx-purchase-tag-alt'></i><span
+                      class="app-menu__label">Danh sách sản phẩm</span></a>
+          </li>
+          <li><a class="app-menu__item {{ request()->is('admin/don-hang') ? 'haha' : '' }}" href=""><i
+                      class='app-menu__icon bx bx-task'></i><span
+                      class="app-menu__label">Quản lý đơn hàng</span></a></li>
+          <li><a class="app-menu__item {{ request()->is('admin/quan-li-nguoi-dung') ? 'haha' : '' }}"
+                 href="{{url('admin/quan-li-nguoi-dung')}}"><i class='app-menu__icon bx bx-user-voice'></i><span
+                      class="app-menu__label">Quản lý khách hàng</span></a></li>
+      </ul>
   </aside>
   <main class="app-content">
     <div class="row">
@@ -83,7 +97,7 @@
       <p><b>Copyright
           <script type="text/javascript">
             document.write(new Date().getFullYear());
-          </script> Phần mềm quản lý bán hàng | Dev By Trường
+          </script> Phần mềm quản lý bán hàng | PHP2203LM
         </b></p>
     </div>
   </main>

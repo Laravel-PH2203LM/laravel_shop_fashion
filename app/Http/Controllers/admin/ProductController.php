@@ -4,13 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
-use App\Models\Color;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use App\Models\ProductCategory;
 use App\Models\ProductDetail;
 use App\Models\ProductImage;
-use App\Models\Size;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRequest;
 
@@ -21,7 +19,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function product()
     {
         $products = Product::all();
         return view('admin/products/products',compact('products'));
@@ -48,7 +46,7 @@ class ProductController extends Controller
      */
 
     //Todo Code chỉ chạy được, sẽ cần sửa lại để tối ưu hơn
-    public function store(StoreRequest $request)
+    public function store(Request $request)
     {
         $product = Product::create([
                 'name'=>$request->name,
@@ -84,7 +82,7 @@ class ProductController extends Controller
                 $imgs = ProductImage::create($dataInsert);
             }
         }
-        return redirect()->route('index');
+        return redirect()->route('product');
     }
 
     /**
@@ -125,10 +123,10 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     //Todo Code chỉ chạy được, sẽ cần sửa lại để tối ưu hơn
-    public function update(StoreRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $product = new Product();
-        Product::update([
+        $product = Product::find($id);
+        $product->update([
             'name'=>$request->name,
             'brand_id'=>$request->brand_id,
             'product_category_id'=>$request->product_category_id,
@@ -139,7 +137,9 @@ class ProductController extends Controller
             'status'=>$request->status
         ]);
         foreach ($request->id_attr as $value) {
-            ProductAttribute::update([
+
+            $productatt = ProductAttribute::find($id);
+            $productatt->update([
                 'product_id'=>$product->id,
                 'id_attr'=>$value
             ]);
@@ -155,14 +155,15 @@ class ProductController extends Controller
                     $file->move(public_path().'/uploads/', $name);
                     $data[] = $name;
                 }
-                // mã hoá sang strings và lưu vào database
+                // mã hoá sang mảng và lưu vào database
                 $dataInsert['path'] = serialize($data);
                 $dataInsert['product_id'] =  $product->id;
                 $dataInsert['status'] =  $product->status;
-                $imgs = ProductImage::update($dataInsert);
+                $imgs = ProductImage::find($id);
+                $imgs->update($dataInsert);
             }
         }
-        return redirect()->route('index');
+        return redirect()->route('product');
     }
 
     /**

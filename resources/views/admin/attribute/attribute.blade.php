@@ -1,5 +1,5 @@
 @extends('admin/index')
-@section('title','Danh sách thương hiệu')
+@section('title','Thuộc tính sản phẩm')
 @section('main')
     <div class="row">
         <div class="col-md-12">
@@ -7,9 +7,10 @@
                 <div class="tile-body">
                     <div class="row element-button">
                         <div class="col-sm-2">
-                            <a class="btn btn-add btn-sm" href="{{route('brand_add')}}" title="Thêm"><i
+
+                            <a class="btn btn-add btn-sm" href="{{route('attr_add')}}" title="Thêm"><i
                                     class="fas fa-plus"></i>
-                                Thêm thương hiệu mới</a>
+                                Tạo mới thuộc tính</a>
                         </div>
                         <div class="col-sm-2">
                             <a class="btn btn-delete btn-sm" type="button" title="Xóa" onclick="myFunction(this)"><i
@@ -21,7 +22,8 @@
                         <tr>
                             <th width="10"><input type="checkbox" id="all"></th>
                             <th>Mã sản phẩm</th>
-                            <th>Tên sản phẩm</th>
+                            <th>Kích cỡ</th>
+                            <th>Màu sắc</th>
                             <th>Trạng thái</th>
                             <th>Tạo lúc</th>
                             <th>Cập nhật lúc</th>
@@ -29,20 +31,19 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($brands as $brand)
+                        @foreach ($attrPro as $attr)
                             <tr>
                                 <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                                <td>{{ $brand->id }}</td>
-                                <td>{{ $brand->name }}</td>
-                                <td><span
-                                        class="badge bg-success">{{$brand->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span>
-                                </td>
-                                <td>{{ $brand->created_at->format('d-m-Y H:i:s') }}</td>
-                                <td>{{ $brand->updated_at->format('d-m-Y H:i:s') }}</td>
+                                <td>{{ $attr->id }}</td>
+                                <td>{{ $attr->size }}</td>
+                                <td>{{ $attr->color }}</td>
+                                <td><span class="badge bg-success">{{$attr->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span></td>
+                                <td>{{ $attr->created_at->format('d-m-Y H:i:s') }}</td>
+                                <td>{{ $attr->updated_at->format('d-m-Y H:i:s') }}</td>
                                 <td>
-                                    <a href="{{ route('brand_edit', ['id' => $brand->id]) }}">
+                                    <a href="">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                    <a href="{{ route('brand_del', ['id' => $brand->id]) }}"
+                                    <a href=""
                                        onclick="return confirm('Bạn có chắc muốn đăng xuất nó khỏi thế giới hay không?');">
                                         <i class="fas fa-trash"></i></a>
                                 </td>

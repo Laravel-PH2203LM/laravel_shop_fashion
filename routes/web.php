@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\CustomerController;
+use App\Http\Controllers\admin\ProductAttrController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     /*End */
 
     /* Sản phẩm */
-    Route::get('/san-pham', [ProductController::class,'index'])->name('index');
+    Route::get('/san-pham', [ProductController::class,'product'])->name('product');
     Route::get('/xem-san-pham-{id}', [ProductController::class,'show'])->name('product_view');
     Route::get('/them-san-pham', [ProductController::class,'create'])->name('product_add');
     Route::post('/them-san-pham', [ProductController::class,'store']);
@@ -64,7 +65,13 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/sua-thuong-hieu-{id}', [BrandController::class,'edit'])->name('brand_edit');
     Route::post('/sua-thuong-hieu-{id}', [BrandController::class,'update']);
     Route::get('/xoa-thuong-hieu-{id}', [BrandController::class,'destroy'])->name('brand_del');
+    /* End */
 
+    /* Thông tin thêm */
+    Route::get('/thuoc-tinh', [ProductAttrController::class,'productAttr'])->name('productAttr');
+    Route::get('/them-thuoc-tinh', [ProductAttrController::class,'create'])->name('attr_add');
+    Route::post('/them-thuoc-tinh', [ProductAttrController::class,'store']);
+    /* End */
     Route::get('/quan-li-nguoi-dung', [CustomerController::class,'index'])->name('index');
 });
 Route::get('admin/login', [AdminHomeController::class,'login'])->name('login');

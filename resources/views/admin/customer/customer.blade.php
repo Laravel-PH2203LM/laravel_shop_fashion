@@ -21,8 +21,6 @@
                 <th>ID nhân viên</th>
                 <th width="150">Họ và tên</th>
                 <th width="300">Địa chỉ</th>
-                <th>Ngày sinh</th>
-                <th>Giới tính</th>
                 <th>SĐT</th>
                 <th>Chức vụ</th>
                 <th width="100">Tính năng</th>
@@ -34,11 +32,9 @@
                 <td width="10"><input type="checkbox" name="check1" value="1"></td>
                 <td>{{$user->id}}</td>
                 <td>{{$user->name}}</td>
-                <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh </td>
-                <td>12/02/1999</td>
-                <td>Nữ</td>
-                <td>0926737168</td>
-                <td>Bán hàng</td>
+                <td>{{$user->address}}</td>
+                <td>{{$user->phone}}</td>
+                <td>{{$user->level == '1' ? 'Người dùng' : 'Admin'}}</td>
                 <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
                     onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
                   </button>

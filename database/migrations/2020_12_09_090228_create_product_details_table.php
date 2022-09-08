@@ -16,7 +16,6 @@ class CreateProductDetailsTable extends Migration
         Schema::create('product_details', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('product_id')->unsigned();
             $table->string('color');
             $table->string('size');
             $table->tinyInteger('status')->nullable();

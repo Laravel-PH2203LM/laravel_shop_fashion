@@ -41,8 +41,8 @@
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td><span class="badge bg-success">{{$category->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span></td>
-                                    <td>{{ $category->created_at }}</td>
-                                    <td>{{ $category->updated_at }}</td>
+                                    <td>{{ $category->created_at->format('d-m-Y H:i:s') }}</td>
+                                    <td>{{ $category->updated_at->format('d-m-Y H:i:s') }}</td>
                                     <td>
                                         <a href="{{ route('category_edit', ['id' => $category->id]) }}">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

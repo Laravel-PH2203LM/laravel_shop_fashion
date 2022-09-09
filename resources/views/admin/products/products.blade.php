@@ -15,8 +15,7 @@
                 <table class="table table-hover table-bordered" id="sampleTable">
                     <thead>
                         <tr>
-                            <th width="10"><input type="checkbox" id="all"></th>
-                            <th>Mã sản phẩm</th>
+                            <th>STT</th>
                             <th>Tên sản phẩm</th>
                             <th>Giá tiền</th>
                             <th>Giảm giá</th>
@@ -28,7 +27,6 @@
                     <tbody>
                         @foreach ($products as $product)
                         <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
                             <td>{{$product->id}}</td>
                             <td>{{$product->name}}</td>
                             <td>{{number_format($product->price,0)}}</td>
@@ -38,7 +36,7 @@
                             <td>
                                 <a href="{{ route('product_edit', ['id' => $product->id]) }}">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                <a href="{{ route('product_del', ['id' => $product->id]) }}"
+                                <a href="{{ route('product_del', ['product' => $product->id]) }}"
                                     onclick="return confirm('Bạn có chắc muốn xoá nó khỏi thế giới hay không?');">
                                     <i class="fas fa-trash"></i></a>
                                 <a href="{{ route('product_view', ['id' => $product->id]) }}">

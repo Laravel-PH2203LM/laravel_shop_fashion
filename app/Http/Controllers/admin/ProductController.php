@@ -172,11 +172,22 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Product $product)
     {
-        $data = ProductImage::where('product_id',$id)->delete();
-        ProductAttribute::where('product_id',$id)->delete();
-        Product::find($id)->delete();
-        return redirect()->route('index');
+        $del = ProductImage::where('product_id',$product->id)->first();
+        if($del) {
+            $images = unserialize($del->path);
+        } else {
+            $images = [];
+        }
+        foreach ($images as $img) {
+            if(file_exists(public_path('uploads/'.$img))) {
+                $data = unlink(public_path('uploads/'.$img));
+            }
+        }
+        $data = ProductImage::where('product_id',$product->id)->delete();
+        ProductAttribute::where('product_id',$product->id)->delete();
+        $product->delete();
+        return redirect()->route('product');
     }
 }

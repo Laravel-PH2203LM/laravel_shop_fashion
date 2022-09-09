@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +26,8 @@ Route::resources([
 Route::resources([
     'products' => ShopController::class
 ]);
-Route::post('register',['App\Http\Controllers\CustomerController','register'])->name('register');
+Route::post('register',['App\Http\Controllers\AuthController','register'])->name('register');
 
-Route::post('login',['App\Http\Controllers\CustomerController','login'])->name('login');
-Route::get('profile',['App\Http\Controllers\CustomerController','profile'])->name('profile');
+Route::post('login',['App\Http\Controllers\AuthController','login'])->name('login');
+Route::get('profile',['App\Http\Controllers\AuthController','profile'])->name('profile');
 

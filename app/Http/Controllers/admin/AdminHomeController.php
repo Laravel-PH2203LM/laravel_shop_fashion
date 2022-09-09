@@ -11,18 +11,21 @@ use Illuminate\Support\Facades\Session;
 
 class AdminHomeController extends Controller
 {
-    public function index() {
+    public function home() {
         return view('admin.index');
     }
     public function login() {
         return view('admin.login');
     }
     public function postlogin(Request $request) {
-        $data = $request->only('email','password','remember_token');
-        if (Auth::attempt($data)) {
-            return redirect()->intended('admin/trang-chu');
-        }
-        return redirect("admin/login");
+        $user = User::query()
+            ->where('email',$request->email)
+            ->where('password',$request->password)
+            ->first();
+        session()->put('id',$user->id);
+        session()->put('name',$user->name);
+        session()->put('level',$user->level);
+        return redirect()->route('home');
     }
     public function logout() {
         Session::flush();

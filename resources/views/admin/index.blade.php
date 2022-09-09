@@ -42,7 +42,7 @@
     <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{{asset('admin/images/admin.png')}}" width="50px"
         alt="User Image">
       <div>
-        <p class="app-sidebar__user-name">{{ Auth::user()->name }}<b></b></p>
+        <p class="app-sidebar__user-name">{{session()->get('name')}}<b></b></p>
           <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
       </div>
     </div>

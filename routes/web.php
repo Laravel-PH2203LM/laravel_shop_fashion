@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminHomeController;
 use App\Http\Controllers\HomeController;
 use \App\Http\Controllers\ShopController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\BrandController;
@@ -28,7 +29,6 @@ Route::group(['prefix' => '/'], function() {
     Route::get('/blog-detail',[HomeController::class,'blog_detail'])->name('blog_detail');
     Route::get('/cart',[HomeController::class,'cart'])->name('cart');
     Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
-    //Route::get('/login',[HomeController::class,'login'])->name('login');
 });
 Route::group(['prefix'=>'shop/'],function() {
     Route::get('/',[ShopController::class,'index'])->name('index');
@@ -37,8 +37,8 @@ Route::group(['prefix'=>'shop/'],function() {
 //    Route::get('/search',[ShopController::class,'search'])->name('search');
 });
 
-Route::prefix('admin')->middleware('auth')->group(function () {
-    Route::get('/trang-chu', [AdminHomeController::class,'index'])->name('index');
+Route::prefix('admin')->middleware('CheckAdminLogin')->group(function () {
+    Route::get('/trang-chu', [AdminHomeController::class,'home'])->name('home');
     /* Danh mục */
     Route::get('/danh-muc', [CategoriesController::class,'category'])->name('category');
     Route::get('/them-danh-muc', [CategoriesController::class,'create'])->name('category_add');
@@ -72,7 +72,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/them-thuoc-tinh', [ProductAttrController::class,'create'])->name('attr_add');
     Route::post('/them-thuoc-tinh', [ProductAttrController::class,'store']);
     /* End */
-    Route::get('/quan-li-nguoi-dung', [CustomerController::class,'index'])->name('index');
+    Route::get('/quan-li-nguoi-dung', [AuthController::class,'index'])->name('index');
 });
 Route::get('admin/login', [AdminHomeController::class,'login'])->name('login');
 Route::post('admin/login', [AdminHomeController::class,'postlogin']);

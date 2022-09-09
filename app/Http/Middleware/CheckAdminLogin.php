@@ -18,14 +18,9 @@ class CheckAdminLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::guest()) {
-            return redirect()->guest('admin/login');
+        if(!session()->has('level')) {
+            return redirect()->route('login');
         }
-        if(Auth::user()->level != Constants::user_level_host && Auth::user()->level != Constants::user_level_admin);
-
-        Auth::logout();
-
-        return redirect()->guest('admin/login');
         return $next($request);
     }
 }

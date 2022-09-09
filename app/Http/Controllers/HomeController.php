@@ -97,14 +97,4 @@ class HomeController extends Controller
     {
         return view('checkout');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function login()
-    {
-        return view('login');
-    }
 }

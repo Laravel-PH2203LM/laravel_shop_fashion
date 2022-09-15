@@ -77,11 +77,11 @@
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel women">
-                        @foreach($Womenproducts as $Womenproduct)
-                        <div class="product-item item {{$Womenproduct->tag}}">
+                        @foreach($products as $product)
+                        <div class="product-item item {{$product->tag}}">
                             <div class="pi-pic">
-                                <img src="fontend/img/products/{{$Womenproduct->ProductImage[0]->path}}" alt="">
-                                @if($Womenproduct->discount != null)
+                                <img src="fontend/img/products/{{$product->ProductImage[0]->path}}" alt="">
+                                @if($product->discount != null)
                                 <div class="sale">Sale</div>
                                 @endif
                                 <div class="icon">
@@ -89,21 +89,21 @@
                                 </div>
                                 <ul>
                                     <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="shop/product/{{$Womenproduct->id}}">+ Quick View</a></li>
+                                    <li class="quick-view"><a href="shop/product/{{$product->id}}">+ Quick View</a></li>
                                     <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                 </ul>
                             </div>
                             <div class="pi-text">
-                                <div class="catagory-name">{{$Womenproduct->tag}}</div>
+                                <div class="catagory-name">{{$product->tag}}</div>
                                 <a href="#">
-                                    <h5>{{$Womenproduct->name}}</h5>
+                                    <h5>{{$product->name}}</h5>
                                 </a>
                                 <div class="product-price">
-                                    @if($Womenproduct->discount != null)
-                                    ${{$Womenproduct->discount}}
-                                        <span>${{$Womenproduct->price}}</span>
+                                    @if($product->discount != null)
+                                    ${{$product->discount}}
+                                        <span>${{$product->price}}</span>
                                     @else
-                                        ${{$Womenproduct->price}}
+                                        ${{$product->price}}
                                     @endif
                                 </div>
                             </div>
@@ -169,11 +169,11 @@
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel men">
-                        @foreach($Menproducts as $Menproduct)
-                        <div class="product-item item {{$Menproduct->tag}}">
+                        @foreach($products as $product)
+                        <div class="product-item item {{$product->tag}}">
                             <div class="pi-pic">
-                                <img src="fontend/img/products/{{$Menproduct->ProductImage[0]->path}}" alt="">
-                                @if($Menproduct->discount != null)
+                                <img src="fontend/img/products/{{$product->ProductImage[0]->path}}" alt="">
+                                @if($product->discount != null)
                                     <div class="sale">Sale</div>
                                 @endif
                                 <div class="icon">
@@ -181,21 +181,21 @@
                                 </div>
                                 <ul>
                                     <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="shop/product/{{$Menproduct->id}}">+ Quick View</a></li>
+                                    <li class="quick-view"><a href="shop/product/{{$product->id}}">+ Quick View</a></li>
                                     <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                 </ul>
                             </div>
                             <div class="pi-text">
                                 <div class="catagory-name">Coat</div>
                                 <a href="#">
-                                    <h5>{{$Menproduct->name}}</h5>
+                                    <h5>{{$product->name}}</h5>
                                 </a>
                                 <div class="product-price">
-                                    @if($Menproduct->discount != null)
-                                        ${{$Menproduct->discount}}
-                                        <span>${{$Menproduct->price}}</span>
+                                    @if($product->discount != null)
+                                        ${{$product->discount}}
+                                        <span>${{$product->price}}</span>
                                     @else
-                                        ${{$Menproduct->price}}
+                                        ${{$product->price}}
                                     @endif
                                 </div>
                             </div>

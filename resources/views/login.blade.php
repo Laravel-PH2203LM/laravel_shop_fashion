@@ -22,11 +22,11 @@
             <div class="col-lg-6 offset-lg-3">
                 <div class="login-form">
                     <h2>Login</h2>
-                    <form action="{{route('login')}}" method="POST">
+                    <form action="#" method="POST">
                         @csrf
                         <div class="group-input">
                             <label for="username">Email address *</label>
-                            <input type="email" id="username" name="email">
+                            <input type="emaill" id="username" name="email">
                         </div>
                         <div class="group-input">
                             <label for="pass">Password *</label>

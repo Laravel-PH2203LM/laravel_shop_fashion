@@ -1,255 +1,213 @@
 @extends('layout.master')
 @section('main')
-    <!-- Hero Section Begin -->
-    <section class="hero-section">
-        <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="{{asset('fontend/img/hero-1.jpg')}}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <span>Bag,kids</span>
-                            <h1>Black friday</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore</p>
-                            <a href="#" class="primary-btn">Shop Now</a>
+    <!--slider area start-->
+    <div class="slider_area slider_style home_three_slider owl-carousel">
+        <div class="single_slider" data-bgimg="{{asset('fontend/img/slider/slider4.jpg')}}">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <div class="slider_content content_one">
+                            <img src="{{asset('fontend/img/slider/content3.png')}}" alt="">
+                            <p>the wooboom clothing summer collection is back at half price</p>
+                            <a href="{{url('/shop')}}">Discover Now</a>
                         </div>
-                    </div>
-                    <div class="off-card">
-                        <h2>Sale <span>50%</span></h2>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Hero Section End -->
-
-    <!-- Banner Section Begin -->
-    <div class="banner-section spad">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="single-banner">
-                        <img src="{{asset('fontend/img/banner-1.jpg')}}" alt="">
-                        <div class="inner-text">
-                            <h4>Men’s</h4>
+        <div class="single_slider" data-bgimg="{{asset('fontend/img/slider/slider5.jpg')}}">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <div class="slider_content content_two">
+                            <img src="{{asset('fontend/img/slider/content4.png')}}" alt="">
+                            <p>the wooboom clothing summer collection is back at half price</p>
+                            <a href="{{url('/shop')}}">Discover Now</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="single-banner">
-                        <img src="{{asset('fontend/img/banner-2.jpg')}}" alt="">
-                        <div class="inner-text">
-                            <h4>Women’s</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="single-banner">
-                        <img src="{{asset('fontend/img/banner-3.jpg')}}" alt="">
-                        <div class="inner-text">
-                            <h4>Kid’s</h4>
+            </div>
+        </div>
+        <div class="single_slider" data-bgimg="{{asset('fontend/img/slider/slider6.jpg')}}">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <div class="slider_content content_three">
+                            <img src="{{asset('fontend/img/slider/content5.png')}}" alt="">
+                            <p>the wooboom clothing summer collection is back at half price</p>
+                            <a href="{{url('/shop')}}">Discover Now</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Banner Section End -->
+    <!--slider area end-->
 
-    <!-- Women Banner Section Begin -->
-    <section class="women-banner spad">
+    <!--banner area start-->
+    <div class="banner_section banner_section_three">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="product-large set-bg" data-setbg="img/products/women-large.jpg">
-                        <h2>Women’s</h2>
-                        <a href="#">Discover More</a>
-                    </div>
-                </div>
-                <div class="col-lg-8 offset-lg-1">
-                    <div class="filter-control">
-                        <ul>
-                            <li class="item active" data-tag="*" data-category="women">All</li>
-                            <li class="item" data-tag=".Clothings" data-category="women">Clothings</li>
-                            <li class="item" data-tag=".HandBag" data-category="women">HandBag</li>
-                            <li class="item" data-tag=".Shoes" data-category="women">Shoes</li>
-                            <li class="item" data-tag=".Accessories" data-category="women">Accessories</li>
-                        </ul>
-                    </div>
-                    <div class="product-slider owl-carousel women">
-                        @foreach($Womenproducts as $Womenproduct)
-                        <div class="product-item item {{$Womenproduct->tag}}">
-                            <div class="pi-pic">
-                                <img src="fontend/img/products/{{$Womenproduct->ProductImage[0]->path}}" alt="">
-                                @if($Womenproduct->discount != null)
-                                <div class="sale">Sale</div>
-                                @endif
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
-                                <ul>
-                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="shop/product/{{$Womenproduct->id}}">+ Quick View</a></li>
-                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="catagory-name">{{$Womenproduct->tag}}</div>
-                                <a href="#">
-                                    <h5>{{$Womenproduct->name}}</h5>
-                                </a>
-                                <div class="product-price">
-                                    @if($Womenproduct->discount != null)
-                                    ${{$Womenproduct->discount}}
-                                        <span>${{$Womenproduct->price}}</span>
-                                    @else
-                                        ${{$Womenproduct->price}}
-                                    @endif
-                                </div>
-                            </div>
+            <div class="row ">
+                <div class="col-lg-4 col-md-6">
+                    <div class="banner_area">
+                        <div class="banner_thumb">
+                            <a href="{{url('/shop')}}"><img src="{{asset('fontend/img/bg/banner8.jpg')}}" alt="#"></a>
                         </div>
-                        @endforeach
                     </div>
                 </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="banner_area">
+                        <div class="banner_thumb">
+                            <a href="{{url('/shop')}}"><img src="{{asset('fontend/img/bg/banner9.jpg')}}" alt="#"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="banner_area bottom">
+                        <div class="banner_thumb">
+                            <a href="{{url('/shop')}}"><img src="{{asset('fontend/img/bg/banner10.jpg')}}" alt="#"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Women Banner Section End -->
+    </div>
+    <!--banner area end-->
 
-    <!-- Deal Of The Week Section Begin-->
-    <section class="deal-of-week set-bg spad" data-setbg="{{asset('fontend/img/time-bg.jpg')}}">
+    <!--product section area start-->
+    <section class="product_section womens_product">
         <div class="container">
-            <div class="col-lg-6 text-center">
-                <div class="section-title">
-                    <h2>Deal Of The Week</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed<br/> do ipsum dolor sit amet,
-                        consectetur adipisicing elit </p>
-                    <div class="product-price">
-                        $35.00
-                        <span>/ HanBag</span>
-                    </div>
-                </div>
-                <div class="countdown-timer" id="countdown">
-                    <div class="cd-item">
-                        <span>56</span>
-                        <p>Days</p>
-                    </div>
-                    <div class="cd-item">
-                        <span>12</span>
-                        <p>Hrs</p>
-                    </div>
-                    <div class="cd-item">
-                        <span>40</span>
-                        <p>Mins</p>
-                    </div>
-                    <div class="cd-item">
-                        <span>52</span>
-                        <p>Secs</p>
-                    </div>
-                </div>
-                <a href="#" class="primary-btn">Shop Now</a>
-            </div>
-        </div>
-    </section>
-    <!-- Deal Of The Week Section End -->
-
-    <!-- Man Banner Section Begin -->
-    <section class="man-banner spad">
-        <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="filter-control">
-                        <ul>
-                            <li class="item active" data-tag="*" data-category="men">All</li>
-                            <li class="item" data-tag=".Clothings" data-category="men">Clothings</li>
-                            <li class="item" data-tag=".HandBag" data-category="men">HandBag</li>
-                            <li class="item" data-tag=".Shoes" data-category="men">Shoes</li>
-                            <li class="item" data-tag=".Accessories" data-category="men">Accessories</li>
-                        </ul>
+                <div class="col-12">
+                    <div class="section_title">
+                        <h2>Sản phẩm của chúng tôi</h2>
+                        <p>Các sản phẩm thiết kế hiện đại,mới nhất</p>
                     </div>
-                    <div class="product-slider owl-carousel men">
-                        @foreach($Menproducts as $Menproduct)
-                        <div class="product-item item {{$Menproduct->tag}}">
-                            <div class="pi-pic">
-                                <img src="fontend/img/products/{{$Menproduct->ProductImage[0]->path}}" alt="">
-                                @if($Menproduct->discount != null)
-                                    <div class="sale">Sale</div>
-                                @endif
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
-                                <ul>
-                                    <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="shop/product/{{$Menproduct->id}}">+ Quick View</a></li>
-                                    <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="catagory-name">Coat</div>
-                                <a href="#">
-                                    <h5>{{$Menproduct->name}}</h5>
-                                </a>
-                                <div class="product-price">
-                                    @if($Menproduct->discount != null)
-                                        ${{$Menproduct->discount}}
-                                        <span>${{$Menproduct->price}}</span>
-                                    @else
-                                        ${{$Menproduct->price}}
-                                    @endif
+                </div>
+            </div>
+            <div class="product_area">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product_tab_button">
+                            <ul class="nav" role="tablist">
+                                <li>
+                                    <a class="active" data-toggle="tab" href="#clothing" role="tab" aria-controls="clothing" aria-selected="true">Women’s</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#handbag" role="tab" aria-controls="handbag" aria-selected="false">Men’s</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#shoes" role="tab" aria-controls="shoes" aria-selected="false">Kid's</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#accessories" role="tab" aria-controls="accessories" aria-selected="false">Shoes</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="clothing" role="tabpanel">
+                        <div class="product_container">
+                            <div class="row product_column4">
+                                <!-- Sản phẩm -->
+                                <div class="col-lg-3">
+                                    <div class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product6.jpg')}}" alt=""></a>
+                                            <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product5.jpg')}}" alt=""></a>
+
+                                            <div class="quick_button">
+                                                <a href="#" title="quick_view">Xem sản phẩm</a>
+                                            </div>
+
+                                        </div>
+                                        <div class="product_content">
+                                            <h3><a href="{{url('/shop/product')}}">Beats Solo2 Solo 2</a></h3>
+                                            <span class="current_price">£60.00</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        @endforeach
                     </div>
                 </div>
-                <div class="col-lg-3 offset-lg-1">
-                    <div class="product-large set-bg m-large" data-setbg="{{asset('fontend/img/products/man-large.jpg')}}">
-                        <h2>Men’s</h2>
-                        <a href="#">Discover More</a>
+            </div>
+
+        </div>
+    </section>
+    <!--product section area end-->
+
+    <!--banner area start-->
+    <section class="banner_section banner_section_three">
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-lg-6 col-md-6">
+                    <div class="banner_area">
+                        <div class="banner_thumb">
+                            <a href="{{url('/shop')}}"><img src="{{asset('fontend/img/bg/banner11.jpg')}}" alt="#"></a>
+                            <div class="banner_content">
+                                <h1>Handbag <br> Men’s Collection</h1>
+                                <a href="{{url('/shop')}}">Discover Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="banner_area">
+                        <div class="banner_thumb">
+                            <a href="{{url('/shop')}}"><img src="{{asset('fontend/img/bg/banner12.jpg')}}" alt="#"></a>
+                            <div class="banner_content">
+                                <h1>Sneaker <br> Men’s Collection</h1>
+                                <a href="{{url('/shop')}}">Discover Now</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Man Banner Section End -->
-            <div class="benefit-items">
+    <!--banner area end-->
+
+    <!--product section area start-->
+    <section class="product_section womens_product bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section_title">
+                        <h2>Sản phẩm thịnh hành</h2>
+                        <p>Sản phẩm ấn tượng và bán chạy nhất</p>
+                    </div>
+                </div>
+            </div>
+            <div class="product_area">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="single-benefit">
-                            <div class="sb-icon">
-                                <img src="{{asset('fontend/img/icon-1.png')}}" alt="">
-                            </div>
-                            <div class="sb-text">
-                                <h6>Free Shipping</h6>
-                                <p>For all order over 99$</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="single-benefit">
-                            <div class="sb-icon">
-                                <img src="{{asset('fontend/img/icon-2.png')}}" alt="">
-                            </div>
-                            <div class="sb-text">
-                                <h6>Delivery On Time</h6>
-                                <p>If good have prolems</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="single-benefit">
-                            <div class="sb-icon">
-                                <img src="{{asset('fontend/img/icon-1.png')}}" alt="">
-                            </div>
-                            <div class="sb-text">
-                                <h6>Secure Payment</h6>
-                                <p>100% secure payment</p>
+                    <div class="product_carousel product_three_column4 owl-carousel">
+                        <div class="col-lg-3">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product21.jpg')}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product22.jpg')}}" alt=""></a>
+
+                                    <div class="quick_button">
+                                        <a href="#" title="quick_view">Xem sản phẩm</a>
+                                    </div>
+
+                                    <div class="product_sale">
+                                        <span>-20%</span>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <h3><a href="{{url('/shop/product')}}">Giày thể thao</a></h3>
+                                    <span class="current_price">300.000</span>
+                                    <span class="old_price">420.000</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 @endsection

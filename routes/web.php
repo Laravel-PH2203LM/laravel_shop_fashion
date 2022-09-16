@@ -28,13 +28,16 @@ Route::group(['prefix' => '/'], function() {
     Route::get('/blog',[HomeController::class,'blog'])->name('blog');
     Route::get('/blog-detail',[HomeController::class,'blog_detail'])->name('blog_detail');
     Route::get('/cart',[HomeController::class,'cart'])->name('cart');
+    Route::get('/about',[HomeController::class,'about'])->name('about');
     Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
+    Route::get('/login',[HomeController::class,'login'])->name('login');
+    Route::get('/register',[HomeController::class,'register'])->name('register');
 });
 Route::group(['prefix'=>'shop/'],function() {
     Route::get('/',[ShopController::class,'index'])->name('index');
     //Route::get('/{categoryName}',[ShopController::class,'category'])->name('category');
-    Route::get('/product/{id}',[ShopController::class,'show'])->name('show');
-//    Route::get('/search',[ShopController::class,'search'])->name('search');
+    Route::get('/product',[ShopController::class,'show'])->name('show');
+   Route::get('/search',[ShopController::class,'search'])->name('search');
 });
 
 Route::prefix('admin')->middleware('auth')->group(function () {

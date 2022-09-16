@@ -15,25 +15,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::where('status','1')->search()->get();
-        $data = [];
-        foreach ($products as $product) {
-            $data[] = [
-              'id' => $product->id,
-               'brand'=>$product->brand->name,
-                'category'=>$product->ProductCategory->name,
-                'name'=> $product->name,
-                'description' => $product->description,
-                'price' =>$product->price,
-                'qty'=>$product->qty,
-                'discount'=>$product->discount,
-                'status'=>$product->status,
-                'size'=>$product->Detail->size,
-                'color'=>$product->Detail->color,
-                'images' => $product->ProductImage,
-            ];
-        }
-        return response()->json($data);
+        // $products = Product::where('status','1')->search()->get();
+        // $data = [];
+        // foreach ($products as $product) {
+        //     $data[] = [
+        //       'id' => $product->id,
+        //        'brand'=>$product->brand->name,
+        //         'category'=>$product->ProductCategory->name,
+        //         'name'=> $product->name,
+        //         'description' => $product->description,
+        //         'price' =>$product->price,
+        //         'qty'=>$product->qty,
+        //         'discount'=>$product->discount,
+        //         'status'=>$product->status,
+        //         'size'=>$product->Detail->size,
+        //         'color'=>$product->Detail->color,
+        //         'images' => $product->ProductImage,
+        //     ];
+        // }
+        return view('index');
     }
 
     /**
@@ -45,16 +45,6 @@ class HomeController extends Controller
     {
         return view('contact');
     }
-
-//    /**
-//     * Show the form for creating a new resource.
-//     *
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function shop()
-//    {
-//        return view('shop');
-//    }
 
     /**
      * Show the form for creating a new resource.
@@ -96,5 +86,23 @@ class HomeController extends Controller
     public function checkout()
     {
         return view('checkout');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function login()
+    {
+        return view('login');
+    }
+    public function register()
+    {
+        return view('register');
+    }
+    public function about()
+    {
+        return view('about');
     }
 }

@@ -1,517 +1,750 @@
 @extends('layout.master')
 @section('main')
-    <!-- Breadcrumb Section Begin -->
-    <div class="breacrumb-section">
-        <div class="container">
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area product_bread">
+        <div class="container">   
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb-text product-more">
-                        <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
-                        <a href="{{url('/shop')}}">Shop</a>
-                        <span>Detail</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumb Section Begin -->
-
-    <!-- Product Shop Section Begin -->
-    <section class="product-shop spad page-details">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Categories</h4>
-                        <ul class="filter-catagories">
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Women</a></li>
-                            <li><a href="#">Kids</a></li>
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="{{url('/index')}}">home</a></li>
+                            <li>/</li>
+                            <li>product details</li>
                         </ul>
                     </div>
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Brand</h4>
-                        <div class="fw-brand-check">
-                            <div class="bc-item">
-                                <label for="bc-calvin">
-                                    Calvin Klein
-                                    <input type="checkbox" id="bc-calvin">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="bc-item">
-                                <label for="bc-diesel">
-                                    Diesel
-                                    <input type="checkbox" id="bc-diesel">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="bc-item">
-                                <label for="bc-polo">
-                                    Polo
-                                    <input type="checkbox" id="bc-polo">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="bc-item">
-                                <label for="bc-tommy">
-                                    Tommy Hilfiger
-                                    <input type="checkbox" id="bc-tommy">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Price</h4>
-                        <div class="filter-range-wrap">
-                            <div class="range-slider">
-                                <div class="price-input">
-                                    <input type="text" id="minamount">
-                                    <input type="text" id="maxamount">
-                                </div>
-                            </div>
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                 data-min="33" data-max="98">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            </div>
-                        </div>
-                        <a href="#" class="filter-btn">Filter</a>
-                    </div>
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Color</h4>
-                        <div class="fw-color-choose">
-                            <div class="cs-item">
-                                <input type="radio" id="cs-black">
-                                <label class="cs-black" for="cs-black">Black</label>
-                            </div>
-                            <div class="cs-item">
-                                <input type="radio" id="cs-violet">
-                                <label class="cs-violet" for="cs-violet">Violet</label>
-                            </div>
-                            <div class="cs-item">
-                                <input type="radio" id="cs-blue">
-                                <label class="cs-blue" for="cs-blue">Blue</label>
-                            </div>
-                            <div class="cs-item">
-                                <input type="radio" id="cs-yellow">
-                                <label class="cs-yellow" for="cs-yellow">Yellow</label>
-                            </div>
-                            <div class="cs-item">
-                                <input type="radio" id="cs-red">
-                                <label class="cs-red" for="cs-red">Red</label>
-                            </div>
-                            <div class="cs-item">
-                                <input type="radio" id="cs-green">
-                                <label class="cs-green" for="cs-green">Green</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Size</h4>
-                        <div class="fw-size-choose">
-                            <div class="sc-item">
-                                <input type="radio" id="s-size">
-                                <label for="s-size">s</label>
-                            </div>
-                            <div class="sc-item">
-                                <input type="radio" id="m-size">
-                                <label for="m-size">m</label>
-                            </div>
-                            <div class="sc-item">
-                                <input type="radio" id="l-size">
-                                <label for="l-size">l</label>
-                            </div>
-                            <div class="sc-item">
-                                <input type="radio" id="xs-size">
-                                <label for="xs-size">xs</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Tags</h4>
-                        <div class="fw-tags">
-                            <a href="#">Towel</a>
-                            <a href="#">Shoes</a>
-                            <a href="#">Coat</a>
-                            <a href="#">Dresses</a>
-                            <a href="#">Trousers</a>
-                            <a href="#">Men's hats</a>
-                            <a href="#">Backpack</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="product-pic-zoom">
-                                <img class="product-big-img" src="{{url('fontend/img/products'.'/'.$Products->ProductImage[0]->path)}}" alt="">
-                                <div class="zoom-icon">
-                                    <i class="fa fa-search-plus"></i>
-                                </div>
-                            </div>
-                            <div class="product-thumbs">
-                                <div class="product-thumbs-track ps-slider owl-carousel">
-                                    @foreach($Products->ProductImage as $ProductImage)
-                                    <div class="pt active" data-imgbigurl="{{url('fontend/img/products'.'/'.$ProductImage->path)}}">
-                                        <img src="{{url('fontend/img/products'.'/'.$ProductImage->path)}}" alt="">
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="product-details">
-                                <div class="pd-title">
-                                    <span>{{$Products->tag}}</span>
-                                    <h3>{{$Products->name}}</h3>
-                                    <a href="#" class="heart-icon"><i class="icon_heart_alt"></i></a>
-                                </div>
-                                <div class="pd-rating">
-                                    @for ($i = 0; $i <= 5; $i++)
-                                        @if($i <= $avgRating)
-                                    <i class="fa fa-star"></i>
-                                        @else
-                                    <i class="fa fa-star-o"></i>
-                                        @endif
-                                    @endfor
-                                    <span>{{count($Products->ProductComment)}}</span>
-                                </div>
-                                <div class="pd-desc">
-                                    <p>{{$Products->description}}</p>
-                                    @if($Products->discount != null)
-                                    <h4>{{$Products->discount}} <span>{{$Products->price}}</span></h4>
-                                    @else
-                                        <h4>{{$Products->price}}$</h4>
-                                        @endif
-                                </div>
-                                <div class="pd-color">
-                                    <h6>Color</h6>
-                                    <div class="pd-color-choose">
-                                        @foreach(array_unique(array_column($Products->ProductDetail->toArray(),'color')) as $ProductColor)
-                                        <div class="cc-item">
-                                            <input type="radio" id="{{$ProductColor}}">
-                                            <label for="{{$ProductColor}}" class="cc-{{$ProductColor}}"></label>
-                                        </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="pd-size-choose">
-                                    @foreach(array_unique(array_column($Products->ProductDetail->toArray(),'size')) as $ProductSize)
-                                    <div class="sc-item">
-                                        <input type="radio" id="sm-{{$ProductSize}}">
-                                        <label for="sm-{{$ProductSize}}">{{$ProductSize}}</label>
-                                    </div>
-                                    @endforeach
-                                </div>
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
-                                    <a href="#" class="primary-btn pd-cart">Add To Cart</a>
-                                </div>
-                                <ul class="pd-tags">
-                                    <li><span>CATEGORIES</span>: {{$Products->ProductCategory->name}}</li>
-                                    <li><span>TAGS</span>: {{$Products->tag}}</li>
-                                </ul>
-                                <div class="pd-share">
-                                    <div class="p-code">Sku : {{$Products->sku}}</div>
-                                    <div class="pd-social">
-                                        <a href="#"><i class="ti-facebook"></i></a>
-                                        <a href="#"><i class="ti-twitter-alt"></i></a>
-                                        <a href="#"><i class="ti-linkedin"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-tab">
-                        <div class="tab-item">
-                            <ul class="nav" role="tablist">
-                                <li>
-                                    <a class="active" data-toggle="tab" href="#tab-1" role="tab">DESCRIPTION</a>
-                                </li>
-                                <li>
-                                    <a data-toggle="tab" href="#tab-2" role="tab">SPECIFICATIONS</a>
-                                </li>
-                                <li>
-                                    <a data-toggle="tab" href="#tab-3" role="tab">Customer Reviews (02)</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-item-content">
-                            <div class="tab-content">
-                                <div class="tab-pane fade-in active" id="tab-1" role="tabpanel">
-                                    <div class="product-content">
-                                        <div class="row">
-                                            <div class="col-lg-7">
-                                                <h5>Description</h5>
-                                                <p>{{$Products->description}}</p>
-                                            </div>
-                                            <div class="col-lg-5">
-                                                <img src="img/product-single/tab-desc.jpg" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="tab-2" role="tabpanel">
-                                    <div class="specification-table">
-                                        <table>
-                                            <tr>
-                                                <td class="p-catagory">Customer Rating</td>
-                                                <td>
-                                                    <div class="pd-rating">
-                                                        @for ($i = 0; $i <= 5; $i++)
-                                                            @if($i <= $avgRating)
-                                                                <i class="fa fa-star"></i>
-                                                            @else
-                                                                <i class="fa fa-star-o"></i>
-                                                            @endif
-                                                        @endfor
-                                                        <span>{{count($Products->ProductComment)}}</span>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Price</td>
-                                                <td>
-                                                    <div class="p-price">${{$Products->price}}</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Add To Cart</td>
-                                                <td>
-                                                    <div class="cart-add">+ add to cart</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Availability</td>
-                                                <td>
-                                                    <div class="p-stock">{{$Products->qty}} in stock</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Weight</td>
-                                                <td>
-                                                    <div class="p-weight">{{$Products->weight}}kg</div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Size</td>
-                                                <td>
-
-                                                    <div class="p-size">
-                                                        @foreach(array_unique(array_column($Products->ProductDetail->toArray(),'size')) as $ProductSize)
-                                                            {{$ProductSize}}
-                                                        @endforeach
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Color</td>
-                                                <td>
-                                                    @foreach(array_unique(array_column($Products->ProductDetail->toArray(),'color')) as $ProductColor)
-                                                    <span class="cs-{{$ProductColor}}"></span>
-                                                    @endforeach
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="p-catagory">Sku</td>
-                                                <td>
-                                                    <div class="p-code">{{$Products->sku}}</div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="tab-3" role="tabpanel">
-                                    <div class="customer-review-option">
-                                        <h4>2 Comments</h4>
-                                        <div class="comment-option">
-                                            <div class="co-item">
-                                                <div class="avatar-pic">
-                                                    <img src="img/product-single/avatar-1.png" alt="">
-                                                </div>
-                                                <div class="avatar-text">
-                                                    <div class="at-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                    </div>
-                                                    <h5>Brandon Kelley <span>27 Aug 2019</span></h5>
-                                                    <div class="at-reply">Nice !</div>
-                                                </div>
-                                            </div>
-                                            <div class="co-item">
-                                                <div class="avatar-pic">
-                                                    <img src="img/product-single/avatar-2.png" alt="">
-                                                </div>
-                                                <div class="avatar-text">
-                                                    <div class="at-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
-                                                    </div>
-                                                    <h5>Roy Banks <span>27 Aug 2019</span></h5>
-                                                    <div class="at-reply">Nice !</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="personal-rating">
-                                            <h6>Your Ratind</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-                                        </div>
-                                        <div class="leave-comment">
-                                            <h4>Leave A Comment</h4>
-                                            <form action="#" class="comment-form">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <input type="text" placeholder="Name">
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <input type="text" placeholder="Email">
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <textarea placeholder="Messages"></textarea>
-                                                        <button type="submit" class="site-btn">Send message</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- Product Shop Section End -->
-
-    <!-- Related Products Section End -->
-    <div class="related-products spad">
+        </div>         
+    </div>
+    <!--breadcrumbs area end-->
+    
+    <!--product details start-->
+    <div class="product_details">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Related Products</h2>
+                <div class="col-lg-5 col-md-5">
+                   <div class="product-details-tab">
+
+                        <div id="img-1" class="zoomWrapper single-zoom">
+                            <a href="#">
+                                <img id="zoom1" src="{{asset('fontend/img/product/product5.jpg')}}" data-zoom-image="{{asset('fontend/img/product/product5.jpg" alt="big-1')}}">
+                            </a>
+                        </div>
+
+                        <div class="single-zoom-thumb">
+                            <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
+                                <li>
+                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{asset('fontend/img/product/product4.jpg')}}" data-zoom-image="{{asset('fontend/img/product/product4.jpg')}}">
+                                        <img src="{{asset('fontend/img/s-product/product3.jpg')}}" alt="zo-th-1"/>
+                                    </a>
+
+                                </li>
+                                <li >
+                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{asset('fontend/img/product/product6.jpg')}}" data-zoom-image="{{asset('fontend/img/product/product6.jpg')}}">
+                                        <img src="{{asset('fontend/img/s-product/product.jpg')}}" alt="zo-th-1"/>
+                                    </a>
+
+                                </li>
+                                <li >
+                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{asset('fontend/img/product/product8.jpg')}}" data-zoom-image="{{asset('fontend/img/product/product8.jpg')}}">
+                                        <img src="{{asset('fontend/img/s-product/product2.jpg')}}" alt="zo-th-1"/>
+                                    </a>
+
+                                </li>
+                                <li >
+                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{asset('fontend/img/product/product2.jpg')}}" data-zoom-image="{{asset('fontend/img/product/product2.jpg')}}">
+                                        <img src="{{asset('fontend/img/s-product/product4.jpg')}}" alt="zo-th-1"/>
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-7">
+                    <div class="product_d_right">
+                       <form action="#">
+                           
+                            <h1>Amazon Cloud Cam</h1>
+                            <div class=" product_ratting">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li class="review"><a href="#"> 1 review </a></li>
+                                    <li class="review"><a href="#"> Write a review </a></li>
+                                </ul>
+                            </div>
+                            <div class="product_price">
+                                <span class="current_price">$70.00</span>
+                            </div>
+                            <div class="product_desc">
+                                <p>More room to move. With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go. Cover Flow. Browse through your music collection by flipping through album art. Select an album to turn it over and see the track list. Enhanced interface. Experience a whole new way to browse and view your music and video. Sleeker design. Beautiful, durable, and sleeker than ever, iPod classic now features an anodized aluminum and polish.. </p>
+                            </div>
+
+                            <div class="product_variant color">
+                                <h3>color</h3>
+                                <select class="niceselect_option" id="color" name="produc_color">
+                                    <option selected value="1">choose in option</option>        
+                                    <option value="2">choose in option2</option>              
+                                    <option value="3">choose in option3</option>              
+                                    <option value="4">choose in option4</option>              
+                                </select>   
+                            </div>
+                            <div class="product_variant size">
+                                <h3>size</h3>
+                                <select class="niceselect_option" id="color1" name="produc_color">
+                                    <option selected value="1">size</option>        
+                                    <option value="2">x</option>              
+                                    <option value="2">xl</option>              
+                                    <option value="3">md</option>              
+                                    <option value="4">xxl</option>              
+                                    <option value="4">s</option>              
+                                </select> 
+                            </div>
+                            <div class="product_variant quantity">
+                                <label>quantity</label>
+                                <input min="1" max="100" value="1" type="number">
+                                <button class="button" type="submit">add to cart</button>  
+                            </div>
+                            <div class=" product_d_action">
+                               <ul>
+                                   <li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wish List</a></li>
+                                   <li><a href="#" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i> Compare this Product</a></li>
+                               </ul>
+                            </div>
+                            
+                        </form>
+                        <div class="priduct_social">
+                            <h3>Share on:</h3>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-rss"></i></a></li>           
+                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>           
+                                <li><a href="#"><i class="fa fa-tumblr"></i></a></li>           
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>        
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>        
+                            </ul>      
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="img/products/women-1.jpg" alt="">
-                            <div class="sale">Sale</div>
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">Coat</div>
-                            <a href="#">
-                                <h5>Pure Pineapple</h5>
-                            </a>
-                            <div class="product-price">
-                                $14.00
-                                <span>$35.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="img/products/women-2.jpg" alt="">
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">Shoes</div>
-                            <a href="#">
-                                <h5>Guangzhou sweater</h5>
-                            </a>
-                            <div class="product-price">
-                                $13.00
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="img/products/women-3.jpg" alt="">
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">Towel</div>
-                            <a href="#">
-                                <h5>Pure Pineapple</h5>
-                            </a>
-                            <div class="product-price">
-                                $34.00
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="img/products/women-4.jpg" alt="">
-                            <div class="icon">
-                                <i class="icon_heart_alt"></i>
-                            </div>
-                            <ul>
-                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="pi-text">
-                            <div class="catagory-name">Towel</div>
-                            <a href="#">
-                                <h5>Converse Shoes</h5>
-                            </a>
-                            <div class="product-price">
-                                $34.00
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>    
     </div>
-    <!-- Related Products Section End -->
+    <!--product details end-->
+    
+    <!--product info start-->
+    <div class="product_d_info">
+        <div class="container">   
+            <div class="row">
+                <div class="col-12">
+                    <div class="product_d_inner">   
+                        <div class="product_info_button">    
+                            <ul class="nav" role="tablist">
+                                <li >
+                                    <a class="active" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">More info</a>
+                                </li>
+                                <li>
+                                     <a data-toggle="tab" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false">Data sheet</a>
+                                </li>
+                                <li>
+                                   <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="info" role="tabpanel" >
+                                <div class="product_info_content">
+                                    <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
+                                </div>    
+                            </div>
+
+                            <div class="tab-pane fade" id="sheet" role="tabpanel" >
+                                <div class="product_d_table">
+                                   <form action="#">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="first_child">Compositions</td>
+                                                    <td>Polyester</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="first_child">Styles</td>
+                                                    <td>Girly</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="first_child">Properties</td>
+                                                    <td>Short Dress</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                                <div class="product_info_content">
+                                    <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
+                                </div>    
+                            </div>
+                            <div class="tab-pane fade" id="reviews" role="tabpanel" >
+                                <div class="product_info_content">
+                                    <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
+                                </div>
+                                <div class="product_info_inner">
+                                    <div class="product_ratting mb-10">
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        </ul>
+                                        <strong>Posthemes</strong> 
+                                        <p>09/07/2018</p>
+                                    </div>
+                                    <div class="product_demo">
+                                        <strong>demo</strong>
+                                        <p>That's OK!</p>
+                                    </div>
+                                </div> 
+                                <div class="product_review_form">
+                                    <form action="#">
+                                        <h2>Add a review </h2>
+                                        <p>Your email address will not be published. Required fields are marked </p>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label for="review_comment">Your review </label>
+                                                <textarea name="comment" id="review_comment" ></textarea>
+                                            </div> 
+                                            <div class="col-lg-6 col-md-6">
+                                                <label for="author">Name</label>
+                                                <input id="author"  type="text">
+
+                                            </div> 
+                                            <div class="col-lg-6 col-md-6">
+                                                <label for="email">Email </label>
+                                                <input id="email"  type="text">
+                                            </div>  
+                                        </div>
+                                        <button type="submit">Submit</button>
+                                     </form>   
+                                </div>     
+                            </div>
+                        </div>
+                    </div>     
+                </div>
+            </div>
+        </div>    
+    </div>  
+    <!--product info end-->
+    
+    <!--product section area start-->
+    <section class="product_section related_product">
+        <div class="container">
+            <div class="row">   
+                <div class="col-12">
+                   <div class="section_title">
+                       <h2>Related Products</h2>
+                       <p>Contemporary, minimal and modern designs embody the Lavish Alice handwriting</p>
+                   </div>
+                </div> 
+            </div>    
+            <div class="product_area"> 
+                 <div class="row">
+                    <div class="product_carousel product_three_column4 owl-carousel">
+                        <div class="col-lg-3">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product21.jpg')}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product22.jpg')}}" alt=""></a>
+                                    <div class="product_action">
+                                        <div class="hover_action">
+                                           <a  href="#"><i class="fa fa-plus"></i></a>
+                                            <div class="action_button">
+                                                <ul>
+
+                                                    <li><a title="add to cart" href="{{url('/cart')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                                                    <li><a href="{{url('/wishlist')}}" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+
+                                                    <li><a href="{{url('/compare')}}" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                       </div>
+
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick_view">+ quick view</a>
+                                    </div>
+
+                                    <div class="product_sale">
+                                        <span>-7%</span>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <h3><a href="{{url('/shop/product')}}">Marshall Portable  Bluetooth</a></h3>
+                                    <span class="current_price">£60.00</span>
+                                    <span class="old_price">£86.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product27.jpg')}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product28.jpg')}}" alt=""></a>
+                                    <div class="product_action">
+                                        <div class="hover_action">
+                                           <a  href="#"><i class="fa fa-plus"></i></a>
+                                            <div class="action_button">
+                                                <ul>
+
+                                                    <li><a title="add to cart" href="{{url('/cart')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                                                    <li><a href="{{url('/wishlist')}}" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+
+                                                    <li><a href="{{url('/compare')}}" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                       </div>
+
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick_view">+ quick view</a>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <h3><a href="{{url('/shop/product')}}">Koss KPH7 Portable</a></h3>
+                                    <span class="current_price">£60.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product6.jpg')}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product5.jpg')}}" alt=""></a>
+                                    <div class="product_action">
+                                        <div class="hover_action">
+                                           <a  href="#"><i class="fa fa-plus"></i></a>
+                                            <div class="action_button">
+                                                <ul>
+
+                                                    <li><a title="add to cart" href="{{url('/cart')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                                                    <li><a href="{{url('/wishlist')}}" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+
+                                                    <li><a href="{{url('/compare')}}" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                       </div>
+
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick_view">+ quick view</a>
+                                    </div>
+
+                                </div>
+                                <div class="product_content">
+                                    <h3><a href="{{url('/shop/product')}}">Beats Solo2 Solo 2</a></h3>
+                                    <span class="current_price">£60.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product7.jpg')}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product8.jpg')}}" alt=""></a>
+                                    <div class="product_action">
+                                        <div class="hover_action">
+                                           <a  href="#"><i class="fa fa-plus"></i></a>
+                                            <div class="action_button">
+                                                <ul>
+
+                                                    <li><a title="add to cart" href="{{url('/cart')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                                                    <li><a href="{{url('/wishlist')}}" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+
+                                                    <li><a href="{{url('/compare')}}" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                       </div>
+
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick_view">+ quick view</a>
+                                    </div>
+
+                                    <div class="product_sale">
+                                        <span>-7%</span>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <h3><a href="{{url('/shop/product')}}">Beats EP Wired</a></h3>
+                                    <span class="current_price">£60.00</span>
+                                    <span class="old_price">£86.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product24.jpg')}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product25.jpg')}}" alt=""></a>
+                                    <div class="product_action">
+                                        <div class="hover_action">
+                                           <a  href="#"><i class="fa fa-plus"></i></a>
+                                            <div class="action_button">
+                                                <ul>
+
+                                                    <li><a title="add to cart" href="{{url('/cart')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                                                    <li><a href="{{url('/wishlist')}}" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+
+                                                    <li><a href="{{url('/compare')}}" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                       </div>
+
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick_view">+ quick view</a>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <h3><a href="{{url('/shop/product')}}">Bose SoundLink Bluetooth</a></h3>
+                                    <span class="current_price">£60.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product10.jpg')}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product11.jpg')}}" alt=""></a>
+                                    <div class="product_action">
+                                        <div class="hover_action">
+                                           <a  href="#"><i class="fa fa-plus"></i></a>
+                                            <div class="action_button">
+                                                <ul>
+
+                                                    <li><a title="add to cart" href="{{url('/cart')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                                                    <li><a href="{{url('/wishlist')}}" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+
+                                                    <li><a href="{{url('/compare')}}" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                       </div>
+
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick_view">+ quick view</a>
+                                    </div>
+
+                                    <div class="product_sale">
+                                        <span>-7%</span>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <h3><a href="{{url('/shop/product')}}">Apple iPhone SE 16GB</a></h3>
+                                    <span class="current_price">£60.00</span>
+                                    <span class="old_price">£86.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product23.jpg')}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product24.jpg')}}" alt=""></a>
+                                    <div class="product_action">
+                                        <div class="hover_action">
+                                           <a  href="#"><i class="fa fa-plus"></i></a>
+                                            <div class="action_button">
+                                                <ul>
+
+                                                    <li><a title="add to cart" href="{{url('/cart')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                                                    <li><a href="{{url('/wishlist')}}" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+
+                                                    <li><a href="{{url('/compare')}}" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                       </div>
+
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick_view">+ quick view</a>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <h3><a href="{{url('/shop/product')}}">JBL Flip 3 Portable</a></h3>
+                                    <span class="current_price">£60.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               
+        </div>
+    </section>
+    <!--product section area end-->
+    
+    <!--product section area start-->
+    <section class="product_section upsell_product">
+        <div class="container">
+            <div class="row">   
+                <div class="col-12">
+                   <div class="section_title">
+                       <h2>Upsell Products</h2>
+                       <p>Contemporary, minimal and modern designs embody the Lavish Alice handwriting</p>
+                   </div>
+                </div> 
+            </div>    
+            <div class="product_area"> 
+                 <div class="row">
+                    <div class="product_carousel product_three_column4 owl-carousel">
+                        <div class="col-lg-3">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product15.jpg')}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product16.jpg')}}" alt=""></a>
+                                    <div class="product_action">
+                                        <div class="hover_action">
+                                           <a  href="#"><i class="fa fa-plus"></i></a>
+                                            <div class="action_button">
+                                                <ul>
+
+                                                    <li><a title="add to cart" href="{{url('/cart')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                                                    <li><a href="{{url('/wishlist')}}" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+
+                                                    <li><a href="{{url('/compare')}}" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                       </div>
+
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick_view">+ quick view</a>
+                                    </div>
+
+                                    <div class="product_sale">
+                                        <span>-7%</span>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <h3><a href="{{url('/shop/product')}}">Marshall Portable  Bluetooth</a></h3>
+                                    <span class="current_price">£60.00</span>
+                                    <span class="old_price">£86.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product17.jpg')}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product18.jpg')}}" alt=""></a>
+                                    <div class="product_action">
+                                        <div class="hover_action">
+                                           <a  href="#"><i class="fa fa-plus"></i></a>
+                                            <div class="action_button">
+                                                <ul>
+
+                                                    <li><a title="add to cart" href="{{url('/cart')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                                                    <li><a href="{{url('/wishlist')}}" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+
+                                                    <li><a href="{{url('/compare')}}" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                       </div>
+
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick_view">+ quick view</a>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <h3><a href="{{url('/shop/product')}}">Koss KPH7 Portable</a></h3>
+                                    <span class="current_price">£60.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product19.jpg')}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product20.jpg')}}" alt=""></a>
+                                    <div class="product_action">
+                                        <div class="hover_action">
+                                           <a  href="#"><i class="fa fa-plus"></i></a>
+                                            <div class="action_button">
+                                                <ul>
+
+                                                    <li><a title="add to cart" href="{{url('/cart')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                                                    <li><a href="{{url('/wishlist')}}" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+
+                                                    <li><a href="{{url('/compare')}}" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                       </div>
+
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick_view">+ quick view</a>
+                                    </div>
+
+                                </div>
+                                <div class="product_content">
+                                    <h3><a href="{{url('/shop/product')}}">Beats Solo2 Solo 2</a></h3>
+                                    <span class="current_price">£60.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product7.jpg')}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product8.jpg')}}" alt=""></a>
+                                    <div class="product_action">
+                                        <div class="hover_action">
+                                           <a  href="#"><i class="fa fa-plus"></i></a>
+                                            <div class="action_button">
+                                                <ul>
+
+                                                    <li><a title="add to cart" href="{{url('/cart')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                                                    <li><a href="{{url('/wishlist')}}" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+
+                                                    <li><a href="{{url('/compare')}}" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                       </div>
+
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick_view">+ quick view</a>
+                                    </div>
+
+                                    <div class="product_sale">
+                                        <span>-7%</span>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <h3><a href="{{url('/shop/product')}}">Beats EP Wired</a></h3>
+                                    <span class="current_price">£60.00</span>
+                                    <span class="old_price">£86.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product24.jpg')}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product25.jpg')}}" alt=""></a>
+                                    <div class="product_action">
+                                        <div class="hover_action">
+                                           <a  href="#"><i class="fa fa-plus"></i></a>
+                                            <div class="action_button">
+                                                <ul>
+
+                                                    <li><a title="add to cart" href="{{url('/cart')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                                                    <li><a href="{{url('/wishlist')}}" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+
+                                                    <li><a href="{{url('/compare')}}" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                       </div>
+
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick_view">+ quick view</a>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <h3><a href="{{url('/shop/product')}}">Bose SoundLink Bluetooth</a></h3>
+                                    <span class="current_price">£60.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product10.jpg')}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product11.jpg')}}" alt=""></a>
+                                    <div class="product_action">
+                                        <div class="hover_action">
+                                           <a  href="#"><i class="fa fa-plus"></i></a>
+                                            <div class="action_button">
+                                                <ul>
+
+                                                    <li><a title="add to cart" href="{{url('/cart')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                                                    <li><a href="{{url('/wishlist')}}" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+
+                                                    <li><a href="{{url('/compare')}}" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                       </div>
+
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick_view">+ quick view</a>
+                                    </div>
+
+                                    <div class="product_sale">
+                                        <span>-7%</span>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <h3><a href="{{url('/shop/product')}}">Apple iPhone SE 16GB</a></h3>
+                                    <span class="current_price">£60.00</span>
+                                    <span class="old_price">£86.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product23.jpg')}}" alt=""></a>
+                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product24.jpg')}}" alt=""></a>
+                                    <div class="product_action">
+                                        <div class="hover_action">
+                                           <a  href="#"><i class="fa fa-plus"></i></a>
+                                            <div class="action_button">
+                                                <ul>
+
+                                                    <li><a title="add to cart" href="{{url('/cart')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
+                                                    <li><a href="{{url('/wishlist')}}" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+
+                                                    <li><a href="{{url('/compare')}}" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i></a></li>
+
+                                                </ul>
+                                            </div>
+                                       </div>
+
+                                    </div>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick_view">+ quick view</a>
+                                    </div>
+                                </div>
+                                <div class="product_content">
+                                    <h3><a href="{{url('/shop/product')}}">JBL Flip 3 Portable</a></h3>
+                                    <span class="current_price">£60.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               
+        </div>
+    </section>
+    <!--product section area end-->
 @endsection

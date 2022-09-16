@@ -20,27 +20,28 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
-        $data = [];
-        $products = Product::where('status','1')->search()->get();
-        $products = $this->filter($products, $request);
-        foreach ($products as $product) {
-            //$product->load('Image');
-            $data[] = [
-              'id' => $product->id,
-                'category'=>$product->ProductCategory->name,
-                'brand'=>$product->brand->name,
-                'name'=>$product->name,
-                'description'=>$product->description,
-                'price'=>$product->price,
-                'qty' =>$product->qty,
-                'discount'=>$product->discount,
-                'status'=>$product->status,
-                'size'=>$product->Detail->size,
-                'color'=>$product->Detail->color,
-                'images'=>$product->ProductImage
-            ];
-        }
-        return response()->json($data);
+        // $data = [];
+        // $products = Product::where('status','1')->search()->get();
+        // $products = $this->filter($products, $request);
+        // foreach ($products as $product) {
+        //     //$product->load('Image');
+        //     $data[] = [
+        //       'id' => $product->id,
+        //         'category'=>$product->ProductCategory->name,
+        //         'brand'=>$product->brand->name,
+        //         'name'=>$product->name,
+        //         'description'=>$product->description,
+        //         'price'=>$product->price,
+        //         'qty' =>$product->qty,
+        //         'discount'=>$product->discount,
+        //         'status'=>$product->status,
+        //         'size'=>$product->Detail->size,
+        //         'color'=>$product->Detail->color,
+        //         'images'=>$product->ProductImage
+        //     ];
+        // }
+        // return response()->json($data);
+        return view('shop');
     }
     public function category($categoryName, Request $request) {
         $categories = ProductCategory::category()->get();
@@ -55,31 +56,32 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request,$id)
+    public function show()
     {
-        $product = Product::find($id);
-//        $avgRating = 0;
-//        $sumRating = array_sum(array_column($product->ProductComment->toArray(), 'rating'));
-//        $countRating = count($product->ProductComment);
-//        if ($countRating != 0) {
-//            $avgRating = $sumRating / $countRating;
-//        }
-            $data[] = [
-                'id' => $id,
-                'category' => $product->ProductCategory->name,
-                'brand' => $product->brand->name,
-                'name' => $product->name,
-                'description' => $product->description,
-                'price' => $product->price,
-                'qty' => $product->qty,
-                'discount' => $product->discount,
-                'status' => $product->status,
-                'size' => $product->Detail->size,
-                'color' => $product->Detail->color,
-                'images' => $product->ProductImage,
-//                'rateting' => $avgRating
-            ];
-            return response()->json($data);
+//         $product = Product::find($id);
+// //        $avgRating = 0;
+// //        $sumRating = array_sum(array_column($product->ProductComment->toArray(), 'rating'));
+// //        $countRating = count($product->ProductComment);
+// //        if ($countRating != 0) {
+// //            $avgRating = $sumRating / $countRating;
+// //        }
+//             $data[] = [
+//                 'id' => $id,
+//                 'category' => $product->ProductCategory->name,
+//                 'brand' => $product->brand->name,
+//                 'name' => $product->name,
+//                 'description' => $product->description,
+//                 'price' => $product->price,
+//                 'qty' => $product->qty,
+//                 'discount' => $product->discount,
+//                 'status' => $product->status,
+//                 'size' => $product->Detail->size,
+//                 'color' => $product->Detail->color,
+//                 'images' => $product->ProductImage,
+// //                'rateting' => $avgRating
+//             ];
+            // return response()->json($data);
+            return view('product');
         }
     //TODO BAD CODE, NHÌN KHÔNG KHÁC GÌ TRASH
     public function filter($products, Request $request) {
@@ -116,4 +118,9 @@ class ShopController extends Controller
     {
         //
     }
+    public function search()
+    {
+        return view('search');
+    }
 }
+

@@ -1,53 +1,78 @@
 @extends('layout.master')
 @section('main')
-    <!-- Breadcrumb Section Begin -->
-    <div class="breacrumb-section">
-        <div class="container">
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area other_bread">
+        <div class="container">   
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb-text">
-                        <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
-                        <span>Register</span>
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="{{url('/index')}}">home</a></li>
+                            <li>/</li>
+                            <li>Register</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>         
     </div>
-    <!-- Breadcrumb Form Section Begin -->
-
-    <!-- Register Section Begin -->
-    <div class="register-login-section spad">
+    <!--breadcrumbs area end-->
+    
+    <!-- customer login start -->
+    <div class="customer_login">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="register-form">
+               {{-- <!--login area start-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="account_form">
+                        <h2>login</h2>
+                        <form action="#">
+                            <p>   
+                                <label>Username or email <span>*</span></label>
+                                <input type="text">
+                             </p>
+                             <p>   
+                                <label>Passwords <span>*</span></label>
+                                <input type="password">
+                             </p>   
+                            <div class="login_submit">
+                               <a href="#">Lost your password?</a>
+                                <label for="remember">
+                                    <input id="remember" type="checkbox">
+                                    Remember me
+                                </label>
+                                <button type="submit">login</button>
+                                
+                            </div>
+
+                        </form>
+                     </div>    
+                </div>
+                <!--login area start--> --}}
+                <div class="col-lg-3 col-md-3">
+                </div>
+                <!--register area start-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="account_form register">
                         <h2>Register</h2>
                         <form action="#">
-                            <div class="group-input">
-                                <label for="username">UserName</label>
-                                <input type="text" id="username" name="name">
+                            <p>   
+                                <label>Email address  <span>*</span></label>
+                                <input type="text">
+                             </p>
+                             <p>   
+                                <label>Passwords <span>*</span></label>
+                                <input type="password">
+                             </p>
+                            <div class="login_submit">
+                                <button type="submit">Register</button>
                             </div>
-                            <div class="group-input">
-                                <label for="username">Email address *</label>
-                                <input type="email" id="username" name="email">
-                            </div>
-                            <div class="group-input">
-                                <label for="pass">Password *</label>
-                                <input type="text" id="pass" name="password">
-                            </div>
-                            <div class="group-input">
-                                <label for="con-pass">Confirm Password *</label>
-                                <input type="text" id="con-pass" name="repassword">
-                            </div>
-                            <button type="submit" class="site-btn register-btn">REGISTER</button>
                         </form>
-                        <div class="switch-login">
-                            <a href="./login.html" class="or-login">Or Login</a>
-                        </div>
-                    </div>
+                    </div>    
                 </div>
+                <!--register area end-->
             </div>
-        </div>
+        </div>    
     </div>
-    <!-- Register Form Section End -->
+    <!-- customer login end -->
 @endsection

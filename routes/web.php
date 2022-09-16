@@ -32,6 +32,7 @@ Route::group(['prefix' => '/'], function() {
     Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
     Route::get('/login',[HomeController::class,'login'])->name('login');
     Route::get('/register',[HomeController::class,'register'])->name('register');
+    Route::get('/my-account',[HomeController::class,'my_account']);
 });
 Route::group(['prefix'=>'shop/'],function() {
     Route::get('/',[ShopController::class,'index'])->name('index');

@@ -2,7 +2,7 @@
 @section('main')
   <!--breadcrumbs area start-->
   <div class="breadcrumbs_area other_bread">
-    <div class="container">   
+    <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="breadcrumb_content">
@@ -14,48 +14,48 @@
                 </div>
             </div>
         </div>
-    </div>         
+    </div>
 </div>
 <!--breadcrumbs area end-->
 
 
 <!--contact area start-->
 <div class="contact_area">
-    <div class="container">   
+    <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="contact_message content">
                     <h3>Liên hệ</h3>
                     <ul>
-                        <li><i class="fa fa-fax"></i>  Số nhà 232, đường Trần Hưng Đạo , phường Thanh Bình, thành phố Ninh Bình</li>
-                        <li><i class="fa fa-phone"></i> <a href="mailto:khuonghung1423@gmail.com">khuonghung1423@gmail.com</a></li>
-                        <li><i class="fa fa-envelope-o"></i> (+84) 888195313</li>
-                    </ul>             
-                </div> 
+                        <li><i class="fa fa-fax"></i>  Số nhà 236, Đường Hoàng Quốc Việt , Phường Cổ Nhuế, Thành phố Hà Nội</li>
+                        <li><i class="fa fa-phone"></i> <a href="mailto:dinhsan200@gmail.com">dinhsan200@gmail.com</a></li>
+                        <li><i class="fa fa-envelope-o"></i> (+84) 972580430</li>
+                    </ul>
+                </div>
             </div>
             <div class="col-lg-6 col-md-12">
                 <div class="contact_message form">
-                    <h3>Gửi thông tin phản hồi</h3>   
+                    <h3>Gửi thông tin phản hồi</h3>
                     <form id="contact-form" method="POST"  action="php/contact.php">
-                        <p>       
+                        <p>
                             <label>  Địa chỉ email</label>
                             <input name="email" placeholder="Email *" type="email">
                         </p>
-                        <p>          
+                        <p>
                             <label>  Tiêu đề</label>
                             <input name="subject" placeholder="Subject *" type="text">
-                        </p>    
+                        </p>
                         <div class="contact_textarea">
                             <label>  Thông tin</label>
-                            <textarea placeholder="Message *" name="message"  class="form-control2" ></textarea>     
-                        </div>   
-                        <button type="submit"> Send</button>  
+                            <textarea placeholder="Message *" name="message"  class="form-control2" ></textarea>
+                        </div>
+                        <button type="submit"> Send</button>
                         <p class="form-messege"></p>
-                    </form> 
-                </div> 
+                    </form>
+                </div>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
 
 <!--contact area end-->

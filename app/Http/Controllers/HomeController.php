@@ -105,4 +105,7 @@ class HomeController extends Controller
     {
         return view('about');
     }
+    public function my_account() {
+        return view('my_account');
+    }
 }

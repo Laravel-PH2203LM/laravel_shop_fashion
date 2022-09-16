@@ -23,7 +23,7 @@
     <!-- Main Wrapper Start -->
     <!--Offcanvas menu area start-->
     <div class="off_canvars_overlay">
-                
+
     </div>
     <div class="offcanvas_menu">
         <div class="canvas_open">
@@ -31,7 +31,7 @@
                     </div>
         <div class="offcanvas_menu_wrapper">
                         <div class="canvas_close">
-                              <a href="javascript:void(0)"><i class="ion-android-close"></i></a>  
+                              <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
                         </div>
                         <div class="welcome_text">
                            <ul>
@@ -46,9 +46,9 @@
                                         <li><a href="{{url('/account')}}">Tài khoản</a></li>
                                         <li><a href="{{url('/login')}}">Đăng nhập</a></li>
                                     </ul>
-                                </li> 
+                                </li>
                             </ul>
-                        </div> 
+                        </div>
                         <div class="search_bar">
                             <form action="#">
                                 <input placeholder="Tìm kiếm..." type="text">
@@ -68,7 +68,7 @@
                                             <a href="#">Apple iPhone SE 16GB</a>
 
                                             <span>1x $60.00</span>
-    
+
                                         </div>
                                         <div class="cart_remove">
                                             <a href="#"><i class="ion-android-close"></i></a>
@@ -96,7 +96,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    
+
                                     <div class="cart_button view_cart">
                                         <a href="{{url('/cart')}}">Giỏ hàng</a>
                                     </div>
@@ -119,7 +119,7 @@
                                     <a href="{{url('/about')}}">Chúng tôi</a>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{{url('/contact')}}">Liên hệ</a> 
+                                    <a href="{{url('/contact')}}">Liên hệ</a>
                                 </li>
                             </ul>
                         </div>
@@ -136,12 +136,12 @@
                     </div>
     </div>
     <!--Offcanvas menu area end-->
-    
+
     <!--header area start-->
     <header class="header_area header_three">
         <!--header top start-->
         <div class="header_top">
-            <div class="container-fluid">   
+            <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-lg-7 col-md-12">
                         <div class="welcome_text">
@@ -156,12 +156,12 @@
                             <ul>
                                <li class="top_links"><a href="#">Tài khoản của tôi<i class="ion-chevron-down"></i></a>
                                     <ul class="dropdown_links">
-                                        <li><a href="my-account.html">Tài khoản của tôi</a></li>
-                                        <li><a href="#">Đăng nhập</a></li>
+                                        <li><a href="{{url('my-account')}}">Tài khoản của tôi</a></li>
+                                        <li><a href="{{url('login')}}">Đăng nhập</a></li>
                                     </ul>
-                                </li> 
+                                </li>
                             </ul>
-                        </div>   
+                        </div>
                     </div>
                 </div>
             </div>
@@ -175,7 +175,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-4">
                             <div class="search_bar">
-                                <form action="#">                          
+                                <form action="#">
                                     <input placeholder="Tìm kiếm..." type="text">
                                     <button type="submit"><i class="ion-ios-search-strong"></i></button>
                                 </form>
@@ -226,7 +226,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    
+
                                     <div class="cart_button view_cart">
                                         <a href="{{url('/cart')}}">Giỏ hàng</a>
                                     </div>
@@ -242,25 +242,25 @@
                 </div>
                 <div class="horizontal_menu">
                     <div class="left_menu">
-                        <div class="main_menu"> 
-                            <nav>  
+                        <div class="main_menu">
+                            <nav>
                                 <ul>
                                     <li><a href="{{url('/')}}">Trang chủ<i class="fa"></i></a>
                                     </li>
-                                    <li class="mega_items"><a href="shop.html">Sản phẩm</a>
+                                    <li class="mega_items"><a href="{{url('/shop')}}">Sản phẩm</a>
                                     </li>
-                                </ul> 
-                            </nav> 
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                     <div class="right_menu">
-                        <div class="main_menu"> 
-                            <nav>  
+                        <div class="main_menu">
+                            <nav>
                                 <ul>
                                     <li><a href="{{url('/about')}}">Chúng tôi</a></li>
                                     <li><a href="{{url('/contact')}}">Liên hệ</a></li>
-                                </ul> 
-                            </nav> 
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -274,17 +274,17 @@
                 <div class="row align-items-center">
                     <div class="col-12">
                         <div class="main_menu_inner">
-                            <div class="main_menu"> 
-                                <nav>  
+                            <div class="main_menu">
+                                <nav>
                                     <ul>
                                         <li class="active"><a href="{{url('/')}}">Trang chủ</a></li>
                                         <li><a href="{{url('/shop')}}">Của hàng</a></li>
                                         <li><a href="{{url('/about')}}">Chúng tôi</a></li>
                                         <li><a href="{{url('/contact')}}">Liên hệ</a></li>
-                                    </ul>   
-                                </nav> 
+                                    </ul>
+                                </nav>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -306,16 +306,16 @@
                         <div class="widgets_container contact_us">
                             <h3>Liên hệ chúng tôi</h3>
                             <div class="footer_contact">
-                                <p>Address: Số nhà 232, đường Trần Hưng Đạo , phường Thanh Bình, thành phố Ninh Bình</p>
-                                <p>Phone: <a href="tel:+(+84)888195313">(+84) 888195313</a> </p>
-                                <p>Email: <a href="mailto:khuonghung1423@gmail.com">khuonghung1423@gmail.com</a></p>
+                                <p>Address: Số nhà 236, Đường Hoàng Quốc Việt , Phường Cổ Nhuế, Thành phố Hà Nội</p>
+                                <p>Phone: <a href="tel:+(+84)972580430">(+84) 972580430</a> </p>
+                                <p>Email: <a href="mailto:dinhsan200@gmail.com">dinhsan200@gmail.com</a></p>
                                 <ul>
                                     <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                                     <li><a href="#" title="google-plus"><i class="fa fa-google-plus"></i></a></li>
                                     <li><a href="#" title="facebook"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#" title="youtube"><i class="fa fa-youtube"></i></a></li>
                                 </ul>
-                              
+
                             </div>
                         </div>
                     </div>

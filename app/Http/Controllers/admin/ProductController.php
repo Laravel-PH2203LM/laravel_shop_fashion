@@ -7,7 +7,7 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use App\Models\ProductCategory;
-use App\Models\ProductDetail;
+use App\Models\Attribute;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRequest;
@@ -33,9 +33,10 @@ class ProductController extends Controller
     public function create()
     {
         $brands = Brand::all();
-        $attr = ProductDetail::all();
+        $colors = Attribute::colors()->get();
+        $sizes = Attribute::sizes()->get();
         $category = ProductCategory::all();
-        return view('admin/products/products_add',compact('category','brands','attr'));
+        return view('admin/products/products_add',compact('category','brands','colors','sizes'));
     }
 
     /**
@@ -48,6 +49,7 @@ class ProductController extends Controller
     //Todo Code chỉ chạy được, sẽ cần sửa lại để tối ưu hơn
     public function store(Request $request)
     {
+        //dd($request->all());
         $product = Product::create([
                 'name'=>$request->name,
                 'brand_id'=>$request->brand_id,
@@ -58,12 +60,13 @@ class ProductController extends Controller
                 'discount'=>$request->discount,
                 'status'=>$request->status,
             ]);
-            foreach ($request->id_attr as $value) {
-                ProductAttribute::create([
-                   'product_id'=>$product->id,
-                   'id_attr'=>$value
-                ]);
-            }
+        for($i = 0; $i < count($request->color_id); $i++) {
+            ProductAttribute::create([
+               'product_id'=>$product->id,
+                'size_id'=>$request->size_id[$i],
+                'color_id'=>$request->color_id[$i]
+            ]);
+        }
         if($product){
             $images = $request->images;
             if($images){
@@ -82,7 +85,7 @@ class ProductController extends Controller
                 $imgs = ProductImage::create($dataInsert);
             }
         }
-        return redirect()->route('product');
+        return redirect()->route('product')->with('thêm mới thành công');
     }
 
     /**
@@ -95,9 +98,10 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->load('ProductImage');
-        $productdetail = ProductDetail::find($id);
+        $colors = Attribute::colors()->get();
+        $sizes = Attribute::sizes()->get();
         $img = unserialize($product->Image->path) ?? [];
-        return view('admin/products/products_view',compact('product','img','productdetail',));
+        return view('admin/products/products_view',compact('product','img','colors','sizes'));
     }
 
     /**
@@ -110,9 +114,13 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $brands = Brand::all();
-        $attr = ProductDetail::all();
+        $colors = Attribute::colors()->get();
+        $sizes = Attribute::sizes()->get();
         $category = ProductCategory::all();
-        return view('admin.products.products_edit',compact('category','attr','brands','product'));
+        $first_attr = $product->Attribute[0];
+        unset($product->Attribute[0]);
+        return view('admin.products.products_edit',
+            compact('category','sizes','colors','brands','product','first_attr'));
     }
 
     /**
@@ -136,13 +144,14 @@ class ProductController extends Controller
             'discount'=>$request->discount,
             'status'=>$request->status
         ]);
-        foreach ($request->id_attr as $value) {
-
-            $productatt = ProductAttribute::find($id);
-            $productatt->update([
+        ProductAttribute::where('product_id',$product->id)->delete();
+        for($i = 0; $i < count($request->color_id); $i++) {
+            $data = [
                 'product_id'=>$product->id,
-                'id_attr'=>$value
-            ]);
+                'size_id'=>$request->size_id[$i],
+                'color_id'=>$request->color_id[$i]
+            ];
+            ProductAttribute::create($data);
         }
         if($product){
             $images = $request->images;

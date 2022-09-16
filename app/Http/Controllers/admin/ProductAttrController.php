@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ProductDetail;
+use App\Models\Attribute;
 use Illuminate\Http\Request;
 
 class ProductAttrController extends Controller
@@ -15,8 +15,8 @@ class ProductAttrController extends Controller
      */
     public function productAttr()
     {
-        $attrPro = ProductDetail::all();
-        return view('admin.attribute.attribute',compact('attrPro'));
+        $productAttr = Attribute::all();
+        return view('admin.attribute.attribute',compact('productAttr'));
     }
 
     /**
@@ -38,9 +38,9 @@ class ProductAttrController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $productAttr =  new ProductDetail();
-        $productAttr->size = $data['size'];
-        $productAttr->color = $data['color'];
+        $productAttr =  new Attribute();
+        $productAttr->name = $data['name'];
+        $productAttr->values = $data['values'];
         $productAttr->status = $data['status'];
         $productAttr->save();
         return redirect()->route('productAttr');

@@ -17,7 +17,7 @@ class Product extends Model
         return $this->belongsTo(Brand::class,'brand_id','id');
     }
     public function Detail() {
-        return $this->belongsTo(ProductDetail::class,'brand_id','id');
+        return $this->belongsTo(Attribute::class,'brand_id','id');
     }
     public function ProductCategory() {
         return $this->belongsTo(ProductCategory::class,'product_category_id','id');
@@ -29,7 +29,7 @@ class Product extends Model
         return $this->hasOne(ProductImage::class,'product_id','id');
     }
     public function ProductDetail() {
-        return $this->hasMany(ProductDetail::class,'product_id','id');
+        return $this->hasMany(Attribute::class,'product_id','id');
     }
     public function ProductComment() {
         return $this->hasMany(ProductComment::class,'product_id','id');

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
-                <h3 class="tile-title">Tạo danh mục sản phẩm</h3>
+                <h3 class="tile-title">Tạo thuộc tính sản phẩm</h3>
                 <div class="tile-body">
                     <div class="row element-button">
                         <div class="col-sm-2">
@@ -22,17 +22,17 @@
                     <form class="row" method="POST" action="{{route('attr_add')}}">
                         @csrf
                         <div class="form-group col-md-3">
-                            <label class="control-label">Size</label>
-                            <input class="form-control" name="size" type="text">
+                            <label class="control-label">Màu/Size</label>
+                            <input class="form-control" placeholder="Color or Size" name="name" type="text">
                         </div>
                         <div class="form-group col-md-3">
-                            <label class="control-label">Color</label>
-                            <input class="form-control" name="color" type="text">
+                            <label class="control-label">Loại Màu/Kích Thước</label>
+                            <input class="form-control" placeholder="type color or size" name="values" type="text">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="exampleSelect1" class="control-label">Trạng thái</label>
                             <select class="form-control" name="status" id="exampleSelect1">
-                                <option>-- Chọn danh mục --</option>
+                                <option>-- Chọn trạng thái --</option>
                                 <option value="1">Hiển thị</option>
                                 <option value="0">Tạm ẩn</option>
                             </select>

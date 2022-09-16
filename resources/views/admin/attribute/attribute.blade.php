@@ -22,8 +22,8 @@
                         <tr>
                             <th width="10"><input type="checkbox" id="all"></th>
                             <th>Mã sản phẩm</th>
-                            <th>Kích cỡ</th>
-                            <th>Màu sắc</th>
+                            <th>Tên</th>
+                            <th>Loại</th>
                             <th>Trạng thái</th>
                             <th>Tạo lúc</th>
                             <th>Cập nhật lúc</th>
@@ -31,12 +31,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($attrPro as $attr)
+                        @foreach ($productAttr as $attr)
                             <tr>
                                 <td width="10"><input type="checkbox" name="check1" value="1"></td>
                                 <td>{{ $attr->id }}</td>
-                                <td>{{ $attr->size }}</td>
-                                <td>{{ $attr->color }}</td>
+                                <td>{{ $attr->name }}</td>
+                                <td>{{ $attr->values }}</td>
                                 <td><span class="badge bg-success">{{$attr->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span></td>
                                 <td>{{ $attr->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $attr->updated_at->format('d-m-Y H:i:s') }}</td>

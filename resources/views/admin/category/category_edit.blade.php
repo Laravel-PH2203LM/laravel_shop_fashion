@@ -14,7 +14,7 @@
                   <div class="form-group col-md-3">
                       <label for="exampleSelect1" class="control-label">Trạng thái</label>
                       <select class="form-control" name="status" id="exampleSelect1">
-                          <option>-- Chọn danh mục --</option>
+                          <option>-- Chọn trạng thái --</option>
                           <option value="1">Hiển thị</option>
                           <option value="0">Tạm ẩn</option>
                       </select>

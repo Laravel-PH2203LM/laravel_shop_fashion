@@ -76,27 +76,56 @@
                             <option value="0" {{$product->status == '0' ? 'selected' : ''}}>Tạm ẩn</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-3">
-                        <label class="control-label">Color</label>
-                        <div class="checkbox">
-                            @foreach($attr as $value)
-                                <label>
-                                    <input type="checkbox" value="{{$value->id}}" name="id_attr[]">
-                                    {{$value->color}}
-                                </label>
-                            @endforeach
+                    <div class="col-md-2">
+                        <button class="btn btn-success add-attr">Thêm</button>
+                    </div>
+                    <div id="attr_1">
+                        <div class="row-attr">
+                            <div class="form-group col-md-2">
+                                <button class="btn btn-success pull-right remove-attr">Xóa</button>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleSelect" class="control-label">Kích thước</label>
+                                <select style="width:300px" class="form-control" name="size_id[]" id="exampleSelect1">
+                                    @foreach($sizes as $size)
+                                        <option value="{{$size->id}}" {{$size->id == $first_attr->size_id ? 'selected' : ''}}>{{$size->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleSelect1" class="control-label">Màu sắc</label>
+                                <select style="width:300px" class="form-control" name="color_id[]" id="exampleSelect1">
+                                    @foreach ($colors as $color)
+                                        <option value="{{$color->id}}" {{$size->id == $first_attr->color_id ? 'selected' : ''}}>{{$color->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group col-md-3">
-                        <label class="control-label">Size</label>
-                        <div class="checkbox">
-                            @foreach($attr as $value)
-                                <label>
-                                    <input type="checkbox" value="{{$value->id}}" name="id_attr[]">
-                                    {{$value->size}}
-                                </label>
-                            @endforeach
+                    @foreach($product->Attribute as $attr)
+                        <div class="row-attr">
+                            <div class="form-group col-md-2">
+                                <button class="btn btn-success pull-right remove-attr">Xóa</button>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleSelect" class="control-label">Kích thước</label>
+                                <select style="width:300px" class="form-control" name="size_id[]" id="exampleSelect1">
+                                    @foreach($sizes as $size)
+                                        <option value="{{$size->id}}" {{$size->id == $attr->size_id ? 'selected' : ''}}>{{$size->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleSelect1" class="control-label">Màu sắc</label>
+                                <select style="width:300px" class="form-control" name="color_id[]" id="exampleSelect1">
+                                    @foreach ($colors as $color)
+                                        <option value="{{$color->id}}" {{$color->id == $attr->color_id ? 'selected' : ''}}>{{$color->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
+                    @endforeach
+                    <div id="attr_2">
                     </div>
                     <div class="form-group col-md-12">
                         <label class="control-label">Ảnh mô tả sản phẩm</label>

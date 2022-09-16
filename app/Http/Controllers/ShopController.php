@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\ProductCategory;
-use App\Models\ProductDetail;
+use App\Models\Attribute;
 use App\Models\Size;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;

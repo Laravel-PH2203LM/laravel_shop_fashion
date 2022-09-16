@@ -10,9 +10,11 @@ class ProductAttribute extends Model
     use HasFactory;
     protected $table = 'product_attribute';
     protected $primaryKey = 'id';
+    protected $fillable = ['id','product_id','color_id','size_id'];
     protected $guarded = [];
 
-    public function productAttr() {
-        return $this->hasMany(ProductAttribute::class,'product_id','id');
+    public function productAttr()
+    {
+        return $this->hasMany(ProductAttribute::class, 'product_id', 'id');
     }
 }

@@ -76,27 +76,33 @@
                                 <option value="0">Tạm ẩn</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-3">
-                        <label class="control-label">Color</label>
-                        <div class="checkbox">
-                            @foreach($attr as $att)
-                                <label>
-                                    <input type="checkbox" value="{{$att->id}}" name="id_attr[]">
-                                    {{$att->color}}
-                                </label>
-                            @endforeach
+                    <div class="col-md-2">
+                        <button class="btn btn-success add-attr">Thêm</button>
+                    </div>
+                    <div id="attr_1">
+                        <div class="row-attr">
+                            <div class="form-group col-md-2">
+                                <button class="btn btn-success pull-right remove-attr">Xóa</button>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleSelect" class="control-label">Kích thước</label>
+                                <select style="width:300px" class="form-control" name="size_id[]" id="exampleSelect1">
+                                    @foreach($sizes as $size)
+                                        <option value="{{$size->id}}">{{$size->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="exampleSelect1" class="control-label">Màu sắc</label>
+                                <select style="width:300px" class="form-control" name="color_id[]" id="exampleSelect1">
+                                    @foreach ($colors as $color)
+                                        <option value="{{$color->id}}">{{$color->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group col-md-3">
-                        <label class="control-label">Size</label>
-                        <div class="checkbox">
-                            @foreach($attr as $att)
-                            <label>
-                                <input type="checkbox" value="{{$att->id}}" name="id_attr[]">
-                                {{$att->size}}
-                            </label>
-                            @endforeach
-                        </div>
+                    <div id="attr_2">
                     </div>
                     <div class="form-group col-md-12">
                         <label class="control-label">Ảnh mô tả sản phẩm</label>
@@ -116,3 +122,4 @@
                 </form>
             </div>
 @endsection
+

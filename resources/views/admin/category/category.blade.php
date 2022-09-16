@@ -27,7 +27,7 @@
                             <tr>
                                 <th width="10"><input type="checkbox" id="all"></th>
                                 <th>Mã sản phẩm</th>
-                                <th>Tên sản phẩm</th>
+                                <th>Tên danh mục sản phẩm</th>
                                 <th>Trạng thái</th>
                                 <th>Tạo lúc</th>
                                 <th>Cập nhật lúc</th>

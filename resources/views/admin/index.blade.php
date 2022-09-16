@@ -18,7 +18,6 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <script src="{{asset('admin/ckeditor/ckeditor.js')}}"></script>
-
 </head>
 
 <body onload="time()" class="app sidebar-mini rtl">
@@ -101,18 +100,18 @@
         </b></p>
     </div>
   </main>
-  <script src="{{asset('admin/js/jquery-3.2.1.min.js')}}"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
   <!--===============================================================================================-->
-  <script src="{{asset('admin/js/popper.min.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
   <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
   <!--===============================================================================================-->
-  <script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/js/bootstrap.min.js"></script>
   <!--===============================================================================================-->
   <script src="{{asset('admin/js/main.js')}}"></script>
   <!--===============================================================================================-->
-  <script src="{{asset('admin/js/plugins/pace.min.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script>
   <!--===============================================================================================-->
-  <script type="text/javascript" src="{{asset('admin/js/plugins/chart.js')}}"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
   <!--===============================================================================================-->
   <script type="text/javascript">
     var data = {
@@ -139,11 +138,6 @@
       }
       ]
     };
-    var ctxl = $("#lineChartDemo").get(0).getContext("2d");
-    var lineChart = new Chart(ctxl).Line(data);
-
-    var ctxb = $("#barChartDemo").get(0).getContext("2d");
-    var barChart = new Chart(ctxb).Bar(data);
   </script>
   <script type="text/javascript">
     //Thời Gian
@@ -186,6 +180,20 @@
         return i;
       }
     }
+  </script>
+
+  <script language="JavaScript" type="text/javascript">
+      $('.add-attr').click(function (e){
+          e.preventDefault();
+          var attr_1 = $('#attr_1').html();
+          $('#attr_2').append(attr_1);
+          console.log(attr_1);
+      });
+      $(document).on('click','.remove-attr',function (e) {
+         e.preventDefault();
+          var parent = $(this).closest('.row-attr');
+         parent.remove();
+      });
   </script>
 </body>
 

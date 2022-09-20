@@ -2,8 +2,10 @@
 @section('main')
     <!--breadcrumbs area start-->
     <div class="breadcrumbs_area other_bread">
-        <div class="container">   
+        <div class="container">
             <div class="row">
+                <div class="col-md-3">
+                </div>
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
@@ -14,10 +16,10 @@
                     </div>
                 </div>
             </div>
-        </div>         
+        </div>
     </div>
     <!--breadcrumbs area end-->
-    
+
     <!-- customer login start -->
     <div class="customer_login">
         <div class="container">
@@ -27,14 +29,14 @@
                     <div class="account_form">
                         <h2>login</h2>
                         <form action="#">
-                            <p>   
+                            <p>
                                 <label>Username or email <span>*</span></label>
                                 <input type="text">
                              </p>
-                             <p>   
+                             <p>
                                 <label>Passwords <span>*</span></label>
                                 <input type="password">
-                             </p>   
+                             </p>
                             <div class="login_submit">
                                <a href="#">Lost your password?</a>
                                 <label for="remember">
@@ -42,11 +44,11 @@
                                     Remember me
                                 </label>
                                 <button type="submit">login</button>
-                                
+
                             </div>
 
                         </form>
-                     </div>    
+                     </div>
                 </div>
                 <!--login area start--> --}}
                 <div class="col-lg-3 col-md-3">
@@ -56,11 +58,11 @@
                     <div class="account_form register">
                         <h2>Register</h2>
                         <form action="#">
-                            <p>   
+                            <p>
                                 <label>Email address  <span>*</span></label>
                                 <input type="text">
                              </p>
-                             <p>   
+                             <p>
                                 <label>Passwords <span>*</span></label>
                                 <input type="password">
                              </p>
@@ -68,11 +70,11 @@
                                 <button type="submit">Register</button>
                             </div>
                         </form>
-                    </div>    
+                    </div>
                 </div>
                 <!--register area end-->
             </div>
-        </div>    
+        </div>
     </div>
     <!-- customer login end -->
 @endsection

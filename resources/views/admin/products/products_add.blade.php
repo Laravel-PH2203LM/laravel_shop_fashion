@@ -76,6 +76,9 @@
                                 <option value="0">Tạm ẩn</option>
                         </select>
                     </div>
+                    <div class="col-md-3">
+
+                    </div>
                     <div class="col-md-2">
                         <button class="btn btn-success add-attr">Thêm</button>
                     </div>

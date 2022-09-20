@@ -79,10 +79,12 @@ class ProductController extends Controller
                     $data[] = $name;
                 }
                 // mã hoá sang strings và lưu vào database
-                $dataInsert['path'] = serialize($data);
-                $dataInsert['product_id'] =  $product->id;
-                $dataInsert['status'] =  $product->status;
-                $imgs = ProductImage::create($dataInsert);
+                foreach($data as $values) {
+                    $dataInsert['path'] = $values;
+                    $dataInsert['product_id'] =  $product->id;
+                    $dataInsert['status'] =  $product->status;
+                    $imgs = ProductImage::create($dataInsert);
+                }
             }
         }
         return redirect()->route('product')->with('thêm mới thành công');
@@ -100,7 +102,7 @@ class ProductController extends Controller
         $product->load('ProductImage');
         $colors = Attribute::colors()->get();
         $sizes = Attribute::sizes()->get();
-        $img = unserialize($product->Image->path) ?? [];
+        $img = $product->ProductImage ?? [];
         return view('admin/products/products_view',compact('product','img','colors','sizes'));
     }
 
@@ -164,12 +166,13 @@ class ProductController extends Controller
                     $file->move(public_path().'/uploads/', $name);
                     $data[] = $name;
                 }
-                // mã hoá sang mảng và lưu vào database
-                $dataInsert['path'] = serialize($data);
-                $dataInsert['product_id'] =  $product->id;
-                $dataInsert['status'] =  $product->status;
-                $imgs = ProductImage::find($id);
-                $imgs->update($dataInsert);
+                ProductImage::where('product_id',$product->id)->delete();
+                foreach($data as $values) {
+                    $dataInsert['path'] = $values;
+                    $dataInsert['product_id'] =  $product->id;
+                    $dataInsert['status'] =  $product->status;
+                    $imgs = ProductImage::create($dataInsert);
+                }
             }
         }
         return redirect()->route('product');

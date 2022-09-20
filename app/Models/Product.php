@@ -16,11 +16,11 @@ class Product extends Model
     public function brand() {
         return $this->belongsTo(Brand::class,'brand_id','id');
     }
-    public function Detail() {
-        return $this->belongsTo(Attribute::class,'brand_id','id');
-    }
     public function ProductCategory() {
         return $this->belongsTo(ProductCategory::class,'product_category_id','id');
+    }
+    public function Detail() {
+        return $this->belongsTo(Attribute::class,'product_id','id');
     }
     public function ProductImage() {
         return $this->hasMany(ProductImage::class,'product_id','id');
@@ -28,14 +28,17 @@ class Product extends Model
     public function Image() {
         return $this->hasOne(ProductImage::class,'product_id','id');
     }
-    public function ProductDetail() {
-        return $this->hasMany(Attribute::class,'product_id','id');
-    }
     public function ProductComment() {
         return $this->hasMany(ProductComment::class,'product_id','id');
     }
     public function OrderDetail() {
         return $this->hasMany(OrderDetail::class,'product_id','id');
+    }
+    public function ProductSize() {
+        return $this->belongsToMany(Attribute::class,'product_attribute','product_id','size_id')->distinct('size_id');
+    }
+    public function ProductColor() {
+        return $this->belongsToMany(Attribute::class,'product_attribute','product_id','color_id')->distinct('color_id');
     }
     public function Attribute() {
         return $this->hasMany(ProductAttribute::class,'product_id','id');

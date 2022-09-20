@@ -13,8 +13,8 @@ class ProductAttribute extends Model
     protected $fillable = ['id','product_id','color_id','size_id'];
     protected $guarded = [];
 
-    public function productAttr()
+    public function attr()
     {
-        return $this->hasMany(ProductAttribute::class, 'product_id', 'id');
+        return $this->hasOne(Attribute::class, 'id', 'color_id');
     }
 }

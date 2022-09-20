@@ -87,49 +87,34 @@
             </div>
             <div class="product_area">
                 <div class="row">
-                    <div class="col-12">
-                        <div class="product_tab_button">
-                            <ul class="nav" role="tablist">
-                                <li>
-                                    <a class="active" data-toggle="tab" href="#clothing" role="tab" aria-controls="clothing" aria-selected="true">Women’s</a>
-                                </li>
-                                <li>
-                                    <a data-toggle="tab" href="#handbag" role="tab" aria-controls="handbag" aria-selected="false">Men’s</a>
-                                </li>
-                                <li>
-                                    <a data-toggle="tab" href="#shoes" role="tab" aria-controls="shoes" aria-selected="false">Kid's</a>
-                                </li>
-                                <li>
-                                    <a data-toggle="tab" href="#accessories" role="tab" aria-controls="accessories" aria-selected="false">Shoes</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="clothing" role="tabpanel">
-                        <div class="product_container">
-                            <div class="row product_column4">
-                                <!-- Sản phẩm -->
-                                <div class="col-lg-3">
-                                    <div class="single_product">
-                                        <div class="product_thumb">
-                                            <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product6.jpg')}}" alt=""></a>
-                                            <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product5.jpg')}}" alt=""></a>
-
-                                            <div class="quick_button">
-                                                <a href="#" title="quick_view">Xem sản phẩm</a>
-                                            </div>
-
+                    <div class="product_carousel product_three_column4 owl-carousel">
+                        @foreach($products as $product)
+                            <div class="col-lg-3">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="{{url('shop/product',$product->id)}}"><img src="uploads/{{$product->ProductImage[0]->path}}" width="10px;" alt=""></a>
+                                        <a class="secondary_img" href="{{url('shop/product',$product->id)}}"><img src="uploads/{{$product->ProductImage[1]->path}}" alt=""></a>
+                                        <div class="quick_button">
+                                            <a href="{{url('shop/product',$product->id)}}" title="quick_view">Xem sản phẩm</a>
                                         </div>
-                                        <div class="product_content">
-                                            <h3><a href="{{url('/shop/product')}}">Beats Solo2 Solo 2</a></h3>
-                                            <span class="current_price">£60.00</span>
+                                        @if($product->discount != null)
+                                        <div class="product_sale">
+                                            <span>Sale</span>
                                         </div>
+                                        @endif
+                                    </div>
+                                    <div class="product_content">
+                                        <h3><a href="">{{$product->name}}</a></h3>
+                                        @if($product->discount != null)
+                                        <span class="current_price">{{number_format($product->discount),0,0}}đ</span>
+                                            <span class="old_price">{{number_format($product->price),0,0}}đ</span>
+                                        @else
+                                            <span>{{number_format($product->price),0,0}}đ</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -145,7 +130,8 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="banner_area">
                         <div class="banner_thumb">
-                            <a href="{{url('/shop')}}"><img src="{{asset('fontend/img/bg/banner11.jpg')}}" alt="#"></a>
+                            <a class="primary_img" href="{{url('/shop')}}"><img src="{{asset('fontend/img/bg/banner11.jpg')}}" alt="#"></a>
+                            <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product5.jpg" alt=""></a>
                             <div class="banner_content">
                                 <h1>Handbag <br> Men’s Collection</h1>
                                 <a href="{{url('/shop')}}">Discover Now</a>
@@ -183,27 +169,33 @@
             <div class="product_area">
                 <div class="row">
                     <div class="product_carousel product_three_column4 owl-carousel">
-                        <div class="col-lg-3">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product21.jpg')}}" alt=""></a>
-                                    <a class="secondary_img" href="{{url('/shop/product')}}"><img src="{{asset('fontend/img/product/product22.jpg')}}" alt=""></a>
-
-                                    <div class="quick_button">
-                                        <a href="#" title="quick_view">Xem sản phẩm</a>
+                        @foreach($products as $product)
+                            <div class="col-lg-3">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="shop/product/{{$product->id}}"><img src="uploads/{{$product->ProductImage[0]->path}}" width="10px;" alt=""></a>
+                                        <a class="secondary_img" href="shop/product/{{$product->id}}"><img src="uploads/{{$product->ProductImage[1]->path}}" alt=""></a>
+                                        <div class="quick_button">
+                                            <a href="shop/product/{{$product->id}}" title="quick_view">Xem sản phẩm</a>
+                                        </div>
+                                        @if($product->discount != null)
+                                            <div class="product_sale">
+                                                <span>Sale</span>
+                                            </div>
+                                        @endif
                                     </div>
-
-                                    <div class="product_sale">
-                                        <span>-20%</span>
+                                    <div class="product_content">
+                                        <h3><a href="">{{$product->name}}</a></h3>
+                                        @if($product->discount != null)
+                                            <span class="current_price">{{number_format($product->discount),0,0}}đ</span>
+                                            <span class="old_price">{{number_format($product->price),0,0}}đ</span>
+                                        @else
+                                            <span>{{number_format($product->price),0,0}}đ</span>
+                                        @endif
                                     </div>
-                                </div>
-                                <div class="product_content">
-                                    <h3><a href="{{url('/shop/product')}}">Giày thể thao</a></h3>
-                                    <span class="current_price">300.000</span>
-                                    <span class="old_price">420.000</span>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

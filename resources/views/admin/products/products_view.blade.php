@@ -17,7 +17,7 @@
         <td>{{$product->name}}</td>
         <td>
             @foreach($img as $image)
-                <img src="{{asset('uploads'.'/'.$image)}}" alt="" width="50px">
+                <img src="{{asset('uploads'.'/'.$image->path)}}" alt="" width="50px">
             @endforeach
         </td>
         <td>{{$product->price}}</td>

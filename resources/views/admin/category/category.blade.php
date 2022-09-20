@@ -40,7 +40,7 @@
                                     <td width="10"><input type="checkbox" name="check1" value="1"></td>
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
-                                    <td><span class="badge bg-success">{{$category->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span></td>
+                                    <td><span class="{{$category->status == '1' ? 'badge bg-success' : 'badge bg-danger'}}">{{$category->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span></td>
                                     <td>{{ $category->created_at->format('d-m-Y H:i:s') }}</td>
                                     <td>{{ $category->updated_at->format('d-m-Y H:i:s') }}</td>
                                     <td>

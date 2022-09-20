@@ -7,6 +7,7 @@
     <title>New shop</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{csrf_token()}}">
 {{-- Css --}}
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('fontend/img/favicon.ico')}}">
     <link rel="stylesheet" href="{{asset('fontend/css/plugins.css')}}">
@@ -14,6 +15,7 @@
     <link rel="stylesheet" href="{{asset('fontend/fonts/fontawesome-webfont.woff2')}}">
     <link rel="stylesheet" href="{{asset('fontend/fonts/ionicons.ttf')}}">
     <link rel="stylesheet" href="{{asset('fontend/fonts/Simple-Line-Icons.woff2')}}">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 {{-- EndCss --}}
 </head>
@@ -42,10 +44,14 @@
                         <div class="top_right">
                             <ul>
                                <li class="top_links"><a href="#">Tài Khoản của tôi <i class="ion-chevron-down"></i></a>
-                                    <ul class="dropdown_links">
-                                        <li><a href="{{url('/account')}}">Tài khoản</a></li>
-                                        <li><a href="{{url('/login')}}">Đăng nhập</a></li>
-                                    </ul>
+                                   <ul class="dropdown_links">
+                                       @if(Auth::user())
+                                           @auth<li><a href="{{url('my-account')}}"> {{Auth::user()->name ?? 'None'}} </a></li>@endauth
+                                           <li><a href="{{url('logout')}}">Đăng xuất</a></li>
+                                       @else
+                                           <li><a href="{{url('login')}}">Đăng nhập</a></li>
+                                       @endif
+                                   </ul>
                                 </li>
                             </ul>
                         </div>
@@ -124,7 +130,7 @@
                             </ul>
                         </div>
                         <div class="offcanvas_footer">
-                            <span><a href="#"><i class="fa fa-envelope-o"></i> khuonghung1423@gmail.com</a></span>
+                            <span><a href="#"><i class="fa fa-envelope-o"></i> dinhsan200@gmail.com</a></span>
                             <ul>
                                 <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -156,8 +162,12 @@
                             <ul>
                                <li class="top_links"><a href="#">Tài khoản của tôi<i class="ion-chevron-down"></i></a>
                                     <ul class="dropdown_links">
-                                        <li><a href="{{url('my-account')}}">Tài khoản của tôi</a></li>
+                                        @if(Auth::user())
+                                            @auth<li><a href="{{url('my-account')}}"> {{Auth::user()->name ?? 'None'}} </a></li>@endauth
+                                            <li><a href="{{url('logout')}}">Đăng xuất</a></li>
+                                        @else
                                         <li><a href="{{url('login')}}">Đăng nhập</a></li>
+                                        @endif
                                     </ul>
                                 </li>
                             </ul>
@@ -176,7 +186,7 @@
                         <div class="col-lg-4">
                             <div class="search_bar">
                                 <form action="#">
-                                    <input placeholder="Tìm kiếm..." type="text">
+                                    <input placeholder="Tìm kiếm..." type="text" name="search">
                                     <button type="submit"><i class="ion-ios-search-strong"></i></button>
                                 </form>
                             </div>
@@ -252,6 +262,9 @@
                                 </ul>
                             </nav>
                         </div>
+                    </div>
+                    <div class="logo_container">
+                        <a href="index.html"><img src="{{asset('fontend/img/logo/logo.png')}}" alt=""></a>
                     </div>
                     <div class="right_menu">
                         <div class="main_menu">
@@ -351,8 +364,7 @@
 <script  src="https://www.google.com/jsapi"></script>
 <script src="{{asset('fontend/js/map.js')}}"></script>
 <script src="{{asset('fontend/js/plugins.js')}}"></script>
-<script src="{{asset('fontend/js/main.js')}}"></script>
-
+<script src="{{asset('fontend/js/main.js')}}"></script>@yield('js')
 <!-- end JS
 ============================================ -->
 

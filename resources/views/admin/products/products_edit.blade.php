@@ -39,8 +39,8 @@
                     </div>
 
                     <div class="form-group col-md-3">
-                        <label for="exampleSelect1" class="control-label">Danh mục</label>
-                        <select class="form-control" name="brand_id" id="exampleSelect1">
+                        <label for="exampleSelect1" class="control-label">Danh mục sản phẩm</label>
+                        <select class="form-control" name="product_category_id" id="exampleSelect1">
                             <option>-- Chọn danh mục --</option>
                             @foreach ($category as $cat)
                                 <option value="{{$cat->id}}" {{$cat->id = $product->product_category_id ? 'selected' : ''}}>{{$cat->name}}</option>
@@ -49,8 +49,8 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="exampleSelect1" class="control-label">Thương hiệu</label>
-                        <select class="form-control" name="product_category_id" id="exampleSelect1">
-                            <option>-- Chọn danh mục --</option>
+                        <select class="form-control" name="brand_id" id="exampleSelect1">
+                            <option>-- Chọn thương hiệu --</option>
                             @foreach ($brands as $brand)
                                 <option value="{{$brand->id}}" {{$brands->id = $product->brand_id ? 'selected' : ''}}>{{$brand->name}}</option>
                             @endforeach
@@ -71,7 +71,7 @@
                     <div class="form-group col-md-3">
                         <label for="exampleSelect1" class="control-label">Trạng thái</label>
                         <select class="form-control" name="status" id="exampleSelect1">
-                            <option>-- Chọn danh mục --</option>
+                            <option>-- Chọn trạng thái --</option>
                             <option value="1" {{$product->status == '1' ? 'selected' : ''}}>Hiển thị</option>
                             <option value="0" {{$product->status == '0' ? 'selected' : ''}}>Tạm ẩn</option>
                         </select>
@@ -141,7 +141,7 @@
                         </script>
                     </div>
                     <button class="btn btn-save" type="submit">Lưu lại</button>
-                    <a class="btn btn-cancel" href="table-data-product.html">Hủy bỏ</a>
+                    <a class="btn btn-cancel" href="{{url('admin/san-pham')}}">Hủy bỏ</a>
                 </form>
             </div>
 @endsection

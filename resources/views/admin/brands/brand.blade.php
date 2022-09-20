@@ -35,7 +35,7 @@
                                 <td>{{ $brand->id }}</td>
                                 <td>{{ $brand->name }}</td>
                                 <td><span
-                                        class="badge bg-success">{{$brand->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span>
+                                        class="{{$brand->status == '1' ? 'badge bg-success' : 'badge bg-danger'}}">{{$brand->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span>
                                 </td>
                                 <td>{{ $brand->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $brand->updated_at->format('d-m-Y H:i:s') }}</td>

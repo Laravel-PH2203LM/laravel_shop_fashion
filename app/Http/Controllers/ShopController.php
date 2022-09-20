@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Product;
+use App\Models\ProductAttribute;
 use App\Models\ProductCategory;
 use App\Models\Attribute;
-use App\Models\Size;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use App\Http\Resources\ProductResource;
@@ -18,30 +18,12 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function shop(Request $request)
     {
-        // $data = [];
-        // $products = Product::where('status','1')->search()->get();
-        // $products = $this->filter($products, $request);
-        // foreach ($products as $product) {
-        //     //$product->load('Image');
-        //     $data[] = [
-        //       'id' => $product->id,
-        //         'category'=>$product->ProductCategory->name,
-        //         'brand'=>$product->brand->name,
-        //         'name'=>$product->name,
-        //         'description'=>$product->description,
-        //         'price'=>$product->price,
-        //         'qty' =>$product->qty,
-        //         'discount'=>$product->discount,
-        //         'status'=>$product->status,
-        //         'size'=>$product->Detail->size,
-        //         'color'=>$product->Detail->color,
-        //         'images'=>$product->ProductImage
-        //     ];
-        // }
-        // return response()->json($data);
-        return view('shop');
+        $products = Product::where('status','1')->search()->paginate(6);
+        $categories = ProductCategory::where('status','1')->get();
+        $brands = Brand::where('status','1')->get();
+        return view('shop',compact('products','categories','brands'));
     }
     public function category($categoryName, Request $request) {
         $categories = ProductCategory::category()->get();
@@ -50,39 +32,23 @@ class ShopController extends Controller
         return view('shop',compact('categories','brands'));
     }
 
+    public function getColor($pid, $sid) {
+        $data = ProductAttribute::where(['product_id'=> $pid, 'size_id' => $sid])->distinct('color_id')->with('attr')->get();
+
+        return response()->json($data);
+    }
+
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-//         $product = Product::find($id);
-// //        $avgRating = 0;
-// //        $sumRating = array_sum(array_column($product->ProductComment->toArray(), 'rating'));
-// //        $countRating = count($product->ProductComment);
-// //        if ($countRating != 0) {
-// //            $avgRating = $sumRating / $countRating;
-// //        }
-//             $data[] = [
-//                 'id' => $id,
-//                 'category' => $product->ProductCategory->name,
-//                 'brand' => $product->brand->name,
-//                 'name' => $product->name,
-//                 'description' => $product->description,
-//                 'price' => $product->price,
-//                 'qty' => $product->qty,
-//                 'discount' => $product->discount,
-//                 'status' => $product->status,
-//                 'size' => $product->Detail->size,
-//                 'color' => $product->Detail->color,
-//                 'images' => $product->ProductImage,
-// //                'rateting' => $avgRating
-//             ];
-            // return response()->json($data);
-            return view('product');
-        }
+        $products = Product::find($id);
+            return view('product', compact('products'));
+    }
     //TODO BAD CODE, NHÌN KHÔNG KHÁC GÌ TRASH
     public function filter($products, Request $request) {
         $brands = $request->brand ?? [];

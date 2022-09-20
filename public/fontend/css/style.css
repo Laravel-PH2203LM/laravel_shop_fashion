@@ -1,28 +1,28 @@
 /*-----------------------------------------------------------------------------------
 
-    
+
     CSS INDEX
     =========================================
-	
+
     01. Theme default CSS
         - Common Classes
         - Section Padding
     02. Element
-        - Button Style 
+        - Button Style
         - Section Title Css
         - Breadcrumb Style
         - Paginatoin Css
     03. header css here
     04. slider area css here
     05. product section css here
-    06. banner section css here 
+    06. banner section css here
     07. blog area css here
     08. instagram area css here
     09. footer area css here
     10. shop page css here
-    11. error page css heer 
+    11. error page css heer
     12. about page css here
-    13. blog page css here 
+    13. blog page css here
     14. blog details css here
     15. cart page css here
     16. checkout page css here
@@ -39,8 +39,8 @@
     27. compare css here
     28. privacy policy css here
     29. coming soon css here
-    
-    
+
+
 
 -----------------------------------------------------------------------------------*/
 @import url("https://fonts.googleapis.com/css?family=Libre+Franklin:100,100i,200,200i,300,300i,400,500,500i,600,600i,700,700i,800,800i,900,900i|Playfair+Display:400,400i,700,700i,900,900i|Abril+Fatface&subset=latin-ext");
@@ -160,7 +160,7 @@ ul {
   padding: 0;
 }
 
-/*-- 
+/*--
     - Common Classes
 -----------------------------------------*/
 .container {
@@ -203,7 +203,7 @@ ul {
   margin: 0;
 }
 
-/*-- 
+/*--
     - Background color
 -----------------------------------------*/
 .bg-white {
@@ -249,10 +249,10 @@ ul {
   height: 100%;
 }
 
-/*-- 
+/*--
     - color
 -----------------------------------------*/
-/*-- 
+/*--
     - Input Placeholder
 -----------------------------------------*/
 input:-moz-placeholder, textarea:-moz-placeholder {
@@ -275,8 +275,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
-/*-- 
-    Scroll Up 
+/*--
+    Scroll Up
 -----------------------------------------*/
 #scrollUp {
   background: #242424 none repeat scroll 0 0;
@@ -304,7 +304,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   animation-iteration-count: infinite;
 }
 
-/*-- 
+/*--
     - Main Wrapper
 -----------------------------------------*/
 .main-wrapper.header-transparent {
@@ -312,7 +312,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   margin: 0 !important;
 }
 
-/*-- 
+/*--
     - Section Padding
 -------------------------------------*/
 .section-ptb {
@@ -12872,3 +12872,36 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 /*# sourceMappingURL=style.css.map */
+/*--
+    - nice-select
+-----------------------------------*/
+.nice-select {
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    border-radius: 5px;
+    border: solid 1px #e8e8e8;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    clear: both;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: normal;
+    height: 42px;
+    line-height: 40px;
+    outline: none;
+    padding-left: 18px;
+    padding-right: 30px;
+    position: relative;
+    text-align: left !important;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    width: auto;
+}

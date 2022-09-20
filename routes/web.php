@@ -23,7 +23,7 @@ use App\Http\Controllers\admin\ProductAttrController;
 */
 // Xử lí tất cả liên quan đến trang chủ
 Route::group(['prefix' => '/'], function() {
-    Route::get('/',[HomeController::class,'index'])->name('index');
+    Route::get('',[HomeController::class,'index'])->name('index');
     Route::get('/contact',[HomeController::class,'contact'])->name('contact');
     Route::get('/blog',[HomeController::class,'blog'])->name('blog');
     Route::get('/blog-detail',[HomeController::class,'blog_detail'])->name('blog_detail');
@@ -31,17 +31,19 @@ Route::group(['prefix' => '/'], function() {
     Route::get('/about',[HomeController::class,'about'])->name('about');
     Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
     Route::get('/login',[HomeController::class,'login'])->name('login');
+    Route::post('/login',[HomeController::class,'postLogin']);
+    Route::get('logout', [HomeController::class, 'logout'])->name('logout');
     Route::get('/register',[HomeController::class,'register'])->name('register');
-    Route::get('/my-account',[HomeController::class,'my_account']);
+    Route::get('/my-account',[HomeController::class,'my_account'])->middleware('auth');
 });
 Route::group(['prefix'=>'shop/'],function() {
-    Route::get('/',[ShopController::class,'index'])->name('index');
+    Route::get('',[ShopController::class,'shop'])->name('shop');
     //Route::get('/{categoryName}',[ShopController::class,'category'])->name('category');
-    Route::get('/product',[ShopController::class,'show'])->name('show');
-   Route::get('/search',[ShopController::class,'search'])->name('search');
+    Route::get('/product/{id}',[ShopController::class,'show'])->name('show');
+    Route::get('product/getcolor/{pid}/{sid}',[ShopController::class,'getColor'])->name('getColor');
 });
 
-Route::prefix('admin')->middleware('auth')->group(function () {
+Route::prefix('admin')->middleware(\App\Http\Middleware\CheckAdminLogin::class)->group(function () {
     Route::get('/trang-chu', [AdminHomeController::class,'home'])->name('home');
     /* Danh mục */
     Route::get('/danh-muc', [CategoriesController::class,'category'])->name('category');
@@ -76,10 +78,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/them-thuoc-tinh', [ProductAttrController::class,'create'])->name('attr_add');
     Route::post('/them-thuoc-tinh', [ProductAttrController::class,'store']);
     /* End */
-    Route::get('/quan-li-nguoi-dung', [AuthController::class,'index'])->name('index');
+    //Route::get('/quan-li-nguoi-dung', [AuthController::class,'index'])->name('index');
 });
-Route::get('admin/login', [AdminHomeController::class,'login'])->name('login');
-Route::post('admin/login', [AdminHomeController::class,'postlogin']);
-Route::get('admin/register', [AdminHomeController::class,'register'])->name('register');
-Route::post('admin/register', [AdminHomeController::class,'postregister']);
-Route::get('admin/dang-xuat', [AdminHomeController::class, 'logout'])->name('logout');
+//Route::get('admin/login', [AdminHomeController::class,'login'])->name('login');
+//Route::post('admin/login', [AdminHomeController::class,'postlogin']);
+//Route::get('admin/register', [AdminHomeController::class,'register'])->name('register');
+//Route::post('admin/register', [AdminHomeController::class,'postregister']);
+//Route::get('admin/dang-xuat', [AdminHomeController::class, 'logout'])->name('logout');

@@ -28,22 +28,23 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="account_form">
                         <h2>login</h2>
-                        <form action="#">
+                        <form method="POST">
+                            @csrf
                             <p>
-                                <label>Username or email <span>*</span></label>
-                                <input type="text">
+                                <label>Email <span>*</span></label>
+                                <input type="text" name="email" required>
                             </p>
                             <p>
                                 <label>Passwords <span>*</span></label>
-                                <input type="password">
+                                <input type="password" name="password" required>
                             </p>
                             <div class="login_submit">
                                 <a href="#">Lost your password?</a>
                                 <label for="remember">
-                                    <input id="remember" type="checkbox">
+                                    <input id="remember" name="remember_token" type="checkbox">
                                     Remember me
                                 </label>
-                                <button type="submit">login</button>
+                                <button type="submit">Login</button>
 
                             </div>
 

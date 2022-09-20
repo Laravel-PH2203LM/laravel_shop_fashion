@@ -32,7 +32,7 @@
                             <td>{{number_format($product->price,0)}}</td>
                             <td>{{$product->discount}}</td>
                             <td>{{$product->ProductCategory->name}}</td>
-                            <td><span class="badge bg-success">{{$product->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span></td>
+                            <td><span class="{{$product->status == '1' ? 'badge bg-success' : 'badge bg-danger'}}">{{$product->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span></td>
                             <td>
                                 <a href="{{ route('product_edit', ['id' => $product->id]) }}">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

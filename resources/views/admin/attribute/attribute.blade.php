@@ -37,7 +37,7 @@
                                 <td>{{ $attr->id }}</td>
                                 <td>{{ $attr->name }}</td>
                                 <td>{{ $attr->values }}</td>
-                                <td><span class="badge bg-success">{{$attr->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span></td>
+                                <td><span class="{{$attr->status == '1' ? 'badge bg-success' : 'badge bg-danger'}}">{{$attr->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span></td>
                                 <td>{{ $attr->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>{{ $attr->updated_at->format('d-m-Y H:i:s') }}</td>
                                 <td>

@@ -4,7 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Product;
+use App\Models\ProductCategory;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\ProductImage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -15,25 +21,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $products = Product::where('status','1')->search()->get();
-        // $data = [];
-        // foreach ($products as $product) {
-        //     $data[] = [
-        //       'id' => $product->id,
-        //        'brand'=>$product->brand->name,
-        //         'category'=>$product->ProductCategory->name,
-        //         'name'=> $product->name,
-        //         'description' => $product->description,
-        //         'price' =>$product->price,
-        //         'qty'=>$product->qty,
-        //         'discount'=>$product->discount,
-        //         'status'=>$product->status,
-        //         'size'=>$product->Detail->size,
-        //         'color'=>$product->Detail->color,
-        //         'images' => $product->ProductImage,
-        //     ];
-        // }
-        return view('index');
+        $products = Product::where('status','1')->search()->get();
+        $products->load('ProductImage');
+        $categories = ProductCategory::where('status','1')->get();
+        return view('index',compact('categories','products'));
     }
 
     /**
@@ -53,9 +44,6 @@ class HomeController extends Controller
      */
     public function blog()
     {
-        $blogs = Blog::limit(6)->get();
-        $blog_recents = Blog::orderBy('id','DESC')->limit(3)->get();
-        return view('blog',compact('blogs','blog_recents'));
     }
 
     /**
@@ -97,10 +85,45 @@ class HomeController extends Controller
     {
         return view('login');
     }
+
+    public function postLogin(Request $request) {
+        $data = $request->only('email','password','remember_token');
+        if (Auth::attempt($data)) {
+            if(Auth::user()->level === 0)
+            return redirect()->intended('admin/trang-chu')->with('Đăng nhập thành công');
+        } if (Auth::user()->level === 1){
+            return redirect()->route('index');
+        }
+        return redirect()->route('login');
+    }
+
+    public function logout() {
+        Session::flush();
+        Auth::logout();
+        return redirect()->route('login');
+    }
+
     public function register()
     {
         return view('register');
     }
+
+    public function postregister(Request $request){
+        $request->validate([
+            'email'=> 'required|min:3|max:100' ,
+            'name'=> 'required|min:3|max:100',
+            'password'=> 'required|min:3|max:100'
+        ]);
+        $data = $request->only('email','name','password');
+        $register = new User();
+        $register->name = $data['name'];
+        $register->email = $data['email'];
+        $register->password = Hash::make($data['password']);
+        $register->level = 1;
+        $register->save();
+        return redirect()->route('login');
+    }
+
     public function about()
     {
         return view('about');

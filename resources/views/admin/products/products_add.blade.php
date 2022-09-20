@@ -40,7 +40,7 @@
 
                     <div class="form-group col-md-3">
                         <label for="exampleSelect1" class="control-label">Danh mục</label>
-                        <select class="form-control" name="brand_id" id="exampleSelect1">
+                        <select class="form-control" name="product_category_id" id="exampleSelect1">
                             <option>-- Chọn danh mục --</option>
                             @foreach ($category as $cat)
                                 <option value="{{$cat->id}}">{{$cat->name}}</option>
@@ -49,8 +49,8 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="exampleSelect1" class="control-label">Thương hiệu</label>
-                        <select class="form-control" name="product_category_id" id="exampleSelect1">
-                            <option>-- Chọn danh mục --</option>
+                        <select class="form-control" name="brand_id" id="exampleSelect1">
+                            <option>-- Chọn thương hiệu --</option>
                             @foreach ($brands as $brand)
                                 <option value="{{$brand->id}}">{{$brand->name}}</option>
                             @endforeach
@@ -71,7 +71,7 @@
                     <div class="form-group col-md-3">
                         <label for="exampleSelect1" class="control-label">Trạng thái</label>
                         <select class="form-control" name="status" id="exampleSelect1">
-                            <option>-- Chọn danh mục --</option>
+                            <option>-- Chọn trạng thái --</option>
                                 <option value="1">Hiển thị</option>
                                 <option value="0">Tạm ẩn</option>
                         </select>

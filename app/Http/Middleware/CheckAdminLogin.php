@@ -18,9 +18,10 @@ class CheckAdminLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!Auth::user()->level === '1') {
+        if(Auth::user()->level === 0) {
+            return $next($request);
+        } else {
             return redirect()->route('login');
         }
-        return $next($request);
     }
 }

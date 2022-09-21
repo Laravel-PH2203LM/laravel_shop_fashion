@@ -162,7 +162,7 @@
                             <ul>
                                <li class="top_links"><a href="#">Tài khoản của tôi<i class="ion-chevron-down"></i></a>
                                     <ul class="dropdown_links">
-                                        @if(Auth::user())
+                                        @if(Auth::check())
                                             @auth<li><a href="{{url('my-account')}}"> {{Auth::user()->name ?? 'None'}} </a></li>@endauth
                                             <li><a href="{{url('logout')}}">Đăng xuất</a></li>
                                         @else

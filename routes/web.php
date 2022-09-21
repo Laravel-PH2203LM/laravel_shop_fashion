@@ -22,7 +22,14 @@ use App\Http\Controllers\admin\ProductAttrController;
 |
 */
 // Xử lí tất cả liên quan đến trang chủ
-Route::group(['prefix' => '/'], function() {
+
+Route::get('/login',[AuthController::class,'login'])->name('login');
+Route::post('/login',[AuthController::class,'postLogin']);
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/register',[AuthController::class,'register'])->name('register');
+Route::post('/register',[AuthController::class,'postregister']);
+
+Route::prefix('/')->group(function (){
     Route::get('',[HomeController::class,'index'])->name('index');
     Route::get('/contact',[HomeController::class,'contact'])->name('contact');
     Route::get('/blog',[HomeController::class,'blog'])->name('blog');
@@ -30,12 +37,9 @@ Route::group(['prefix' => '/'], function() {
     Route::get('/cart',[HomeController::class,'cart'])->name('cart');
     Route::get('/about',[HomeController::class,'about'])->name('about');
     Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
-    Route::get('/login',[HomeController::class,'login'])->name('login');
-    Route::post('/login',[HomeController::class,'postLogin']);
-    Route::get('logout', [HomeController::class, 'logout'])->name('logout');
-    Route::get('/register',[HomeController::class,'register'])->name('register');
     Route::get('/my-account',[HomeController::class,'my_account'])->middleware('auth');
 });
+
 Route::group(['prefix'=>'shop/'],function() {
     Route::get('',[ShopController::class,'shop'])->name('shop');
     //Route::get('/{categoryName}',[ShopController::class,'category'])->name('category');

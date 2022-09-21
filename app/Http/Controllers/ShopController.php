@@ -25,11 +25,11 @@ class ShopController extends Controller
         $brands = Brand::where('status','1')->get();
         return view('shop',compact('products','categories','brands'));
     }
-    public function category($categoryName, Request $request) {
+    public function category($categoryID, Request $request) {
         $categories = ProductCategory::category()->get();
-        $brands = Brand::all();
-        $products = ProductCategory::where('name', $categoryName)->first()->products->toQuery()->paginate();
-        return view('shop',compact('categories','brands'));
+        $brands = Brand::where('status','1')->get();
+        $products = ProductCategory::where('id', $categoryID)->paginate(6);
+        return view('shop',compact('categories','brands','products'));
     }
 
     public function getColor($pid, $sid) {

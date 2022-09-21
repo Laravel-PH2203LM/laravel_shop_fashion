@@ -70,7 +70,7 @@
                             </div>
                                <div class="product_variant color">
                                    <h3>Kích thước</h3>
-                                   <select class="niceselect_option" id="get_size" name="get_size">
+                                   <select class="niceselect_option" id="get_size" name="size">
                                        <option selected value="0">--- Chọn kích thước ---</option>
                                        @foreach($products->ProductSize as $productSize)
                                            <option value="{{$productSize->id}}">{{$productSize->name}}</option>
@@ -79,14 +79,14 @@
                                </div>
                                <div class="product_variant size">
                                    <h3>Màu sắc</h3>
-                                   <select class="niceselect_option" id="get_color" name="get_color">
+                                   <select class="niceselect_option" id="get_color" name="color">
                                        <option selected value="0">--- Chọn màu sắc ---</option>
                                    </select>
                                </div>
                             <div class="product_variant quantity">
                                 <label>quantity</label>
                                 <input min="1" max="100" value="1" type="number">
-                                <button class="button" type="submit">Add to cart</button>
+                                <a style="color:black" href="{{route('cart.add',$products->id)}}">Thêm vào giỏ hàng</a>
                             </div>
                             <div class=" product_d_action">
                                <ul>

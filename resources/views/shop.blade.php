@@ -39,7 +39,7 @@
                                 <h2>Product categories</h2>
                                 <ul>
                                     @foreach($categories as $category)
-                                    <li><a href="#">{{$category->name}}</a> </li>
+                                    <li><a href="{{url('shop',$category->id)}}">{{$category->name}}</a> </li>
                                     @endforeach
                                 </ul>
                             </div>

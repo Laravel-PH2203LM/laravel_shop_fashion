@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\ProductAttrController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,19 +35,22 @@ Route::prefix('/')->group(function (){
     Route::get('/contact',[HomeController::class,'contact'])->name('contact');
     Route::get('/blog',[HomeController::class,'blog'])->name('blog');
     Route::get('/blog-detail',[HomeController::class,'blog_detail'])->name('blog_detail');
-    Route::get('/cart',[HomeController::class,'cart'])->name('cart');
+    Route::get('/cart',[CartController::class,'view'])->name('view');
+    Route::get('/update_cart/{id}',[CartController::class,'update'])->name('cart.update');
+    Route::get('/delete_cart/{id}',[CartController::class,'delete'])->name('cart.delete');
+    Route::get('/cart_clear/',[CartController::class,'clear'])->name('cart.clear');
     Route::get('/about',[HomeController::class,'about'])->name('about');
     Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
     Route::get('/my-account/{id}',[HomeController::class,'my_account'])->middleware('auth');
     Route::post('/my-account{id}',[HomeController::class,'my_account_add'])->middleware('auth');
 });
 
-
 Route::group(['prefix'=>'shop/'],function() {
     Route::get('',[ShopController::class,'shop'])->name('shop');
-    //Route::get('/{categoryName}',[ShopController::class,'category'])->name('category');
-    Route::get('/product/{id}',[ShopController::class,'show'])->name('show');
+    Route::get('{categoryName}',[ShopController::class,'category'])->name('category');
+    Route::get('product/{id}',[ShopController::class,'show'])->name('show');
     Route::get('product/getcolor/{pid}/{sid}',[ShopController::class,'getColor'])->name('getColor');
+    Route::get('addcart/{pro}',[CartController::class,'add'])->name('cart.add');
 });
 
 Route::prefix('admin')->middleware(\App\Http\Middleware\CheckAdminLogin::class)->group(function () {

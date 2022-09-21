@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\ShoppingCart;
 use App\Models\Blog;
 use App\Models\Product;
 use App\Models\ProductCategory;
@@ -19,12 +20,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ShoppingCart $cart)
     {
         $products = Product::where('status','1')->search()->get();
         $products->load('ProductImage');
         $categories = ProductCategory::where('status','1')->get();
-        return view('index',compact('categories','products'));
+        return view('index',compact('categories','products','cart'));
     }
 
     /**
@@ -54,16 +55,6 @@ class HomeController extends Controller
     public function blog_detail()
     {
         return view('blog_detail');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function cart()
-    {
-        return view('cart');
     }
 
     /**

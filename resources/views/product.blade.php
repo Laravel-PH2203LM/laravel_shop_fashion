@@ -185,9 +185,9 @@
                 </div>
             </div>
         </div>
-        <x-productcomponent/>
     </div>
     <!--product info end-->
+    <x-productcomponent/>
 @endsection
 @section('js')
     <script type="text/javascript">

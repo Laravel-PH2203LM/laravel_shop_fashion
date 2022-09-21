@@ -48,9 +48,12 @@ class AuthController extends Controller
             'name'=> 'required|min:3|max:100',
             'password'=> 'required|min:3|max:100'
         ]);
-        $data = $request->only('email','name','password');
+        $data = $request->only('email','name','password','full_name','address','phone');
         $register = new User();
         $register->name = $data['name'];
+        $register->full_name = $data['full_name'];
+        $register->address = $data['address'];
+        $register->phone = $data['phone'];
         $register->email = $data['email'];
         $register->password = Hash::make($data['password']);
         $register->level = 1;

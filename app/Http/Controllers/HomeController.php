@@ -80,7 +80,8 @@ class HomeController extends Controller
     {
         return view('about');
     }
-    public function my_account() {
-        return view('my_account');
+    public function my_account($id) {
+        $user = User::where('id',$id)->get();
+        return view('my_account',compact('user'));
     }
 }

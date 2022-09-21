@@ -33,13 +33,25 @@
                         <form method="POST">
                             @csrf
                             <p>
-                                <label>Name  <span>*</span></label>
+                                <label>Tên tài khoản<span>*</span></label>
                                 <input type="text" name="name">
                             </p>
                             <p>
-                                <label>Email address  <span>*</span></label>
+                                <label>Email<span>*</span></label>
                                 <input type="text" name="email">
                              </p>
+                            <p>
+                                <label>Họ và Tên<span>*</span></label>
+                                <input type="text" name="full_name">
+                            </p>
+                            <p>
+                                <label>Địa chỉ <span>*</span></label>
+                                <input type="text" name="address">
+                            </p>
+                            <p>
+                                <label>Số điện thoại<span>*</span></label>
+                                <input type="text" name="phone">
+                            </p>
                              <p>
                                 <label>Passwords <span>*</span></label>
                                 <input type="password" name="password">

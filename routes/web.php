@@ -37,8 +37,10 @@ Route::prefix('/')->group(function (){
     Route::get('/cart',[HomeController::class,'cart'])->name('cart');
     Route::get('/about',[HomeController::class,'about'])->name('about');
     Route::get('/checkout',[HomeController::class,'checkout'])->name('checkout');
-    Route::get('/my-account',[HomeController::class,'my_account'])->middleware('auth');
+    Route::get('/my-account/{id}',[HomeController::class,'my_account'])->middleware('auth');
+    Route::post('/my-account{id}',[HomeController::class,'my_account_add'])->middleware('auth');
 });
+
 
 Route::group(['prefix'=>'shop/'],function() {
     Route::get('',[ShopController::class,'shop'])->name('shop');

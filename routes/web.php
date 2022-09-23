@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\CustomerController;
 use App\Http\Controllers\admin\ProductAttrController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\admin\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,7 +90,7 @@ Route::prefix('admin')->middleware(\App\Http\Middleware\CheckAdminLogin::class)-
     Route::get('/them-thuoc-tinh', [ProductAttrController::class,'create'])->name('attr_add');
     Route::post('/them-thuoc-tinh', [ProductAttrController::class,'store']);
     /* End */
-    //Route::get('/quan-li-nguoi-dung', [AuthController::class,'index'])->name('index');
+    Route::get('/don-dat-hang', [OrderController::class,'order'])->name('order');
 });
 //Route::get('admin/login', [AdminHomeController::class,'login'])->name('login');
 //Route::post('admin/login', [AdminHomeController::class,'postlogin']);

@@ -70,7 +70,7 @@
                       class='app-menu__icon bx bx-purchase-tag-alt'></i><span
                       class="app-menu__label">Danh sách sản phẩm</span></a>
           </li>
-          <li><a class="app-menu__item {{ request()->is('admin/don-hang') ? 'haha' : '' }}" href=""><i
+          <li><a class="app-menu__item {{ request()->is('admin/don-dat-hang') ? 'haha' : '' }}" href="{{url('admin/don-dat-hang')}}"><i
                       class='app-menu__icon bx bx-task'></i><span
                       class="app-menu__label">Quản lý đơn hàng</span></a></li>
           <li><a class="app-menu__item {{ request()->is('admin/quan-li-nguoi-dung') ? 'haha' : '' }}"

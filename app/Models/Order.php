@@ -15,7 +15,7 @@ class Order extends Model
 
     public function orders()
     {
-        return $this->hasMany(OrderDetail::class,'order_id','id');
+        return $this->hasMany(OrderDetail::class,'order_id','id')->distinct('total');
     }
 
     public function Sizez()

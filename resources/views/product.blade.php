@@ -48,7 +48,7 @@
                 </div>
                 <div class="col-lg-7 col-md-7">
                     <div class="product_d_right">
-                       <form action="#">
+                       <form action="{{route('cart.add',$products->id)}}">
 
                             <h1>{{$products->name}}</h1>
                             <div class=" product_ratting">
@@ -83,18 +83,17 @@
                                        <option selected value="0">--- Chọn màu sắc ---</option>
                                    </select>
                                </div>
-                            <div class="product_variant quantity">
-                                <label>quantity</label>
-                                <input min="1" max="100" value="1" type="number">
-                                <a style="color:black" href="{{route('cart.add',$products->id)}}">Thêm vào giỏ hàng</a>
-                            </div>
+                                <div class="product_variant quantity">
+                                    <label>Quantity</label>
+                                    <input min="1" max="100" value="1" type="number">
+                                    <button class="button" type="submit">add to cart</button>
+                                </div>
                             <div class=" product_d_action">
                                <ul>
                                    <li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wish List</a></li>
                                    <li><a href="#" title="Add to Compare"><i class="fa fa-sliders" aria-hidden="true"></i> Compare this Product</a></li>
                                </ul>
                             </div>
-
                         </form>
                         <div class="priduct_social">
                             <h3>Share on:</h3>

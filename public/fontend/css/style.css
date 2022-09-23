@@ -9182,7 +9182,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #ff6a28;
 }
 .table_desc .cart_page table tbody tr td.product_remove {
-  min-width: 125px;
+  min-width: 100px;
 }
 .table_desc .cart_page table tbody tr td.product_remove a {
   font-size: 20px;
@@ -9192,13 +9192,20 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #ff6a28;
 }
 .table_desc .cart_page table tbody tr td.product-price {
-  min-width: 159px;
+  min-width: 19px;
   color: #ff6a28;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
 }
 .table_desc .cart_page table tbody tr td.product_total {
   min-width: 159px;
+    color: #ff6a28;
+}
+.table_desc .cart_page table tbody tr td.product_size {
+    min-width: 10px;
+}
+.table_desc .cart_page table tbody tr td.product_color {
+    min-width: 10px;
 }
 .table_desc .cart_page table tbody tr td.product_quantity {
   min-width: 175px;

@@ -1,6 +1,7 @@
 <?php
 namespace App\Helper;
-use phpDocumentor\Reflection\Types\Object_;
+use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ShoppingCart {
     public $items = [];
@@ -17,10 +18,11 @@ class ShoppingCart {
     }
 
     // Thêm sản phẩm vào giỏ hàng
-    public function add($product, $quantity = 1)
+    public function add($product, $size, $color, $quantity)
     {
-        if(isset($this->items[$product->id])) {
-            $this->items[$product->id]->quantity += $quantity;
+        $key = $product->id.$size->id.$color->id;
+        if(isset($this->items[$key])) {
+            $this->items[$key]->quantity += $quantity;
         } else {
         $item = (object) [
           'id' => $product->id,
@@ -28,9 +30,10 @@ class ShoppingCart {
           'quantity' => $quantity,
           'price' => $product->discount ? $product->discount : $product->price,
           'image' => $product->ProductImage[0]->path,
-          'size'=> $product->ProductSize,
+          'size' => $size,
+          'color' => $color
         ];
-            $this->items[$product->id] = $item;
+            $this->items[$key] = $item;
         }
         session(['cart'=>$this->items]);
     }
@@ -41,19 +44,21 @@ class ShoppingCart {
     }
 
     // Cập nhật sản phẩm trong giỏ hàng
-    public function update($id, $quantity = 1)
+    public function update($id, $quantity, $color, $size)
     {
-        if(isset($this->items[$id])) {
-            $this->items[$id]->quantity = $quantity;
+        $key = $id.$size->id.$color->id;
+        if(isset($this->items[$key])) {
+            $this->items[$key]->quantity = $quantity;
             session(['cart'=>$this->items]);
         }
     }
 
     // Xóa sản phẩm khỏi giỏ hàng
-    public function delete($id)
+    public function delete($id, $size, $color)
     {
-        if(isset($this->items[$id])) {
-            unset($this->items[$id]);
+        $key = $id.$size->id.$color->id;
+        if(isset($this->items[$key])) {
+            unset($this->items[$key]);
             session(['cart'=>$this->items]);
         }
     }

@@ -48,28 +48,29 @@
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>Order</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                        <th>Total</th>
-                                        <th>Actions</th>
+                                        <th>STT</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Hình ảnh</th>
+                                        <th>Kích thước</th>
+                                        <th>Màu sắc</th>
+                                        <th>Tổng đơn hàng</th>
+                                        <th>Trạng thái</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($orders as $order)
+                                        @foreach($order->orders as $listord)
                                     <tr>
-                                        <td>1</td>
-                                        <td>May 10, 2018</td>
+                                        <td>{{$listord->order_id}}</td>
+                                        <td>{{$listord->name}}</td>
+                                        <td><image src="{{asset('uploads'.'/'.$listord->images)}}" width="150px"></image></td>
+                                        <td>{{$listord->size_id}}</td>
+                                        <td>{{$listord->color_id}}</td>
+                                        <td>{{$listord->total}}</td>
                                         <td><span class="success">Completed</span></td>
-                                        <td>$25.00 for 1 item </td>
-                                        <td><a href="cart.html" class="view">view</a></td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>May 10, 2018</td>
-                                        <td>Processing</td>
-                                        <td>$17.00 for 1 item </td>
-                                        <td><a href="cart.html" class="view">view</a></td>
-                                    </tr>
+                                        @endforeach
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

@@ -67,6 +67,7 @@ class CartController extends Controller
         return view('checkout',compact('cart'));
     }
 
+    // Xử lí đơn đặt hàng
     public function order(Request $request, ShoppingCart $cart)
     {
         $data = $request->only('user_id','full_name','address','phone','email');
@@ -75,6 +76,7 @@ class CartController extends Controller
         if($order) {
         foreach($cart->items as $item) {
             OrderDetail::create([
+                'order_id' => $order->id,
                 'product_id' => $item->id,
                 'name' => $item->name,
                 'qty' => $item->quantity,
@@ -83,6 +85,7 @@ class CartController extends Controller
                 'amount' => $item->quantity * $item->price,
                 'price_shipping' => $cart->shipping,
                 'total' => $cart->totalAmount,
+                'images' => $item->image,
                 'status' => 1
             ]);
             }

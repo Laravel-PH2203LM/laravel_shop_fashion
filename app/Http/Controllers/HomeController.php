@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Helper\ShoppingCart;
 use App\Models\Blog;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\ProductImage;
 use Illuminate\Support\Facades\Auth;
@@ -61,8 +63,12 @@ class HomeController extends Controller
     {
         return view('about');
     }
+
     public function my_account($id) {
+        $orders = Order::where('user_id', $id)->get();
+        //$orders_detail = OrderDetail::with('Sizez')->get();
+        //dd($orders);
         $user = User::where('id',$id)->get();
-        return view('my_account',compact('user'));
+        return view('my_account',compact('user','orders'));
     }
 }

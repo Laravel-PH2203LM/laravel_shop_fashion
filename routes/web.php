@@ -46,7 +46,7 @@ Route::prefix('/')->group(function (){
 
 Route::group(['prefix'=>'shop/'],function() {
     Route::get('',[ShopController::class,'shop'])->name('shop');
-    Route::get('{categoryName}',[ShopController::class,'category'])->name('category');
+    Route::get('category/{id}',[ShopController::class,'categoryFill'])->name('categoryFill');
     Route::get('product/{id}',[ShopController::class,'show'])->name('show');
     Route::post('product/rating/{id}',[ShopController::class,'rating'])->name('rating');
     Route::get('product/getcolor/{pid}/{sid}',[ShopController::class,'getColor'])->name('getColor');

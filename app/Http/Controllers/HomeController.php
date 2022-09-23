@@ -24,10 +24,8 @@ class HomeController extends Controller
      */
     public function index(ShoppingCart $cart)
     {
-        $products = Product::where('status','1')->search()->get();
-        $products->load('ProductImage');
-        $categories = ProductCategory::where('status','1')->get();
-        return view('index',compact('categories','products','cart'));
+        $products = Product::where('status','1')->search()->limit(6)->get();
+        return view('index',compact('products','cart'));
     }
 
     /**
@@ -47,8 +45,6 @@ class HomeController extends Controller
 
     public function my_account($id) {
         $orders = Order::where('user_id', $id)->get();
-        //$orders_detail = OrderDetail::with('Sizez')->get();
-        //dd($orders);
         $user = User::where('id',$id)->get();
         return view('my_account',compact('user','orders'));
     }

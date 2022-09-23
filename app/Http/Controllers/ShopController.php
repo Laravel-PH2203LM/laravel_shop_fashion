@@ -21,20 +21,15 @@ class ShopController extends Controller
     public function shop(Request $request)
     {
         $products = Product::where('status','1')->search()->paginate(6);
-        $categories = ProductCategory::where('status','1')->get();
-        $brands = Brand::where('status','1')->get();
-        return view('shop',compact('products','categories','brands'));
+        return view('shop',compact('products'));
     }
-    public function category($categoryID, Request $request) {
-        $categories = ProductCategory::category()->get();
-        $brands = Brand::where('status','1')->get();
-        $products = ProductCategory::where('id', $categoryID)->paginate(6);
-        return view('shop',compact('categories','brands','products'));
+    public function categoryFill($id) {
+        $products = Product::where('product_category_id',$id)->search()->paginate(6);
+        return view('shop',compact('products'));
     }
 
     public function getColor($pid, $sid) {
         $data = ProductAttribute::where(['product_id'=> $pid, 'size_id' => $sid])->distinct('color_id')->with('attr')->get();
-
         return response()->json($data);
     }
 
@@ -47,20 +42,7 @@ class ShopController extends Controller
     public function show($id)
     {
         $products = Product::find($id);
-            return view('product', compact('products'));
-    }
-    //TODO BAD CODE, NHÌN KHÔNG KHÁC GÌ TRASH
-    public function filter($products, Request $request) {
-        $brands = $request->brand ?? [];
-        $brand_id = array_keys($brands);
-        $size = $request->size ?? [];
-        $size_id = array_keys($size);
-        $color = $request->color ?? [];
-        $color_id = array_keys($color);
-        $products = $color_id != null ? $products->whereIn('color_id', $color_id) : $products;
-        $products = $size_id != null ? $products->whereIn('size_id', $size_id) : $products;
-        $products = $brand_id != null ? $products->whereIn('brand_id', $brand_id) : $products;
-        return $products;
+        return view('product', compact('products'));
     }
 
     /**

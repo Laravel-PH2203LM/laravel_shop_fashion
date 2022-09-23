@@ -39,7 +39,7 @@
                                 <h2>Product categories</h2>
                                 <ul>
                                     @foreach($categories as $category)
-                                    <li><a href="{{url('shop',$category->id)}}">{{$category->name}}</a> </li>
+                                        <li><a href="{{route('categoryFill',$category->id)}}">{{$category->name}}</a> </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -96,9 +96,6 @@
                                 </form>
 
                             </div>
-                            <div class="page_amount">
-                                <p>Showing 1–9 of 21 results</p>
-                            </div>
                         </div>
                          <!--shop toolbar end-->
 
@@ -108,9 +105,9 @@
                                 <div class="single_product">
                                     <div class="product_thumb">
                                         <a class="primary_img" href="{{url('shop/product',$product->id)}}">
-                                            <img src="uploads/{{$product->ProductImage[0]->path}}" alt=""></a>
+                                            <img src="{{asset('uploads/' . $product->ProductImage[0]->path)}}" alt=""></a>
                                         <a class="secondary_img" href="{{url('/shop/product',$product->id)}}">
-                                            <img src="uploads/{{$product->ProductImage[1]->path}}" alt=""></a>
+                                            <img src="{{asset('uploads/' . $product->ProductImage[0]->path)}}" alt=""></a>
 
                                         <div class="quick_button">
                                             <a href="{{url('shop/product',$product->id)}}" title="quick_view">Xem sản phẩm</a>

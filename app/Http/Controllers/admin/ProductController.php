@@ -187,14 +187,9 @@ class ProductController extends Controller
     public function destroy( Product $product)
     {
         $del = ProductImage::where('product_id',$product->id)->first();
-        if($del) {
-            $images = unserialize($del->path);
-        } else {
-            $images = [];
-        }
-        foreach ($images as $img) {
-            if(file_exists(public_path('uploads/'.$img))) {
-                $data = unlink(public_path('uploads/'.$img));
+        foreach ($del as $img) {
+            if(file_exists(asset('uploads/'.$img))) {
+                $data = unlink(asset('uploads/'.$img));
             }
         }
         $data = ProductImage::where('product_id',$product->id)->delete();

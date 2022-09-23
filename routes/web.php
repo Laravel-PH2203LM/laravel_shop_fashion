@@ -33,8 +33,6 @@ Route::post('/register',[AuthController::class,'postregister']);
 Route::prefix('/')->group(function (){
     Route::get('',[HomeController::class,'index'])->name('index');
     Route::get('/contact',[HomeController::class,'contact'])->name('contact');
-    Route::get('/blog',[HomeController::class,'blog'])->name('blog');
-    Route::get('/blog-detail',[HomeController::class,'blog_detail'])->name('blog_detail');
     Route::get('/cart',[CartController::class,'view'])->name('view');
     Route::get('/update_cart/{id}',[CartController::class,'update'])->name('cart.update');
     Route::get('/delete_cart/{id}',[CartController::class,'delete'])->name('cart.delete');
@@ -50,6 +48,7 @@ Route::group(['prefix'=>'shop/'],function() {
     Route::get('',[ShopController::class,'shop'])->name('shop');
     Route::get('{categoryName}',[ShopController::class,'category'])->name('category');
     Route::get('product/{id}',[ShopController::class,'show'])->name('show');
+    Route::post('product/rating/{id}',[ShopController::class,'rating'])->name('rating');
     Route::get('product/getcolor/{pid}/{sid}',[ShopController::class,'getColor'])->name('getColor');
     Route::get('addcart/{pro}',[CartController::class,'add'])->name('cart.add');
 });

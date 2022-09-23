@@ -21,6 +21,7 @@ class CreateOrderDetailsTable extends Migration
             $table->string('color_id');
             $table->string('size_id');
             $table->double('amount');
+            $table->double('price_shipping');
             $table->double('total');
             $table->tinyInteger('status');
 

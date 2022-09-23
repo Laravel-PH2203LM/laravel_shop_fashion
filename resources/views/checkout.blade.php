@@ -41,7 +41,7 @@
                             <h3>Billing Details</h3>
                             <div class="row">
                                 @auth
-                                    <input type="hidden" name="id" value="{{Auth::user()->id}}">
+                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                 <div class="col-lg-12 mb-20">
                                     <label>Họ và Tên <span>*</span></label>
                                     <input type="text" value="{{Auth::user()->full_name}}" name="full_name" placeholder="Nguyễn Văn A">

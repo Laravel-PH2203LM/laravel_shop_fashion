@@ -69,8 +69,10 @@ class CartController extends Controller
 
     public function order(Request $request, ShoppingCart $cart)
     {
-        $data = $request->only('full_name','address','phone','email');
+        $data = $request->only('user_id','full_name','address','phone','email');
+        //dd($data);
         $order = Order::create($data);
+        if($order) {
         foreach($cart->items as $item) {
             OrderDetail::create([
                 'product_id' => $item->id,
@@ -78,10 +80,14 @@ class CartController extends Controller
                 'qty' => $item->quantity,
                 'color_id' => $item->color->id,
                 'size_id' => $item->size->id,
-                'amount' => $cart->totalAmount,
-                'total' => $cart->totalAmount += $cart->shipping,
+                'amount' => $item->quantity * $item->price,
+                'price_shipping' => $cart->shipping,
+                'total' => $cart->totalAmount,
                 'status' => 1
             ]);
+            }
+            session(['cart' => []]);
+            return redirect()->route('shop');
         }
     }
 }

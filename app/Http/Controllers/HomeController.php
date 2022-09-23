@@ -57,16 +57,6 @@ class HomeController extends Controller
         return view('blog_detail');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function checkout()
-    {
-        return view('checkout');
-    }
-
     public function about()
     {
         return view('about');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Helper\ShoppingCart;
 use App\Models\Attribute;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
@@ -53,5 +55,33 @@ class CartController extends Controller
     public function view(ShoppingCart $cart)
     {
         return view('cart',compact('cart'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function checkout(ShoppingCart $cart)
+    {
+        return view('checkout',compact('cart'));
+    }
+
+    public function order(Request $request, ShoppingCart $cart)
+    {
+        $data = $request->only('full_name','address','phone','email');
+        $order = Order::create($data);
+        foreach($cart->items as $item) {
+            OrderDetail::create([
+                'product_id' => $item->id,
+                'name' => $item->name,
+                'qty' => $item->quantity,
+                'color_id' => $item->color->id,
+                'size_id' => $item->size->id,
+                'amount' => $cart->totalAmount,
+                'total' => $cart->totalAmount += $cart->shipping,
+                'status' => 1
+            ]);
+        }
     }
 }

@@ -7,9 +7,9 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="{{url('/index')}}">home</a></li>
+                            <li><a href="{{url('/')}}">Trang chủ</a></li>
                             <li>/</li>
-                            <li>shop</li>
+                            <li>Sản phẩm</li>
                         </ul>
                     </div>
                 </div>
@@ -26,17 +26,8 @@
                     <div class="col-lg-3 col-md-12">
                        <!--sidebar widget start-->
                         <div class="sidebar_widget">
-                            <div class="widget_list widget_filter">
-                                <h2>Filter by price</h2>
-                                <form action="#">
-                                    <div id="slider-range"></div>
-                                    <button type="submit">Filter</button>
-                                    <input type="text" name="text" id="amount" />
-
-                                </form>
-                            </div>
                             <div class="widget_list widget_categories">
-                                <h2>Product categories</h2>
+                                <h2>Danh mục sản phẩm</h2>
                                 <ul>
                                     @foreach($categories as $category)
                                         <li><a href="{{route('categoryFill',$category->id)}}">{{$category->name}}</a> </li>
@@ -45,24 +36,11 @@
                             </div>
 
                             <div class="widget_list widget_categories">
-                                <h2>Manufacturer</h2>
+                                <h2>Nhà sản xuất</h2>
                                 <ul>
                                     @foreach($brands as $brand)
-                                    <li><a href="#">{{$brand->name}}</a> </li>
+                                    <li><a href="{{route('brandFill',$brand->id)}}">{{$brand->name}}</a> </li>
                                     @endforeach
-                                </ul>
-                            </div>
-                            <div class="widget_list widget_categories">
-                                <h2>Select By Color</h2>
-                                <ul>
-                                    <li><a href="#">Black <span>6</span></a> </li>
-                                    <li><a href="#"> Blue <span>10</span></a> </li>
-                                    <li><a href="#">Brown <span>4</span></a> </li>
-                                    <li><a href="#"> Green <span>4</span></a> </li>
-                                    <li><a href="#">Pink <span>7</span></a> </li>
-                                    <li><a href="#">White<span>8</span></a> </li>
-                                    <li><a href="#">Yellow <span>5</span></a> </li>
-
                                 </ul>
                             </div>
                         </div>

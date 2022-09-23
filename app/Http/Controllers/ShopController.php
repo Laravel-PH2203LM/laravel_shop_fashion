@@ -28,6 +28,10 @@ class ShopController extends Controller
         return view('shop',compact('products'));
     }
 
+    public function brandFill($id) {
+        $products = Product::where('brand_id',$id)->search()->paginate(6);
+        return view('shop',compact('products'));
+    }
     public function getColor($pid, $sid) {
         $data = ProductAttribute::where(['product_id'=> $pid, 'size_id' => $sid])->distinct('color_id')->with('attr')->get();
         return response()->json($data);

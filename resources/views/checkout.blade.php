@@ -74,6 +74,7 @@
                             </div>
                             @endauth
                     </div>
+                    @guest
                     <form action="#">
                             <div class="row">
                                     <input type="hidden" name="user_id" value="">
@@ -109,6 +110,7 @@
                             </div>
                     </form>
                     </div>
+                @endguest
                     <div class="col-lg-6 col-md-6">
                             <h3>Your order</h3>
                             <div class="order_table table-responsive">
@@ -152,12 +154,14 @@
                             </div>
                             <div class="payment_method">
                                 <div class="panel-default">
-                                    <input name="order" type="radio"
+                                    @foreach($payments as $pay)
+                                    <input name="payment_id" value="{{$pay->id}}" type="radio"
                                         data-target="createp_account" />
-                                    <label>Thanh toán khi nhận hàng</label>
+                                    <label>{{$pay->name}}</label>
+                                    @endforeach
                                 </div>
                                 <div class="order_button">
-                                    <button type="submit">Proceed to PayPal</button>
+                                    <button type="submit">Đặt hàng</button>
                                 </div>
                             </div>
                         </form>

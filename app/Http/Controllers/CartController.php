@@ -6,6 +6,7 @@ use App\Helper\ShoppingCart;
 use App\Models\Attribute;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Payments;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
@@ -64,14 +65,14 @@ class CartController extends Controller
      */
     public function checkout(ShoppingCart $cart)
     {
-        return view('checkout',compact('cart'));
+        $payments = Payments::all();
+        return view('checkout',compact('cart','payments'));
     }
 
     // Xử lí đơn đặt hàng
     public function order(Request $request, ShoppingCart $cart)
     {
-        $data = $request->only('user_id','full_name','address','phone','email');
-        //dd($data);
+        $data = $request->only('user_id','full_name','address','phone','email','payment_id');
         $order = Order::create($data);
         if($order) {
         foreach($cart->items as $item) {
@@ -85,6 +86,7 @@ class CartController extends Controller
                 'amount' => $item->quantity * $item->price,
                 'price_shipping' => $cart->shipping,
                 'total' => $cart->totalAmount,
+                'payment_id' => $request->payment_id,
                 'images' => $item->image,
                 'status' => 1
             ]);

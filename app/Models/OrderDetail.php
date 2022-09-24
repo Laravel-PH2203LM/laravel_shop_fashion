@@ -11,7 +11,7 @@ class OrderDetail extends Model
     protected $table = 'order_details';
     protected $primaryKey = 'id';
     protected $guarded = [];
-    protected $fillable = ['order_id','product_id','name','qty','color_id','size_id','amount','price_shipping','total','images','status'];
+    protected $fillable = ['order_id','product_id','name','qty','color_id','size_id','amount','price_shipping','total','payment_id','images','status'];
 
     public function product() {
         return $this->belongsTo(Product::class,'product_id','id');

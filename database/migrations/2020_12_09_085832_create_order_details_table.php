@@ -24,6 +24,7 @@ class CreateOrderDetailsTable extends Migration
             $table->double('amount');
             $table->double('price_shipping');
             $table->double('total');
+            $table->integer('payment_id');
             $table->string('images');
             $table->integer('status');
 

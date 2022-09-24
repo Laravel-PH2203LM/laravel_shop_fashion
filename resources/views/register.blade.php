@@ -56,6 +56,13 @@
                                 <label>Mật khẩu <span>*</span></label>
                                 <input type="password" name="password">
                              </p>
+                            <p>
+                                <label>Nhập lại mật khẩu <span>*</span></label>
+                                <input type="password" name="password_confirmation">
+                            </p>
+                            @error('password')
+                            <span style="color:#ff6a28">{{$message}}</span>
+                            @enderror
                             <div class="login_submit">
                                 <button type="submit">Đăng ký</button>
                             </div>

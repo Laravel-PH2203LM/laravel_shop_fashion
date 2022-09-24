@@ -48,6 +48,7 @@
                                            <li><a href="{{url('logout')}}">Đăng xuất</a></li>
                                        @else
                                            <li><a href="{{url('login')}}">Đăng nhập</a></li>
+                                           <li><a href="{{url('register')}}">Đăng ký</a></li>
                                        @endif
                                    </ul>
                                 </li>
@@ -61,54 +62,7 @@
                         </div>
                         <div class="cart_area">
                             <div class="cart_link">
-                                <a href="#"><i class="fa fa-shopping-basket"></i>2 sản phẩm</a>
-                                <!--mini cart-->
-                                 <div class="mini_cart">
-                                    <div class="cart_item top">
-                                       <div class="cart_img">
-                                           <a href="#"><img src="{{asset('fontend/img/s-product/product.jpg')}}" alt=""></a>
-                                       </div>
-                                        <div class="cart_info">
-                                            <a href="#">Apple iPhone SE 16GB</a>
-
-                                            <span>1x $60.00</span>
-
-                                        </div>
-                                        <div class="cart_remove">
-                                            <a href="#"><i class="ion-android-close"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="cart_item bottom">
-                                       <div class="cart_img">
-                                           <a href="#"><img src="{{asset('fontend/img/s-product/product2.jpg')}}" alt=""></a>
-                                       </div>
-                                        <div class="cart_info">
-                                            <a href="#">Marshall Portable  Bluetooth</a>
-                                                <span> 1x $160.00</span>
-                                        </div>
-                                        <div class="cart_remove">
-                                            <a href="#"><i class="ion-android-close"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="cart__table">
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-left">Tổng cộng  :</td>
-                                                    <td class="text-right">$184.00</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                    <div class="cart_button view_cart">
-                                        <a href="{{url('/cart')}}">Giỏ hàng</a>
-                                    </div>
-                                    <div class="cart_button checkout">
-                                        <a href="{{url('/checkout')}}">Thanh toán</a>
-                                    </div>
-                                </div>
-                                <!--mini cart end-->
+                                <a href="{{url('cart')}}"><i class="fa fa-shopping-basket"></i>Giỏ hàng</a>
                             </div>
                         </div>
                         <div id="menu" class="text-left ">
@@ -165,6 +119,7 @@
                                             <li><a href="{{url('logout')}}">Đăng xuất</a></li>
                                         @else
                                         <li><a href="{{url('login')}}">Đăng nhập</a></li>
+                                        <li><a href="{{url('register')}}">Đăng ký</a></li>
                                         @endif
                                     </ul>
                                 </li>
@@ -199,7 +154,6 @@
                                 <div class="cart_link">
                                     <a href="{{url('cart')}}"><i class="fa fa-shopping-basket"></i>{{session()->get('totalQuantity')}} sản phẩm</a>
                                     </div>
-                                    <!--mini cart end-->
                                 </div>
                             </div>
                         </div>
@@ -212,7 +166,7 @@
                                 <ul>
                                     <li><a href="{{url('/')}}">Trang chủ<i class="fa"></i></a>
                                     </li>
-                                    <li class="mega_items"><a href="{{url('/shop')}}">Sản phẩm</a>
+                                    <li class="mega_items"><a href="{{url('/shop')}}">Giỏ hàng</a>
                                     </li>
                                 </ul>
                             </nav>

@@ -48,7 +48,20 @@ class AuthController extends Controller
         $request->validate([
             'email'=> 'required|min:3|max:100' ,
             'name'=> 'required|min:3|max:100',
-            'password'=> 'required|min:3|max:100'
+            'password'=> 'required|min:8|confirmed|max:100|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
+        ],[
+            'email.required' => 'Email không được bỏ trống',
+            'email.min' => 'Email tối thiểu có 3 kí tự',
+            'email.max' => 'Email tối đa 100 kí tự',
+            'name.required' => 'Họ và Tên không được để trống',
+            'name.min' => 'Tên tối thiểu có 3 kí tự',
+            'name.max' => 'Tên tối đa có 100 kí tự',
+            'name.min' => 'Tên tối thiểu có 3 kí tự',
+            'password.required' => 'Mật khẩu không được để trống',
+            'password.min' => 'Mật khẩu có tối thiểu 8 kí tự',
+            'password.max' => 'Mật khẩu tối đa có 100 kí tự',
+            'password.confirmed' => 'Mật khẩu nhập lại không khớp',
+            'password.regex' => 'Mật khẩu cần có chữ hoa,thường,số và kí tự đặc biệt'
         ]);
         $data = $request->only('email','name','password','full_name','address','phone');
         $register = new User();
@@ -57,7 +70,7 @@ class AuthController extends Controller
         $register->address = $data['address'];
         $register->phone = $data['phone'];
         $register->email = $data['email'];
-        $register->password = Hash::make($data['password']);
+        $register->password = bcrypt($data['password']);
         $register->level = 1;
         $register->save();
         return redirect()->route('login');

@@ -90,10 +90,5 @@ Route::prefix('admin')->middleware(\App\Http\Middleware\CheckAdminLogin::class)-
     Route::get('/them-thuoc-tinh', [ProductAttrController::class,'create'])->name('attr_add');
     Route::post('/them-thuoc-tinh', [ProductAttrController::class,'store']);
     /* End */
-    Route::get('/don-dat-hang', [OrderController::class,'order'])->name('order');
+    Route::get('/don-dat-hang', [OrderController::class,'adminorder'])->name('adminorder');
 });
-//Route::get('admin/login', [AdminHomeController::class,'login'])->name('login');
-//Route::post('admin/login', [AdminHomeController::class,'postlogin']);
-//Route::get('admin/register', [AdminHomeController::class,'register'])->name('register');
-//Route::post('admin/register', [AdminHomeController::class,'postregister']);
-//Route::get('admin/dang-xuat', [AdminHomeController::class, 'logout'])->name('logout');

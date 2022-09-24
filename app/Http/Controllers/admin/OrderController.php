@@ -14,7 +14,7 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function order()
+    public function adminorder()
     {
         $orders = Order::paginate(10);
         return view('admin.order.order',compact('orders'));

@@ -8,7 +8,7 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="{{url('/index')}}">Trang chủ</a></li>
+                            <li><a href="{{url('/')}}">Trang chủ</a></li>
                             <li>/</li>
                             <li>Giới thiệu</li>
                         </ul>

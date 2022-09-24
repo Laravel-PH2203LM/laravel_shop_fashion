@@ -7,9 +7,9 @@
             <div class="col-12">
                 <div class="breadcrumb_content">
                     <ul>
-                        <li><a href="index.html">home</a></li>
+                        <li><a href="{{url('/')}}">Trang chủ</a></li>
                         <li>/</li>
-                        <li>my account</li>
+                        <li>Tài khoản của tôi</li>
                     </ul>
                 </div>
             </div>
@@ -40,10 +40,9 @@
                     <div class="tab-content dashboard_content">
                         <div class="tab-pane fade show active" id="dashboard">
                             <h3>Bảng điều khiển </h3>
-                            <p>From your account dashboard. you can easily check &amp; view your <a href="#">recent orders</a>, manage your <a href="#">shipping and billing addresses</a> and <a href="#">Edit your password and account details.</a></p>
                         </div>
                         <div class="tab-pane fade" id="orders">
-                            <h3>Orders</h3>
+                            <h3>Đơn hàng</h3>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -76,7 +75,7 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="downloads">
-                            <h3>Downloads</h3>
+                            <h3>Tải xuống</h3>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>

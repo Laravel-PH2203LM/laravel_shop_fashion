@@ -7,9 +7,9 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="{{url('/index')}}">home</a></li>
+                            <li><a href="{{url('/')}}">Trang chủ</a></li>
                             <li>/</li>
-                            <li>sign</li>
+                            <li>Đăng nhập</li>
                         </ul>
                     </div>
                 </div>
@@ -33,20 +33,20 @@
                         <form method="POST">
                             @csrf
                             <p>
-                                <label>Email <span>*</span></label>
+                                <label>Địa chỉ Email <span>*</span></label>
                                 <input type="text" name="email" required>
                             </p>
                             <p>
-                                <label>Passwords <span>*</span></label>
+                                <label>Mật khẩu <span>*</span></label>
                                 <input type="password" name="password" required>
                             </p>
                             <div class="login_submit">
-                                <a href="#">Lost your password?</a>
+                                <a href="#">Bạn quên mật khẩu?</a>
                                 <label for="remember">
                                     <input id="remember" name="remember_token" type="checkbox">
-                                    Remember me
+                                    Ghi nhớ
                                 </label>
-                                <button type="submit">Login</button>
+                                <button type="submit">Đăng nhập</button>
 
                             </div>
 

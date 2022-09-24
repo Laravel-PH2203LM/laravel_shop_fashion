@@ -13,7 +13,7 @@
                         <input placeholder="Search..." type="text">
                         <button type="submit"><i class="ion-ios-search-strong"></i></button>
                     </form>
-                    <a href="index.html">Back to home page</a>
+                    <a href="{{url('/')}}">Back to home page</a>
                 </div>
             </div>
         </div>

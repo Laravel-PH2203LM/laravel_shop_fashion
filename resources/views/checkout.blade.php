@@ -7,9 +7,9 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="{{url('/index')}}">home</a></li>
+                            <li><a href="{{url('/')}}">Trang chủ</a></li>
                             <li>/</li>
-                            <li>checkout</li>
+                            <li>Thanh toán</li>
                         </ul>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     <div class="col-lg-6 col-md-6">
                         <form action="{{route('order')}}" method="POST">
                             @csrf
-                            <h3>Billing Details</h3>
+                            <h3>Thông tin đơn hàng</h3>
                             <div class="row">
                                 @auth
                                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
@@ -52,16 +52,16 @@
                                     <input type="text" value="{{Auth::user()->address}}" name="address" placeholder="Số nhà,đường,quận,huyện">
                                 </div>
                                 <div class="col-lg-6 mb-20">
-                                    <label>Phone<span>*</span></label>
+                                    <label>Điện thoại<span>*</span></label>
                                     <input type="text" name="phone" value="{{Auth::user()->phone}}" placeholder="0972580430">
                                 </div>
                                 <div class="col-lg-6 mb-20">
-                                    <label> Email Address <span>*</span></label>
+                                    <label>Địa chỉ Email<span>*</span></label>
                                     <input type="email" name="email" value="{{Auth::user()->email}}" placeholder="mail@gmail.com">
                                 </div>
                                 <div class="col-12">
                                     <div class="order-notes">
-                                        <label for="order_note">Order Notes</label>
+                                        <label for="order_note">Ghi chú đơn hàng</label>
                                         <textarea id="order_note"
                                             placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                                     </div>
@@ -88,16 +88,16 @@
                                         <input type="text" value="" name="address" placeholder="Số nhà,đường,quận,huyện">
                                     </div>
                                     <div class="col-lg-6 mb-20">
-                                        <label>Phone<span>*</span></label>
+                                        <label>Điện thoại<span>*</span></label>
                                         <input type="text" name="phone" value="" placeholder="0972580430">
                                     </div>
                                     <div class="col-lg-6 mb-20">
-                                        <label> Email Address <span>*</span></label>
+                                        <label> Địa chỉ Email <span>*</span></label>
                                         <input type="email" name="email" value="" placeholder="mail@gmail.com">
                                     </div>
                                     <div class="col-12">
                                         <div class="order-notes">
-                                            <label for="order_note">Order Notes</label>
+                                            <label for="order_note">Ghi chú đơn hàng</label>
                                             <textarea id="order_note"
                                                       placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                                         </div>
@@ -112,7 +112,7 @@
                     </div>
                 @endguest
                     <div class="col-lg-6 col-md-6">
-                            <h3>Your order</h3>
+                            <h3>Đơn hàng của bạn</h3>
                             <div class="order_table table-responsive">
                                 <table>
                                     <thead>

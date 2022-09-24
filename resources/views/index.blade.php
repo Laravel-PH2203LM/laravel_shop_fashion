@@ -8,8 +8,8 @@
                     <div class="col-12">
                         <div class="slider_content content_one">
                             <img src="{{asset('fontend/img/slider/content3.png')}}" alt="">
-                            <p>the wooboom clothing summer collection is back at half price</p>
-                            <a href="{{url('/shop')}}">Discover Now</a>
+                            <p>Bộ sưu tập quần áo mùa hè của chúng tôi đã trở lại đang được giảm giá một nửa</p>
+                            <a href="{{url('/shop')}}">Mua ngay</a>
                         </div>
                     </div>
                 </div>
@@ -21,8 +21,8 @@
                     <div class="col-12">
                         <div class="slider_content content_two">
                             <img src="{{asset('fontend/img/slider/content4.png')}}" alt="">
-                            <p>the wooboom clothing summer collection is back at half price</p>
-                            <a href="{{url('/shop')}}">Discover Now</a>
+                            <p>Bộ sưu tập quần áo mùa hè của chúng tôi đã trở lại đang được giảm giá một nửa</p>
+                            <a href="{{url('/shop')}}">Mua ngay</a>
                         </div>
                     </div>
                 </div>
@@ -34,8 +34,8 @@
                     <div class="col-12">
                         <div class="slider_content content_three">
                             <img src="{{asset('fontend/img/slider/content5.png')}}" alt="">
-                            <p>the wooboom clothing summer collection is back at half price</p>
-                            <a href="{{url('/shop')}}">Discover Now</a>
+                            <p>Bộ sưu tập quần áo mùa hè của chúng tôi đã trở lại đang được giảm giá một nửa</p>
+                            <a href="{{url('/shop')}}">Mua ngay</a>
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@
             <div class="col-12">
                 <div class="breadcrumb_content">
                     <ul>
-                        <li><a href="{{url('/index')}}">Trang chủ</a></li>
+                        <li><a href="{{url('/')}}">Trang chủ</a></li>
                         <li>/</li>
                         <li>Liên hệ</li>
                     </ul>
@@ -49,7 +49,7 @@
                             <label>  Thông tin</label>
                             <textarea placeholder="Message *" name="message"  class="form-control2" ></textarea>
                         </div>
-                        <button type="submit"> Send</button>
+                        <button type="submit"> Gửi</button>
                         <p class="form-messege"></p>
                     </form>
                 </div>

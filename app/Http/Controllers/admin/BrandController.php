@@ -7,6 +7,7 @@ use App\Http\Requests\BrandRequest;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRequest;
+use Toastr;
 class BrandController extends Controller
 {
     /**

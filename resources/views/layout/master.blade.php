@@ -16,12 +16,10 @@
     <link rel="stylesheet" href="{{asset('fontend/fonts/ionicons.ttf')}}">
     <link rel="stylesheet" href="{{asset('fontend/fonts/Simple-Line-Icons.woff2')}}">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
 {{-- EndCss --}}
 </head>
 
 <body>
-
     <!-- Main Wrapper Start -->
     <!--Offcanvas menu area start-->
     <div class="off_canvars_overlay">

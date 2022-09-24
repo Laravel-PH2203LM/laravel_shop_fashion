@@ -23,8 +23,10 @@ class AuthController extends Controller
     public function postLogin(Request $request) {
         $data = $request->only('email','password','remember_token');
         if (Auth::attempt($data)) {
-            if(Auth::user()->level === 0)
+            if(Auth::user()->level === 0) {
                 return redirect()->intended('admin/trang-chu')->with('Đăng nhập thành công');
+            }
+            return redirect()->route('login');
         } if (Auth::user()->level === 1){
             return redirect()->route('index');
         }

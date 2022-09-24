@@ -15,7 +15,6 @@
                 <table class="table table-hover table-bordered" id="sampleTable">
                     <thead>
                         <tr>
-                            <th>STT</th>
                             <th>Tên sản phẩm</th>
                             <th>Giá tiền</th>
                             <th>Giảm giá</th>
@@ -27,10 +26,9 @@
                     <tbody>
                         @foreach ($products as $product)
                         <tr>
-                            <td>{{$product->id}}</td>
                             <td>{{$product->name}}</td>
-                            <td>{{number_format($product->price,0)}}</td>
-                            <td>{{$product->discount}}</td>
+                            <td>{{number_format($product->price),0,0}}đ</td>
+                            <td>{{number_format($product->discount),0,0}}đ</td>
                             <td>{{$product->ProductCategory->name}}</td>
                             <td><span class="{{$product->status == '1' ? 'badge bg-success' : 'badge bg-danger'}}">{{$product->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span></td>
                             <td>
@@ -48,7 +46,7 @@
                 </table>
             </div>
             <div class="d-flex">
-{{--                {!! $products->appends(['sort' => 'science-stream'])->links() !!}--}}
+                {!! $products->appends(['sort' => 'science-stream'])->links() !!}
             </div>
         </div>
     </div>

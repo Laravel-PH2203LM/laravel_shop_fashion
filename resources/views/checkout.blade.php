@@ -26,8 +26,8 @@
                     <div class="user-actions">
                         <h3>
                             <i class="fa fa-file-o" aria-hidden="true"></i>
-                            Bạn là khách hàng cũ?
-                            <a class="Returning" href="{{route('login')}}">Ấn vào đây để đăng nhập</a>
+                            Nếu chưa có tài khoản, bạn cần đăng ký?
+                            <a class="Returning" href="{{route('register')}}">Ấn vào đây để đăng ký</a>
 
                         </h3>
                     </div>
@@ -73,6 +73,41 @@
                                 </div>
                             </div>
                             @endauth
+                    </div>
+                    <form action="#">
+                            <div class="row">
+                                    <input type="hidden" name="user_id" value="">
+                                    <div class="col-lg-12 mb-20">
+                                        <label>Họ và Tên <span>*</span></label>
+                                        <input type="text" value="" name="full_name" placeholder="Nguyễn Văn A">
+                                    </div>
+
+                                    <div class="col-12 mb-20">
+                                        <label>Địa chỉ <span>*</span></label>
+                                        <input type="text" value="" name="address" placeholder="Số nhà,đường,quận,huyện">
+                                    </div>
+                                    <div class="col-lg-6 mb-20">
+                                        <label>Phone<span>*</span></label>
+                                        <input type="text" name="phone" value="" placeholder="0972580430">
+                                    </div>
+                                    <div class="col-lg-6 mb-20">
+                                        <label> Email Address <span>*</span></label>
+                                        <input type="email" name="email" value="" placeholder="mail@gmail.com">
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="order-notes">
+                                            <label for="order_note">Order Notes</label>
+                                            <textarea id="order_note"
+                                                      placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-20">
+                                        <label for="account" data-toggle="collapse" data-target="#collapseOne"
+                                               aria-controls="collapseOne">Nếu chưa có tài khoản, bạn có thể tạo tại đây</label>
+                                        <a class="Returning" href="{{url('register')}}">Đăng ký</a>
+                                    </div>
+                            </div>
+                    </form>
                     </div>
                     <div class="col-lg-6 col-md-6">
                             <h3>Your order</h3>

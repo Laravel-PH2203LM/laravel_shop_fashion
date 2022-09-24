@@ -88,7 +88,7 @@ class CartController extends Controller
                 'total' => $cart->totalAmount,
                 'payment_id' => $request->payment_id,
                 'images' => $item->image,
-                'status' => 1
+                'status' => 0
             ]);
             }
             session(['cart' => []]);

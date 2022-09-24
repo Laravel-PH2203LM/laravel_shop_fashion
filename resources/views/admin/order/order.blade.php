@@ -57,22 +57,25 @@
                             @foreach($orders as $order)
                             <tr>
                                 @foreach($order->orders as $listord)
-                                <td ></td>
+                                <td width="10"><input type="checkbox" id="all"></td>
                                 <td>{{$listord->order_id}}</td>
                                 <td>{{$order->full_name}}</td>
                                 <td>{{$order->phone}}</td>
                                 <td>{{$listord->name}}</td>
                                 <td>{{$listord->qty}}</td>
                                 <td>{{number_format($listord->amount),0,0}}đ</td>
-                                <td>{{number_format($listord->total),0,0}}</td>
-                                <td><span class="badge bg-success">Hoàn thành</span></td>
+                                <td>{{number_format($listord->total += $listord->price_shipping),0,0}}đ</td>
+                                <td><span class="badge bg-success">{{$listord->status === 0 ? 'Đang xử lí' : 'Đã hoàn thành'}}</span></td>
                                 <form action="">
                                 <td>
                                     <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button></td>
                                 </td>
                                 </form>
-                                <td>
-                                    <button class="btn btn-primary btn-sm trash" type="submit" title="Xóa"><i class="fas fa-trash-alt"></i> </button>
+                                    <form>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm trash" type="submit" title="Xóa"><i class="fas fa-trash-alt"></i> </button>
+                                        </td>
+                                    </form>
                                 </tr>
                             @endforeach
                             </tbody>

@@ -135,7 +135,7 @@
                     </div>
                     <div class="form-group col-md-12">
                         <label class="control-label">Mô tả sản phẩm</label>
-                        <textarea class="form-control" name="description" id="content"></textarea>
+                        <textarea class="form-control" name="description" id="content">{{$product->description}}</textarea>
                         <script>
                             CKEDITOR.replace('content');
                         </script>

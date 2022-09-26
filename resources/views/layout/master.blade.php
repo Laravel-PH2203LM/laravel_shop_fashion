@@ -15,8 +15,13 @@
     <link rel="stylesheet" href="{{asset('fontend/fonts/fontawesome-webfont.woff2')}}">
     <link rel="stylesheet" href="{{asset('fontend/fonts/ionicons.ttf')}}">
     <link rel="stylesheet" href="{{asset('fontend/fonts/Simple-Line-Icons.woff2')}}">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>>
 {{-- EndCss --}}
+    <style>
+        .search_bar .search-ajax-result {
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -56,9 +61,11 @@
                         </div>
                         <div class="search_bar">
                             <form action="#">
-                                <input placeholder="Tìm kiếm..." type="text">
+                                <input placeholder="Tìm kiếm..." class="input-search-ajax" type="text">
                                 <button type="submit"><i class="ion-ios-search-strong"></i></button>
                             </form>
+                            <div class="search-ajax-result">
+                            </div>
                         </div>
                         <div class="cart_area">
                             <div class="cart_link">
@@ -138,10 +145,12 @@
                     <div class="row align-items-center">
                         <div class="col-lg-4">
                             <div class="search_bar">
-                                <form action="#">
-                                    <input placeholder="Tìm kiếm..." type="text" name="search">
+                                <form action="#" class="form-search">
+                                    <input placeholder="Tìm kiếm..." class="input-search-ajax" type="text" name="search">
                                     <button type="submit"><i class="ion-ios-search-strong"></i></button>
                                 </form>
+                                <div class="search-ajax-result">
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -166,7 +175,7 @@
                                 <ul>
                                     <li><a href="{{url('/')}}">Trang chủ<i class="fa"></i></a>
                                     </li>
-                                    <li class="mega_items"><a href="{{url('/shop')}}">Giỏ hàng</a>
+                                    <li class="mega_items"><a href="{{url('/shop')}}">Cửa hàng</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -276,7 +285,38 @@
 <script src="{{asset('fontend/js/main.js')}}"></script>@yield('js')
 <!-- end JS
 ============================================ -->
-
+        <script>
+            $('.input-search-ajax').keyup(function (){
+                var _token = 'csrf';
+                var _text = $(this).val();
+                var _url = "{{url('uploads')}}";
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/api/search?search='+_text,
+                    type: 'GET',
+                    success: function (res) {
+                        console.table(res)
+                        var _html = '';
+                        for (var pro of res) {
+                            var slug = convertToSlug(pro.name)
+                            _html += '<div class="media">';
+                            _html += '<a href="">';
+                            _html += '<img width="60px" src="'+ _url + '/'+pro.images.path+'">';
+                            _html += '</a>';
+                            _html += '<div class="media-body">';
+                            _html += '<h5 class="media heading" style="display:flex"><a href="{{url('shop/product')}}/'+pro.id+'-'+slug+'">'+pro.name+'</a></h5>';
+                            _html += '</div>'
+                            _html +='</div>'
+                        }
+                        $('.search-ajax-result').html(_html).show(20)
+                    }
+                })
+            })
+            function convertToSlug(Text) {
+                return Text.toLowerCase()
+                    .replace(/ /g, '-')
+                    .replace(/[^\w-]+/g, '');
+            }
+        </script>
 </body>
 
 </html>

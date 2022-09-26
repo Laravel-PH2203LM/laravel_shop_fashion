@@ -20,14 +20,5 @@ use App\Http\Controllers\AuthController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resources([
-    'home' => HomeController::class
-]);
-Route::resources([
-    'products' => ShopController::class
-]);
-Route::post('register',['App\Http\Controllers\AuthController','register'])->name('register');
-
-Route::post('login',['App\Http\Controllers\AuthController','login'])->name('login');
-Route::get('profile',['App\Http\Controllers\AuthController','profile'])->name('profile');
+Route::get('/search',[ShopController::class,'seachForm'])->name('seachForm');
 

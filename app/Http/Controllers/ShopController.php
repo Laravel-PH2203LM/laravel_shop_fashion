@@ -56,8 +56,18 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function seachForm()
     {
+        $products = Product::search()->get();
+        $data = [];
+        foreach($products as $product) {
+            $data[] = [
+                'id' => $product->id,
+                'name' => $product->name,
+                'images' => $product->ProductImage[0]
+            ];
+        }
+        return $data;
     }
 
     /**

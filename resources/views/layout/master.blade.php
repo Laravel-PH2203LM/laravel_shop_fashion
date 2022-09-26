@@ -286,30 +286,37 @@
 <!-- end JS
 ============================================ -->
         <script>
+            $('.search-ajax-result').hide();
             $('.input-search-ajax').keyup(function (){
                 var _token = 'csrf';
                 var _text = $(this).val();
                 var _url = "{{url('uploads')}}";
-                $.ajax({
-                    url: 'http://127.0.0.1:8000/api/search?search='+_text,
-                    type: 'GET',
-                    success: function (res) {
-                        console.table(res)
-                        var _html = '';
-                        for (var pro of res) {
-                            var slug = convertToSlug(pro.name)
-                            _html += '<div class="media">';
-                            _html += '<a href="">';
-                            _html += '<img width="60px" src="'+ _url + '/'+pro.images.path+'">';
-                            _html += '</a>';
-                            _html += '<div class="media-body">';
-                            _html += '<h5 class="media heading" style="display:flex"><a href="{{url('shop/product')}}/'+pro.id+'-'+slug+'">'+pro.name+'</a></h5>';
-                            _html += '</div>'
-                            _html +='</div>'
+                if(_text != '') {
+                    $.ajax({
+                        url: 'http://127.0.0.1:8000/api/search?search='+_text,
+                        type: 'GET',
+                        success: function (res) {
+                            console.table(res)
+                            var _html = '';
+                            for (var pro of res) {
+                                var slug = convertToSlug(pro.name)
+                                _html += '<div class="media">';
+                                _html += '<a href="">';
+                                _html += '<img width="60px" src="'+ _url + '/'+pro.images.path+'">';
+                                _html += '</a>';
+                                _html += '<div class="media-body">';
+                                _html += '<h5 class="media heading" style="display:flex"><a href="{{url('shop/product')}}/'+pro.id+'-'+slug+'">'+pro.name+'</a></h5>';
+                                _html += '</div>'
+                                _html +='</div>'
+                            }
+                            $('.search-ajax-result').show(20);
+                            $('.search-ajax-result').html(_html);
                         }
-                        $('.search-ajax-result').html(_html).show(20)
-                    }
-                })
+                    });
+                } else{
+                    $('.search-ajax-result').html('');
+                    $('.search-ajax-result').hide();
+                }
             })
             function convertToSlug(Text) {
                 return Text.toLowerCase()

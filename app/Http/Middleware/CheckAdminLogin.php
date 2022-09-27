@@ -18,7 +18,7 @@ class CheckAdminLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->level === 0) {
+        if(Auth::check() && Auth::user()->level === 0) {
             return $next($request);
         } else {
             return redirect()->route('login');

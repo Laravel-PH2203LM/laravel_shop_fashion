@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 
@@ -47,9 +48,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
-        //
+        return view('admin.order.order_detail',compact('order'));
     }
 
     /**
@@ -70,9 +71,12 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
-        //
+        $data = $request->only('status');
+        $orders = Order::where('id',$id);
+        $orders->update($data);
+        return redirect()->back();
     }
 
     /**

@@ -80,9 +80,5 @@ class ShopController extends Controller
     {
         //
     }
-    public function search()
-    {
-        return view('search');
-    }
 }
 

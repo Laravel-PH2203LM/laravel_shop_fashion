@@ -72,23 +72,27 @@ class CartController extends Controller
     // Xử lí đơn đặt hàng
     public function order(Request $request, ShoppingCart $cart)
     {
-        $data = $request->only('user_id','full_name','address','phone','email','payment_id');
-        $order = Order::create($data);
+        $data = $request->only('user_id','full_name','address','phone','email','payment_id','status','price_shipping');
+        $order = Order::create([
+            'user_id' => $data['user_id'],
+            'full_name' => $data['full_name'],
+            'address' => $data['address'],
+            'phone' => $data['phone'],
+            'email' => $data['email'],
+            'payment_id' => $data['payment_id'],
+            'status' => 0,
+            'price_shipping' => $cart->shipping
+        ]);
         if($order) {
         foreach($cart->items as $item) {
             OrderDetail::create([
                 'order_id' => $order->id,
                 'product_id' => $item->id,
                 'name' => $item->name,
-                'qty' => $item->quantity,
+                'quantity' => $item->quantity,
                 'color_id' => $item->color->id,
                 'size_id' => $item->size->id,
-                'amount' => $item->quantity * $item->price,
-                'price_shipping' => $cart->shipping,
-                'total' => $cart->totalAmount,
-                'payment_id' => $request->payment_id,
-                'images' => $item->image,
-                'status' => 0
+                'amount' => $item->quantity * $item->price
             ]);
             }
             session(['cart' => []]);

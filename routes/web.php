@@ -91,4 +91,6 @@ Route::prefix('admin')->middleware(\App\Http\Middleware\CheckAdminLogin::class)-
     Route::post('/them-thuoc-tinh', [ProductAttrController::class,'store']);
     /* End */
     Route::get('/don-dat-hang', [OrderController::class,'adminorder'])->name('adminorder');
+    Route::get('/chi-tiet-don-dat-hang/{order}', [OrderController::class,'show'])->name('order.show');
+    Route::get('/sua-don-dat-hang/{id}', [OrderController::class,'update'])->name('order.update');
 });

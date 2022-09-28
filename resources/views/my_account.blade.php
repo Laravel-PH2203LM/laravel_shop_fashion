@@ -47,13 +47,12 @@
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>STT</th>
+                                        <th>ID Đơn hàng</th>
                                         <th>Tên sản phẩm</th>
-                                        <th>Hình ảnh</th>
-                                        <th>Kích thước</th>
-                                        <th>Màu sắc</th>
-                                        <th>Tổng đơn hàng</th>
+                                        <th>Số lượng</th>
+                                        <th>Giá</th>
                                         <th>Trạng thái</th>
+                                        <th>Tổng đơn hàng</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -62,11 +61,17 @@
                                     <tr>
                                         <td>{{$listord->order_id}}</td>
                                         <td>{{$listord->name}}</td>
-                                        <td><image src="{{asset('uploads'.'/'.$listord->images)}}" width="150px"></image></td>
-                                        <td>{{$listord->size_id}}</td>
-                                        <td>{{$listord->color_id}}</td>
-                                        <td>{{$listord->total}}</td>
-                                        <td><span class="success">Completed</span></td>
+                                        <td>{{$listord->quantity}}</td>
+                                        <td>{{$listord->amount}}</td>
+                                        <td>@if($order->status == 0)
+                                                <span>Đang xử lý</span>
+                                                @elseif($order->status == 1)
+                                                <span>Đang giao hàng</span>
+                                                @else($order->status == 2)
+                                                <span>Đã giao hàng</span>
+                                                @endif
+                                        <td>{{number_format($order->getTotalAmount() + $order->price_shipping)}}đ</td>
+                                        </td>
                                     </tr>
                                         @endforeach
                                     @endforeach

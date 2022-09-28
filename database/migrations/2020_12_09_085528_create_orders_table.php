@@ -20,6 +20,9 @@ class CreateOrdersTable extends Migration
             $table->string('address');
             $table->string('email');
             $table->string('phone');
+            $table->double('price_shipping');
+            $table->integer('payment_id');
+            $table->integer('status');
 
             $table->timestamps();
         });

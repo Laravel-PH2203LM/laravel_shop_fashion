@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{asset('fontend/fonts/fontawesome-webfont.woff2')}}">
     <link rel="stylesheet" href="{{asset('fontend/fonts/ionicons.ttf')}}">
     <link rel="stylesheet" href="{{asset('fontend/fonts/Simple-Line-Icons.woff2')}}">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 {{-- EndCss --}}
     <style>
         .search_bar .search-ajax-result {

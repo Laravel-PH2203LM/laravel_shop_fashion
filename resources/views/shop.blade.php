@@ -67,7 +67,7 @@
                                     <select name="sort_by" id="short" onchange="this.form.submit();">
                                         <option selected value="">Tìm kiếm theo</option>
                                         <option value="name-ASC">Tìm theo tên A-Z</option>
-                                        <option  value="name-DESC">Tìm theo tên Z-A</option>
+                                        <option value="name-DESC">Tìm theo tên Z-A</option>
                                         <option value="price-ASC">Tìm theo giá: thấp tới cao</option>
                                         <option value="price-DESC">Tìm theo giá: cao tới thấp</option>
                                     </select>

@@ -6,6 +6,28 @@
         <div class="tile">
             <div class="tile-body">
                 <h3 class="tile-title">Danh sách sản phẩm</h3>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <select class="form-control" name="sort_by" id="exampleSelect1">
+                            <option selected value="">Tìm kiếm theo</option>
+                            <option value="name-ASC">Tìm theo tên A-Z</option>
+                            <option value="name-DESC">Tìm theo tên Z-A</option>
+                            <option value="price-ASC">Tìm theo giá: thấp tới cao</option>
+                            <option value="price-DESC">Tìm theo giá: cao tới thấp</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" name="status" id="exampleSelect1">
+                            <option selected value="">Trạng thái</option>
+                            <option value="1">Hiển thị</option>
+                            <option value="0">Tạm ẩn</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input name="search" class="form-control" id="">
+                        <button class="btn btn-success"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
                 <div class="row element-button">
                     <div class="col-sm-2">
 

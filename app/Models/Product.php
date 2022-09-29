@@ -55,7 +55,11 @@ class Product extends Model
         }
         if(request('search')) {
             $search = request('search');
-            $query = $query->where('name','like','%'.$search.'%')->get();
+            $query = $query->where('name','like','%'.$search.'%');
+        }
+        if(request('status')) {
+            $status = request('status');
+            $query = $query->where('status','like','%'.$status.'%')->get();
         }
     }
 }

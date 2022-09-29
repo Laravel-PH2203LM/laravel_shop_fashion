@@ -178,6 +178,14 @@ class ProductController extends Controller
         return redirect()->route('product');
     }
 
+    public function update_status(Request $request,$id)
+    {
+        $data = $request->only('status');
+        $product = Product::where('id',$id);
+        $product->update($data);
+        return redirect()->back();
+    }
+
     /**
      * Remove the specified resource from storage.
      *

@@ -52,7 +52,14 @@
                             <td>{{number_format($product->price),0,0}}đ</td>
                             <td>{{number_format($product->discount),0,0}}đ</td>
                             <td>{{$product->ProductCategory->name}}</td>
-                            <td><span class="{{$product->status == '1' ? 'badge bg-success' : 'badge bg-danger'}}">{{$product->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span></td>
+                            <td>
+                            <form action="{{route('update_status', $product->id)}}">
+                                <select name="status" onchange="this.form.submit();">
+                                    <option {{$product->status == 1 ? 'selected' : ''}} value="1">Hiển thị</option>
+                                    <option {{$product->status == 0 ? 'selected' : ''}} value="0">Tạm ẩn</option>
+                                </select>
+                            </form>
+                            </td>
                             <td>
                                 <a href="{{ route('product_edit', ['id' => $product->id]) }}">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

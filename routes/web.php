@@ -73,6 +73,7 @@ Route::prefix('admin')->middleware(\App\Http\Middleware\CheckAdminLogin::class)-
     Route::post('/them-san-pham', [ProductController::class,'store']);
     Route::get('/sua-san-pham-{id}', [ProductController::class,'edit'])->name('product_edit');
     Route::post('/sua-san-pham-{id}', [ProductController::class,'update']);
+    Route::get('/sua-status-san-pham-{id}', [ProductController::class,'update_status'])->name('update_status');
     Route::get('/xoa-san-pham-{product}', [ProductController::class,'destroy'])->name('product_del');
     /* End*/
 

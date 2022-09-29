@@ -19,4 +19,7 @@ class OrderDetail extends Model
     public function size() {
         return $this->hasOne(Attribute::class,'id','size_id');
     }
+    public function color() {
+        return $this->hasOne(Attribute::class,'id','color_id');
+    }
 }

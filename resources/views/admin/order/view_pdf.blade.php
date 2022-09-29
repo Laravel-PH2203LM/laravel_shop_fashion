@@ -24,22 +24,30 @@
     <tr>
         <th>Tên sản phẩm</th>
         <th>Số lượng</th>
+        <th>Size</th>
+        <th>Color</th>
         <th>Đơn giá</th>
     </tr>
     @foreach($data->orders as $list)
     <tr>
         <td>{{$list->name}}</td>
         <td>{{$list->quantity}}</td>
+        <td>{{$list->size->name}}</td>
+        <td>{{$list->color->name}}</td>
         <td>{{number_format($list->amount)}}d</td>
 
     </tr>
     @endforeach
     <tr>
         <td></td>
+        <td></td>
+        <td></td>
         <td>Phí ship</td>
         <td>30,000d</td>
     </tr>
     <tr>
+        <td></td>
+        <td></td>
         <td></td>
         <td>Tổng</td>
         <td>{{number_format($data->getTotalAmount() + $data->getTotalQtt()),0,0}}d</td>

@@ -29,7 +29,6 @@
                         <ul role="tablist" class="nav flex-column dashboard-list">
                             <li><a href="#dashboard" data-toggle="tab" class="nav-link active">Bảng điều khiển</a></li>
                             <li> <a href="#orders" data-toggle="tab" class="nav-link">Đơn đặt hàng</a></li>
-                            <li><a href="#downloads" data-toggle="tab" class="nav-link">Tải xuống</a></li>
                             <li><a href="#address" data-toggle="tab" class="nav-link">Địa chỉ</a></li>
                             <li><a href="{{url('logout')}}" class="nav-link">Đăng xuất</a></li>
                         </ul>
@@ -49,6 +48,8 @@
                                     <tr>
                                         <th>ID Đơn hàng</th>
                                         <th>Tên sản phẩm</th>
+                                        <th>Kích thước</th>
+                                        <th>Màu sắc</th>
                                         <th>Số lượng</th>
                                         <th>Giá</th>
                                         <th>Trạng thái</th>
@@ -61,6 +62,8 @@
                                     <tr>
                                         <td>{{$listord->order_id}}</td>
                                         <td>{{$listord->name}}</td>
+                                        <td>{{$listord->size->name}}</td>
+                                        <td>{{$listord->color->name}}</td>
                                         <td>{{$listord->quantity}}</td>
                                         <td>{{$listord->amount}}</td>
                                         <td>@if($order->status == 0)
@@ -75,35 +78,6 @@
                                     </tr>
                                         @endforeach
                                     @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="downloads">
-                            <h3>Tải xuống</h3>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>Product</th>
-                                        <th>Downloads</th>
-                                        <th>Expires</th>
-                                        <th>Download</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Shopnovilla - Free Real Estate PSD Template</td>
-                                        <td>May 10, 2018</td>
-                                        <td><span class="danger">Expired</span></td>
-                                        <td><a href="#" class="view">Click Here To Download Your File</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Organic - ecommerce html template</td>
-                                        <td>Sep 11, 2018</td>
-                                        <td>Never</td>
-                                        <td><a href="#" class="view">Click Here To Download Your File</a></td>
-                                    </tr>
                                     </tbody>
                                 </table>
                             </div>

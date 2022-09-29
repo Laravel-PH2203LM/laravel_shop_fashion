@@ -19,6 +19,8 @@
                             <th>ID SP</th>
                             <th>Tên SP</th>
                             <th>Số lượng</th>
+                            <th>Size</th>
+                            <th>Color</th>
                             <th>Giá</th>
                         </tr>
                         </thead>
@@ -29,6 +31,8 @@
                                 <td>{{$orderdt->product_id}}</td>
                                 <td>{{$orderdt->prod->name}}</td>
                                 <td>{{$orderdt->quantity}}</td>
+                                <td>{{$orderdt->size->name}}</td>
+                                <td>{{$orderdt->color->name}}</td>
                                 <td>{{number_format($orderdt->quantity * $orderdt->amount)}}đ</td>
                             </tr>
                         @endforeach

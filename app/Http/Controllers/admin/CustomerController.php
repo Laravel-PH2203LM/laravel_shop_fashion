@@ -13,7 +13,7 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function customer()
     {
         $users = User::all();
         return view('admin.customer.customer',compact('users'));
@@ -71,7 +71,10 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->only('level');
+        $user = User::where('id',$id);
+        $user->update($data);
+        return redirect()->back();
     }
 
     /**

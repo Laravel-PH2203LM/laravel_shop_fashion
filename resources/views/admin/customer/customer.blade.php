@@ -34,7 +34,14 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->address}}</td>
                 <td>{{$user->phone}}</td>
-                <td>{{$user->level == '1' ? 'Người dùng' : 'Admin'}}</td>
+                <td>
+                    <form action="{{route('customer.update',$user->id)}}">
+                        <select name="level" onchange="this.form.submit();">
+                            <option {{$user->level == 0 ? 'selected' : ''}} value="0">Admin</option>
+                            <option {{$user->level == 1 ? 'selected' : ''}} value="1">Người dùng</option>
+                        </select>
+                    </form>
+                </td>
                 <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
                     onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
                   </button>

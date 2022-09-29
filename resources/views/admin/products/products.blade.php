@@ -38,9 +38,8 @@
                     <thead>
                         <tr>
                             <th>Tên sản phẩm</th>
-                            <th>Giá tiền</th>
-                            <th>Giảm giá</th>
                             <th>Danh mục</th>
+                            <th>Thương hiệu</th>
                             <th>Trạng thái</th>
                             <th>Chức năng</th>
                         </tr>
@@ -49,9 +48,8 @@
                         @foreach ($products as $product)
                         <tr>
                             <td>{{$product->name}}</td>
-                            <td>{{number_format($product->price),0,0}}đ</td>
-                            <td>{{number_format($product->discount),0,0}}đ</td>
                             <td>{{$product->ProductCategory->name}}</td>
+                            <td>{{$product->brand->name}}</td>
                             <td>
                             <form action="{{route('update_status', $product->id)}}">
                                 <select name="status" onchange="this.form.submit();">

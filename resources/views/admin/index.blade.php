@@ -50,15 +50,15 @@
           <li><a class="app-menu__item {{ request()->is('admin/trang-chu') ? 'haha' : '' }}"
                  href="{{url('admin/trang-chu')}}"><i class='app-menu__icon bx bx-cart-alt'></i>
                   <span class="app-menu__label">Trang chủ</span></a></li>
-          <li><a class="app-menu__item {{ request()->is('admin/danh-muc') ? 'haha' : '' }}"
-                 href="{{url('admin/danh-muc')}}"><i
-                      class='app-menu__icon bx bx-purchase-tag-alt'></i><span
-                      class="app-menu__label">Danh mục sản phẩm</span></a>
-          </li>
           <li><a class="app-menu__item {{ request()->is('admin/thuong-hieu') ? 'haha' : '' }}"
                  href="{{url('admin/thuong-hieu')}}"><i
                       class='app-menu__icon bx bx-purchase-tag-alt'></i><span
                       class="app-menu__label">Danh sách hãng</span></a>
+          </li>
+          <li><a class="app-menu__item {{ request()->is('admin/danh-muc') ? 'haha' : '' }}"
+                 href="{{url('admin/danh-muc')}}"><i
+                      class='app-menu__icon bx bx-purchase-tag-alt'></i><span
+                      class="app-menu__label">Danh mục sản phẩm</span></a>
           </li>
           <li><a class="app-menu__item {{ request()->is('admin/thuoc-tinh') ? 'haha' : '' }}"
                  href="{{url('admin/thuoc-tinh')}}"><i

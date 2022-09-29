@@ -34,7 +34,7 @@ class CategoryRequest extends FormRequest
             'name.required' => 'Tên danh mục không được để trống',
             'name.min' => 'Tên tối thiểu 3 kí tự',
             'name.max' => 'Tên tối đa 50 kí tự',
-            'status' => 'Trạng thái không được bỏ trống'
+            'status.required' => 'Trạng thái không được bỏ trống'
         ];
     }
 }

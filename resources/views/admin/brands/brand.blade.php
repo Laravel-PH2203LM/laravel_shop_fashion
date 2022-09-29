@@ -29,26 +29,26 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($brands as $brand)
+                        @foreach ($brand as $brands)
                             <tr>
                                 <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                                <td>{{ $brand->id }}</td>
-                                <td>{{ $brand->name }}</td>
+                                <td>{{ $brands->id }}</td>
+                                <td>{{ $brands->name }}</td>
                                 <td><span
-                                        class="{{$brand->status == '1' ? 'badge bg-success' : 'badge bg-danger'}}">{{$brand->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span>
+                                        class="{{$brands->status == '1' ? 'badge bg-success' : 'badge bg-danger'}}">{{$brands->status == '1' ? 'Hiển thị' : 'Tạm ẩn'}}</span>
                                 </td>
-                                <td>{{ $brand->created_at->format('d-m-Y H:i:s') }}</td>
-                                <td>{{ $brand->updated_at->format('d-m-Y H:i:s') }}</td>
+                                <td>{{ $brands->created_at->format('d-m-Y H:i:s') }}</td>
+                                <td>{{ $brands->updated_at->format('d-m-Y H:i:s') }}</td>
                                 <td>
-                                    <a href="{{ route('brand_edit', ['id' => $brand->id]) }}">
+                                    <a href="{{ route('brand_edit', ['id' => $brands->id]) }}">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                    <a href="{{ route('brand_del', ['id' => $brand->id]) }}"
+                                    <a href="{{ route('brand_del', ['id' => $brands->id]) }}"
                                        onclick="return confirm('Bạn có chắc muốn đăng xuất nó khỏi thế giới hay không?');">
                                         <i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
-                        </tbody>
                         @endforeach
+                        </tbody>
                     </table>
                 </div>
                 <div class="d-flex">

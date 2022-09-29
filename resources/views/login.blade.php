@@ -47,8 +47,8 @@
                                     Ghi nhớ
                                 </label>
                                 <button type="submit">Đăng nhập</button>
-
                             </div>
+                            <p style="margin-top: 1rem">Bạn chưa có tài khoản? <a style="color: #ff6a28" href="{{url('/register')}}">Đăng ký ngay</a></p>
 
                         </form>
                     </div>

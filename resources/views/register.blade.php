@@ -35,34 +35,53 @@
                             <p>
                                 <label>Tên tài khoản<span>*</span></label>
                                 <input type="text" name="name">
+                                @error('name')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
                             </p>
                             <p>
                                 <label>Địa chỉ Email<span>*</span></label>
                                 <input type="text" name="email">
+                                @error('email')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
                              </p>
                             <p>
                                 <label>Họ và Tên<span>*</span></label>
                                 <input type="text" name="full_name">
+                                @error('full_name')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
                             </p>
                             <p>
                                 <label>Địa chỉ <span>*</span></label>
                                 <input type="text" name="address">
+                                @error('address')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
                             </p>
                             <p>
                                 <label>Số điện thoại<span>*</span></label>
                                 <input type="text" name="phone">
+                                @error('phone')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
                             </p>
                              <p>
                                 <label>Mật khẩu <span>*</span></label>
                                 <input type="password" name="password">
+                                 @error('password')
+                                 <span style="color:red">{{$message}}</span>
+                                 @enderror
                              </p>
                             <p>
                                 <label>Nhập lại mật khẩu <span>*</span></label>
                                 <input type="password" name="password_confirmation">
+                                @error('password')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
                             </p>
-                            @error('password')
-                            <span style="color:#ff6a28">{{$message}}</span>
-                            @enderror
+                            <div></div> Bạn đã có tài khoản ->  <a style="color: red" href="{{url('/login')}}">Đăng nhập</a>
                             <div class="login_submit">
                                 <button type="submit">Đăng ký</button>
                             </div>

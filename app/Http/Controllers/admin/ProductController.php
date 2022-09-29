@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\ProductAttribute;
@@ -47,7 +48,7 @@ class ProductController extends Controller
      */
 
     //Todo Code chỉ chạy được, sẽ cần sửa lại để tối ưu hơn
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         //dd($request->all());
         $product = Product::create([
@@ -133,7 +134,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     //Todo Code chỉ chạy được, sẽ cần sửa lại để tối ưu hơn
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
         $product = Product::find($id);
         $product->update([

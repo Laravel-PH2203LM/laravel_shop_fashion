@@ -13,29 +13,14 @@
                         </div>
                     </div>
                 </div>
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $message }}</strong>
-                    </div>
-                    <img src="images/{{ Session::get('image') }}">
-                @endif
-
-                @if (count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <strong>Lỗi</strong>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <form class="row" method="POST" enctype="multipart/form-data" action="{{route('product_edit',$product->id)}}">
                     @csrf
                     <div class="form-group col-md-3">
                         <label class="control-label">Tên sản phẩm</label>
                         <input class="form-control" value="{{$product->name}}" type="text" name="name">
+                        @error('name')
+                        <span style="color:red">{{$message}}</span>
+                        @enderror
                     </div>
 
                     <div class="form-group col-md-3">
@@ -59,6 +44,9 @@
                     <div class="form-group col-md-3">
                         <label class="control-label">Giá bán</label>
                         <input class="form-control" value="{{$product->price}}" type="text" name="price">
+                        @error('price')
+                        <span style="color:red">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="form-group col-md-3">
                         <label class="control-label">Giảm giá</label>
@@ -67,6 +55,9 @@
                     <div class="form-group col-md-3">
                         <label class="control-label">Số lượng</label>
                         <input class="form-control" type="text" value="{{$product->qty}}" name="qty">
+                        @error('qty')
+                        <span style="color:red">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="form-group col-md-3">
                         <label for="exampleSelect1" class="control-label">Trạng thái</label>
@@ -74,6 +65,9 @@
                             <option>-- Chọn trạng thái --</option>
                             <option value="1" {{$product->status == '1' ? 'selected' : ''}}>Hiển thị</option>
                             <option value="0" {{$product->status == '0' ? 'selected' : ''}}>Tạm ẩn</option>
+                            @error('status')
+                            <span style="color:red">{{$message}}</span>
+                            @enderror
                         </select>
                     </div>
                     <div class="col-md-2">

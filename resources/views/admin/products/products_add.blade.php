@@ -13,29 +13,14 @@
                         </div>
                     </div>
                 </div>
-                @if ($message = Session::get('success'))
-                    <div class="alert alert-success alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $message }}</strong>
-                    </div>
-                    <img src="images/{{ Session::get('image') }}">
-                @endif
-
-                @if (count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <strong>Lỗi</strong>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <form class="row" method="POST" enctype="multipart/form-data" action="{{route('product_add')}}">
                     @csrf
                     <div class="form-group col-md-3">
                         <label class="control-label">Tên sản phẩm</label>
                         <input class="form-control" type="text" name="name">
+                        @error('name')
+                        <span style="color:red">{{$message}}</span>
+                        @enderror
                     </div>
 
                     <div class="form-group col-md-3">
@@ -46,6 +31,9 @@
                                 <option value="{{$cat->id}}">{{$cat->name}}</option>
                             @endforeach
                         </select>
+                        @error('product_category_id')
+                        <span style="color:red">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="form-group col-md-3">
                         <label for="exampleSelect1" class="control-label">Thương hiệu</label>
@@ -55,10 +43,16 @@
                                 <option value="{{$brand->id}}">{{$brand->name}}</option>
                             @endforeach
                         </select>
+                        @error('brand_id')
+                        <span style="color:red">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="form-group col-md-3">
                         <label class="control-label">Giá bán</label>
                         <input class="form-control" type="text" name="price">
+                        @error('price')
+                        <span style="color:red">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="form-group col-md-3">
                         <label class="control-label">Giảm giá</label>
@@ -67,6 +61,9 @@
                     <div class="form-group col-md-3">
                         <label class="control-label">Số lượng</label>
                         <input class="form-control" type="text" name="qty">
+                        @error('qty')
+                        <span style="color:red">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="form-group col-md-3">
                         <label for="exampleSelect1" class="control-label">Trạng thái</label>
@@ -75,6 +72,9 @@
                                 <option value="1">Hiển thị</option>
                                 <option value="0">Tạm ẩn</option>
                         </select>
+                        @error('status')
+                        <span style="color:red">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="col-md-3">
 
@@ -94,6 +94,9 @@
                                         <option value="{{$size->id}}">{{$size->name}}</option>
                                     @endforeach
                                 </select>
+                                @error('size_id[]')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="exampleSelect1" class="control-label">Màu sắc</label>
@@ -102,6 +105,9 @@
                                         <option value="{{$color->id}}">{{$color->name}}</option>
                                     @endforeach
                                 </select>
+                                @error('color_id[]')
+                                <span style="color:red">{{$message}}</span>
+                                @enderror
                             </div>
                         </div>
                     </div>

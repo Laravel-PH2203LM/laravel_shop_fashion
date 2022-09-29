@@ -93,4 +93,7 @@ Route::prefix('admin')->middleware(\App\Http\Middleware\CheckAdminLogin::class)-
     Route::get('/don-dat-hang', [OrderController::class,'adminorder'])->name('adminorder');
     Route::get('/chi-tiet-don-dat-hang/{order}', [OrderController::class,'show'])->name('order.show');
     Route::get('/sua-don-dat-hang/{id}', [OrderController::class,'update'])->name('order.update');
+    Route::get('/xuat-excel-don-dat-hang/', [OrderController::class,'export'])->name('export');
+    Route::get('/xem-pdf-don-dat-hang/', [OrderController::class,'PDF'])->name('PDF');
+    Route::get('/xuat-pdf-don-dat-hang/{id}', [OrderController::class,'PDF_Export'])->name('PDF_Export');
 });

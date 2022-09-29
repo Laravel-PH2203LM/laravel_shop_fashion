@@ -5,7 +5,13 @@
         <div class="col-md-12">
             <div class="tile">
                 <div class="tile-body">
-
+                    <div class="row element-button">
+                        <div class="col-sm-2">
+                            <a class="btn btn-delete btn-sm pdf-file" href="{{route('PDF_Export',$order->id)}}"
+                               type="button" title="In" onclick="myFunction(this)"><i
+                                    class="fas fa-file-pdf"></i> Xuất hóa đơn PDF</a>
+                        </div>
+                    </div>
                     <table class="table table-hover table-bordered" id="sampleTable">
                         <thead>
                         <tr>
@@ -28,11 +34,11 @@
                         @endforeach
                         </tbody>
                         <tfoot>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><strong>Tổng tiền:</strong></td>
-                            <td><strong>{{number_format($order->getTotalAmount())}}đ</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><strong>Tổng tiền:</strong></td>
+                        <td><strong>{{number_format($order->getTotalAmount())}}đ</strong></td>
                         </tfoot>
 
                     </table>

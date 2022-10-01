@@ -80,7 +80,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section_title">
-                        <h2>Sản phẩm của chúng tôi</h2>
+                        <h2>Sản phẩm mới nhất của chúng tôi</h2>
                         <p>Các sản phẩm thiết kế hiện đại,mới nhất</p>
                     </div>
                 </div>
@@ -97,11 +97,16 @@
                                         <div class="quick_button">
                                             <a href="{{url('shop/product',$product->id)}}" title="quick_view">Xem sản phẩm</a>
                                         </div>
-                                        @if($product->discount != null)
-                                        <div class="product_sale">
-                                            <span>Sale</span>
+                                        <div class="double_base">
+                                            <div class="label_product">
+                                                <span>new</span>
+                                            </div>
+                                            @if($product->discount != null)
+                                                <div class="product_sale">
+                                                    <span>@php $sale = 100-($product->discount / $product->price) * 100; echo ceil($sale)@endphp%</span>
+                                                </div>
+                                            @endif
                                         </div>
-                                        @endif
                                     </div>
                                     <div class="product_content">
                                         <h3><a href="">{{$product->name}}</a></h3>
@@ -161,15 +166,15 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section_title">
-                        <h2>Sản phẩm thịnh hành</h2>
-                        <p>Sản phẩm ấn tượng và bán chạy nhất</p>
+                        <h2>Sản phẩm đang được giảm giá</h2>
+                        <p>Sản phẩm ấn tượng và giảm giá nhiều nhất</p>
                     </div>
                 </div>
             </div>
             <div class="product_area">
                 <div class="row">
                     <div class="product_carousel product_three_column4 owl-carousel">
-                        @foreach($products as $product)
+                        @foreach($productsSale as $product)
                             <div class="col-lg-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
@@ -180,7 +185,7 @@
                                         </div>
                                         @if($product->discount != null)
                                             <div class="product_sale">
-                                                <span>Sale</span>
+                                                <span>@php $sale = 100-($product->discount / $product->price) * 100; echo ceil($sale)@endphp%</span>
                                             </div>
                                         @endif
                                     </div>

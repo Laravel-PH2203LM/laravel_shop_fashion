@@ -24,8 +24,9 @@ class HomeController extends Controller
      */
     public function index(ShoppingCart $cart)
     {
-        $products = Product::where('status','1')->search()->limit(6)->get();
-        return view('index',compact('products','cart'));
+        $products = Product::orderBy('created_at','DESC')->where('status','1')->search()->limit(6)->get();
+        $productsSale = Product::orderBy('created_at','DESC')->where('discount', '>', 0)->search()->limit(6)->get();
+        return view('index',compact('products','cart','productsSale'));
     }
 
     /**

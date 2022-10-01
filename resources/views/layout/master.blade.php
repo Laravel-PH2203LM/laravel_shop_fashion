@@ -74,16 +74,16 @@
                         </div>
                         <div id="menu" class="text-left ">
                             <ul class="offcanvas_main_menu">
-                                <li class="active">
+                                <li class="{{ request()->is('/') ? 'active' : '' }}">
                                     <a href="{{url('/')}}">Trang chủ</a>
                                 </li>
-                                <li class="active">
-                                    <a href="{{url('/shop')}}">Sản phẩm</a>
+                                <li class="{{ request()->is('shop') ? 'active' : '' }}">
+                                    <a href="{{url('/shop')}}">Cửa hàng</a>
                                 </li>
-                                <li class="menu-item-has-children">
+                                <li class="menu-item-has-children {{ request()->is('about') ? 'active' : '' }}">
                                     <a href="{{url('/about')}}">Chúng tôi</a>
                                 </li>
-                                <li class="menu-item-has-children">
+                                <li class="menu-item-has-children {{ request()->is('contact') ? 'active' : '' }}">
                                     <a href="{{url('/contact')}}">Liên hệ</a>
                                 </li>
                             </ul>
@@ -208,10 +208,10 @@
                             <div class="main_menu">
                                 <nav>
                                     <ul>
-                                        <li class="active"><a href="{{url('/')}}">Trang chủ</a></li>
-                                        <li><a href="{{url('/shop')}}">Của hàng</a></li>
-                                        <li><a href="{{url('/about')}}">Chúng tôi</a></li>
-                                        <li><a href="{{url('/contact')}}">Liên hệ</a></li>
+                                        <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="{{url('/')}}">Trang chủ</a></li>
+                                        <li class="{{ request()->is('shop') ? 'active' : '' }}"><a href="{{url('/shop')}}">Của hàng</a></li>
+                                        <li class="{{ request()->is('about') ? 'active' : '' }}"><a href="{{url('/about')}}">Chúng tôi</a></li>
+                                        <li class="{{ request()->is('contact') ? 'active' : '' }}"><a href="{{url('/contact')}}">Liên hệ</a></li>
                                     </ul>
                                 </nav>
                             </div>

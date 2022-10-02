@@ -69,7 +69,7 @@
                         </div>
                         <div class="cart_area">
                             <div class="cart_link">
-                                <a href="{{url('cart')}}"><i class="fa fa-shopping-basket"></i>Giỏ hàng</a>
+                                <a href="{{url('cart')}}"><i class="fa fa-shopping-basket"></i>Giỏ hàng {{session()->get('totalQuantity')}}</a>
                             </div>
                         </div>
                         <div id="menu" class="text-left ">
@@ -161,7 +161,7 @@
                         <div class="col-lg-4">
                             <div class="cart_area">
                                 <div class="cart_link">
-                                    <a href="{{url('cart')}}"><i class="fa fa-shopping-basket"></i>{{session()->get('totalQuantity')}} sản phẩm</a>
+                                    <a href="{{url('cart')}}"><i class="fa fa-shopping-basket"></i>Giỏ hàng</a>
                                     </div>
                                 </div>
                             </div>
@@ -182,7 +182,7 @@
                         </div>
                     </div>
                     <div class="logo_container">
-                        <a href="index.html"><img src="{{asset('fontend/img/logo/logo.png')}}" alt=""></a>
+                        <a href="{{url('/')}}"><img src="{{asset('fontend/img/logo/logo.png')}}" alt=""></a>
                     </div>
                     <div class="right_menu">
                         <div class="main_menu">
@@ -237,8 +237,8 @@
                         <div class="widgets_container contact_us">
                             <h3>Liên hệ chúng tôi</h3>
                             <div class="footer_contact">
-                                <p>Address: Số nhà 236, Đường Hoàng Quốc Việt , Phường Cổ Nhuế, Thành phố Hà Nội</p>
-                                <p>Phone: <a href="tel:+(+84)972580430">(+84) 972580430</a> </p>
+                                <p>Địa chỉ: 236, Đường Hoàng Quốc Việt , Phường Cổ Nhuế, Thành phố Hà Nội</p>
+                                <p>Điện thoại: <a href="tel:+(+84)972580430">(+84) 972580430</a> </p>
                                 <p>Email: <a href="mailto:dinhsan200@gmail.com">dinhsan200@gmail.com</a></p>
                                 <ul>
                                     <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>

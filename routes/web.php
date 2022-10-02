@@ -23,8 +23,8 @@ use App\Http\Controllers\admin\OrderController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Xử lí tất cả liên quan đến trang chủ
 
+// Xử lí tất cả liên quan đến trang chủ
 Route::get('/login',[AuthController::class,'login'])->name('login');
 Route::post('/login',[AuthController::class,'postLogin']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
@@ -50,6 +50,7 @@ Route::group(['prefix'=>'shop/'],function() {
     Route::get('category/{id}',[ShopController::class,'categoryFill'])->name('categoryFill');
     Route::get('brand/{id}',[ShopController::class,'brandFill'])->name('brandFill');
     Route::get('product/{id}',[ShopController::class,'show'])->name('show');
+    Route::post('product/{id}',[ShopController::class,'postComment']);
     Route::post('product/rating/{id}',[ShopController::class,'rating'])->name('rating');
     Route::get('product/getcolor/{pid}/{sid}',[ShopController::class,'getColor'])->name('getColor');
     Route::get('addcart/{pro}',[CartController::class,'add'])->name('cart.add');

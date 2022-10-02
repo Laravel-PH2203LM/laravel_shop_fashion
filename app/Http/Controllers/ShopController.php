@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\ProductAttribute;
 use App\Models\ProductCategory;
 use App\Models\Attribute;
+use App\Models\ProductComment;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use App\Http\Resources\ProductResource;
@@ -46,7 +47,13 @@ class ShopController extends Controller
     public function show($id)
     {
         $products = Product::find($id);
-        return view('product', compact('products'));
+        $avgRating = 0;
+        $sumRating = array_sum(array_column($products->ProductComment->toArray(),'rating'));
+        $countRating = count($products->ProductComment);
+        if($countRating != 0) {
+            $avgRating = $sumRating/$countRating;
+        }
+        return view('product', compact('products','avgRating'));
     }
 
     /**
@@ -70,15 +77,10 @@ class ShopController extends Controller
         return $data;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function postComment(Request $request)
     {
-        //
+        ProductComment::create($request->all());
+        return redirect()->back();
     }
 }
 

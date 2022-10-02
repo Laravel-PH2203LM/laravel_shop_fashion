@@ -57,13 +57,14 @@
                             <h1>{{ $products->name }}</h1>
                             <div class=" product_ratting">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li class="review"><a href="#"> 1 review </a></li>
-                                    <li class="review"><a href="#"> Write a review </a></li>
+                                    @for($i = 1; $i <= 5; $i++)
+                                        @if($i <= $avgRating)
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        @else
+                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                        @endif
+                                    @endfor
+                                    <li class="review"></li> {{count($products->ProductComment)}} đánh giá</li>
                                 </ul>
                             </div>
                             <div class="product_price">
@@ -148,39 +149,59 @@
                                     <p>{{ $products->content }}</p>
                                 </div>
                                 <div class="product_info_inner">
-                                    <div class="product_ratting mb-10">
+                                    @foreach($products->ProductComment as $comment)
+                                    <div class="product_ratting mb-12">
                                         <ul>
+                                            @for($i = 1; $i <= 5; $i++)
+                                                @if($i <= $avgRating)
                                             <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                @else
+                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                                @endif
+                                            @endfor
                                         </ul>
-                                        <strong>Posthemes</strong>
-                                        <p>09/07/2018</p>
                                     </div>
                                     <div class="product_demo">
-                                        <strong>demo</strong>
-                                        <p>That's OK!</p>
+                                        <strong>{{$comment->name}}</strong>
+                                        <p>{{$comment->messages}}</p>
                                     </div>
+                                    @endforeach
                                 </div>
                                 <div class="product_review_form">
-                                    <form action="#">
-                                        <h2>Add a review </h2>
-                                        <p>Your email address will not be published. Required fields are marked </p>
+                                    <form action="#" method="post">
+                                        @csrf
+                                        <h2>Thêm đánh giá của bạn </h2>
+                                        <p>Địa chỉ email của bạn sẽ không được công bố.</p>
                                         <div class="row">
                                             <div class="col-12">
-                                                <label for="review_comment">Your review </label>
-                                                <textarea name="comment" id="review_comment"></textarea>
+                                                <label for="review_comment">Đánh giá của bạn </label>
+                                                <textarea name="messages" id="review_comment"></textarea>
                                             </div>
+                                           @auth <input type="hidden" name="user_id" value="{{Auth::user()->id}}">@endauth
+                                            <input type="hidden" name="product_id" value="{{$products->id}}">
                                             <div class="col-lg-6 col-md-6">
                                                 <label for="author">Name</label>
-                                                <input id="author" type="text">
+                                                <input id="author" name="name" type="text">
 
                                             </div>
                                             <div class="col-lg-6 col-md-6">
                                                 <label for="email">Email </label>
-                                                <input id="email" type="text">
+                                                <input id="email" name="email" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="personal-rating">
+                                            <h6>Your Rating</h6>
+                                            <div class="rate">
+                                                <input type="radio" id="star5" name="rating" value="5" />
+                                                <label for="star5" title="text">5 stars</label>
+                                                <input type="radio" id="star4" name="rating" value="4" />
+                                                <label for="star4" title="text">4 stars</label>
+                                                <input type="radio" id="star3" name="rating" value="3" />
+                                                <label for="star3" title="text">3 stars</label>
+                                                <input type="radio" id="star2" name="rating" value="2" />
+                                                <label for="star2" title="text">2 stars</label>
+                                                <input type="radio" id="star1" name="rating" value="1" />
+                                                <label for="star1" title="text">1 star</label>
                                             </div>
                                         </div>
                                         <button type="submit">Submit</button>
@@ -200,8 +221,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section_title">
-                        <h2>Related Products</h2>
-                        <p>Contemporary, minimal and modern designs embody the Lavish Alice handwriting</p>
+                        <h2>Sản phẩm liên quan</h2>
                     </div>
                 </div>
             </div>

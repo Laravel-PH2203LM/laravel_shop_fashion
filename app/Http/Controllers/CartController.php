@@ -74,6 +74,7 @@ class CartController extends Controller
     // Xử lí đơn đặt hàng
     public function order(Request $request, ShoppingCart $cart)
     {
+        // Nếu trong giỏ hàng chưa có sản phẩm nào sẽ quay về shop để đặt
         if($cart->items != '') {
             return redirect()->route('shop');
         } else {

@@ -50,6 +50,9 @@
           <li><a class="app-menu__item {{ request()->is('admin/trang-chu') ? 'haha' : '' }}"
                  href="{{url('admin/trang-chu')}}"><i class='app-menu__icon bx bx-cart-alt'></i>
                   <span class="app-menu__label">Trang chủ</span></a></li>
+          <li><a class="app-menu__item" href="{{url('admin/doanh-thu')}}"><i
+                      class='app-menu__icon bx bx-pie-chart-alt-2'></i><span class="app-menu__label">Báo cáo doanh thu</span></a>
+          </li>
           <li><a class="app-menu__item {{ request()->is('admin/thuong-hieu') ? 'haha' : '' }}"
                  href="{{url('admin/thuong-hieu')}}"><i
                       class='app-menu__icon bx bx-purchase-tag-alt'></i><span

@@ -58,6 +58,7 @@ Route::group(['prefix'=>'shop/'],function() {
 
 Route::prefix('admin')->middleware(\App\Http\Middleware\CheckAdminLogin::class)->group(function () {
     Route::get('/trang-chu', [AdminHomeController::class,'home'])->name('home');
+    Route::get('/doanh-thu', [AdminHomeController::class,'dashbroad'])->name('dashbroad');
     /* Danh mục */
     Route::get('/danh-muc', [CategoriesController::class,'category'])->name('category');
     Route::get('/them-danh-muc', [CategoriesController::class,'create'])->name('category_add');

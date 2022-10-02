@@ -74,10 +74,6 @@ class CartController extends Controller
     // Xử lí đơn đặt hàng
     public function order(Request $request, ShoppingCart $cart)
     {
-        // Nếu trong giỏ hàng chưa có sản phẩm nào sẽ quay về shop để đặt
-        if($cart->items != '') {
-            return redirect()->route('shop');
-        } else {
             $data = $request->only('user_id','full_name','address','phone','email','payment_id','status','price_shipping');
             $order = Order::create([
                 'user_id' => $data['user_id'],
@@ -89,11 +85,7 @@ class CartController extends Controller
                 'status' => 0,
                 'price_shipping' => $cart->shipping
             ]);
-        }
-        // Nếu tồn tại giỏ hàng, thì mới tiếp tục lưu đơn hàng vào database
-        if($cart->items != '') {
-            return redirect()->back();
-        }
+
         foreach($cart->items as $item) {
             OrderDetail::create([
                 'order_id' => $order->id,

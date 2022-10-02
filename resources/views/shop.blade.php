@@ -85,7 +85,7 @@
                                         <a class="primary_img" href="{{url('shop/product',$product->id)}}">
                                             <img src="{{asset('uploads/' . $product->ProductImage[0]->path)}}" alt=""></a>
                                         <a class="secondary_img" href="{{url('/shop/product',$product->id)}}">
-                                            <img src="{{asset('uploads/' . $product->ProductImage[0]->path)}}" alt=""></a>
+                                            <img src="{{asset('uploads/' . $product->ProductImage[1]->path)}}" alt=""></a>
 
                                         <div class="quick_button">
                                             <a href="{{url('shop/product',$product->id)}}" title="quick_view">Xem sản phẩm</a>
@@ -94,7 +94,7 @@
                                         <div class="double_base">
                                             <div class="product_sale">
                                                 @if($product->discount != null)
-                                                <span>Sale</span>
+                                                    <span>-@php $sale = 100-($product->discount / $product->price) * 100; echo ceil($sale)@endphp%</span>
                                                 @endif
                                             </div>
                                             <div class="label_product">

@@ -103,7 +103,7 @@
                                             </div>
                                             @if($product->discount != null)
                                                 <div class="product_sale">
-                                                    <span>@php $sale = 100-($product->discount / $product->price) * 100; echo ceil($sale)@endphp%</span>
+                                                    <span>-@php $sale = 100-($product->discount / $product->price) * 100; echo ceil($sale)@endphp%</span>
                                                 </div>
                                             @endif
                                         </div>

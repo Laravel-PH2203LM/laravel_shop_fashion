@@ -40,8 +40,13 @@ class Product extends Model
     public function ProductColor() {
         return $this->belongsToMany(Attribute::class,'product_attribute','product_id','color_id')->distinct('color_id');
     }
-    public function Attribute() {
-        return $this->hasMany(ProductAttribute::class,'product_id','id');
+    public function Attribute()
+    {
+        return $this->hasMany(ProductAttribute::class, 'product_id', 'id');
+    }
+    public function category_relate()
+    {
+        return $this->hasMany(Product::class,'product_category_id','product_category_id')->limit(5);
     }
     public function scopeSearch($query) {
         if(request('sort_by')) {

@@ -10,6 +10,8 @@ use App\Models\Payments;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Mail;
 
 class CartController extends Controller
 {
@@ -72,18 +74,25 @@ class CartController extends Controller
     // Xử lí đơn đặt hàng
     public function order(Request $request, ShoppingCart $cart)
     {
-        $data = $request->only('user_id','full_name','address','phone','email','payment_id','status','price_shipping');
-        $order = Order::create([
-            'user_id' => $data['user_id'],
-            'full_name' => $data['full_name'],
-            'address' => $data['address'],
-            'phone' => $data['phone'],
-            'email' => $data['email'],
-            'payment_id' => $data['payment_id'],
-            'status' => 0,
-            'price_shipping' => $cart->shipping
-        ]);
-        if($order) {
+        if($cart->items != '') {
+            return redirect()->route('shop');
+        } else {
+            $data = $request->only('user_id','full_name','address','phone','email','payment_id','status','price_shipping');
+            $order = Order::create([
+                'user_id' => $data['user_id'],
+                'full_name' => $data['full_name'],
+                'address' => $data['address'],
+                'phone' => $data['phone'],
+                'email' => $data['email'],
+                'payment_id' => $data['payment_id'],
+                'status' => 0,
+                'price_shipping' => $cart->shipping
+            ]);
+        }
+        // Nếu tồn tại giỏ hàng, thì mới tiếp tục lưu đơn hàng vào database
+        if($cart->items != '') {
+            return redirect()->back();
+        }
         foreach($cart->items as $item) {
             OrderDetail::create([
                 'order_id' => $order->id,
@@ -95,8 +104,9 @@ class CartController extends Controller
                 'amount' => $item->quantity * $item->price
             ]);
             }
+
+        // Xóa giỏ hàng sau khi thanh toán thành công
             session(['cart' => []]);
             return redirect()->route('shop');
         }
-    }
 }

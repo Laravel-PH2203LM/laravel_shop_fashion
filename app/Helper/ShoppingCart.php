@@ -20,20 +20,24 @@ class ShoppingCart {
     // Thêm sản phẩm vào giỏ hàng
     public function add($product, $size, $color, $quantity)
     {
-        $key = $product->id.$size->id.$color->id;
-        if(isset($this->items[$key])) {
-            $this->items[$key]->quantity += $quantity;
+        if(!request('size')){
+            return redirect()->back();
         } else {
-        $item = (object) [
-          'id' => $product->id,
-          'name' => $product->name,
-          'quantity' => $quantity,
-          'price' => $product->discount ? $product->discount : $product->price,
-          'image' => $product->ProductImage[0]->path,
-          'size' => $size,
-          'color' => $color
-        ];
-            $this->items[$key] = $item;
+            $key = $product->id.$size->id.$color->id;
+            if(isset($this->items[$key])) {
+                $this->items[$key]->quantity += $quantity;
+            } else {
+                $item = (object) [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'quantity' => $quantity,
+                    'price' => $product->discount ? $product->discount : $product->price,
+                    'image' => $product->ProductImage[0]->path,
+                    'size' => $size,
+                    'color' => $color
+                ];
+                $this->items[$key] = $item;
+            }
         }
         session(['cart'=>$this->items]);
     }

@@ -89,21 +89,13 @@
                                 </select>
                             </div>
                             <div class="product_variant quantity">
-                                <label>Quantity</label>
+                                <label>Số lượng</label>
                                 <input min="1" max="100" value="1" type="number">
-                                <button class="button" type="submit">add to cart</button>
-                            </div>
-                            <div class=" product_d_action">
-                                <ul>
-                                    <li><a href="#" title="Add to wishlist"><i class="fa fa-heart-o"
-                                                aria-hidden="true"></i> Add to Wish List</a></li>
-                                    <li><a href="#" title="Add to Compare"><i class="fa fa-sliders"
-                                                aria-hidden="true"></i> Compare this Product</a></li>
-                                </ul>
+                                <button class="button" type="submit">Thêm vào giỏ hàng</button>
                             </div>
                         </form>
                         <div class="priduct_social">
-                            <h3>Share on:</h3>
+                            <h3>Chia sẻ qua:</h3>
                             <ul>
                                 <li><a href="#"><i class="fa fa-rss"></i></a></li>
                                 <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
@@ -180,7 +172,7 @@
                                            @auth <input type="hidden" name="user_id" value="{{Auth::user()->id}}">@endauth
                                             <input type="hidden" name="product_id" value="{{$products->id}}">
                                             <div class="col-lg-6 col-md-6">
-                                                <label for="author">Name</label>
+                                                <label for="author">Họ Và Tên</label>
                                                 <input id="author" name="name" type="text">
 
                                             </div>
@@ -190,7 +182,6 @@
                                             </div>
                                         </div>
                                         <div class="personal-rating">
-                                            <h6>Your Rating</h6>
                                             <div class="rate">
                                                 <input type="radio" id="star5" name="rating" value="5" />
                                                 <label for="star5" title="text">5 stars</label>
@@ -204,7 +195,7 @@
                                                 <label for="star1" title="text">1 star</label>
                                             </div>
                                         </div>
-                                        <button type="submit">Submit</button>
+                                        <button type="submit">Gửi</button>
                                     </form>
                                 </div>
                             </div>

@@ -18,14 +18,18 @@ class CartController extends Controller
 {
     public function add(Product $pro, ShoppingCart $cart)
     {
-        $quantity = request('quantity',1);
-        $sizeId = request('size');
-        $colorId = request('color');
-        $size = Attribute::find($sizeId);
-        $color = Attribute::find($colorId);
-        $cart->add($pro,$size,$color,$quantity);
+        if(!request('size')) {
+            return redirect()->back();
+        } else {
+            $quantity = request('quantity',1);
+            $sizeId = request('size');
+            $colorId = request('color');
+            $size = Attribute::find($sizeId);
+            $color = Attribute::find($colorId);
+            $cart->add($pro,$size,$color,$quantity);
 
-        return redirect()->route('view');
+            return redirect()->route('view');
+        }
     }
 
     public function clear(ShoppingCart $cart)

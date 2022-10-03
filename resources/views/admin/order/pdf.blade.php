@@ -19,7 +19,6 @@
 
 <table style="width:100%">
     <tr>
-        <th>User</th>
         <th>Họ và tên</th>
         <th>Địa chỉ</th>
         <th>Số điện thoại</th>
@@ -30,13 +29,12 @@
     @foreach($data as $dt)
         @foreach($dt->orders as $listorder)
     <tr>
-        <td>{{$dt->user_id}}</td>
         <td>{{$dt->full_name}}</td>
         <td>{{$dt->address}}</td>
         <td>{{$dt->phone}}</td>
         <td>{{$listorder->name}}</td>
         <td>{{$listorder->quantity}}</td>
-        <td>{{number_format($listorder->amount)}}</td>
+        <td>{{number_format($listorder->amount)}}đ</td>
     </tr>
         @endforeach
     @endforeach

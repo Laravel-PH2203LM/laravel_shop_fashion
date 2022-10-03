@@ -47,9 +47,10 @@
                                 <td>
                                     <form action="{{route('order.update',$order->id)}}">
                                         <select name="status" onchange="this.form.submit();">
-                                                <option {{$order->status == 0 ? 'selected' : ''}} value="0">Chờ giao hàng</option>
+                                                <option {{$order->status == 0 ? 'selected' : ''}} value="0">Chờ xử lý</option>
                                                 <option {{$order->status == 1 ? 'selected' : ''}} value="1">Đang giao hàng</option>
                                                 <option {{$order->status == 2 ? 'selected' : ''}} value="2">Đã giao hàng</option>
+                                                <option {{$order->status == 3 ? 'selected' : ''}} value="3">Hủy đơn hàng</option>
                                         </select>
                                     </form>
                                 </td>

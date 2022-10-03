@@ -70,8 +70,10 @@
                                                 <span>Đang xử lý</span>
                                                 @elseif($order->status == 1)
                                                 <span>Đang giao hàng</span>
-                                                @else($order->status == 2)
+                                                @elseif($order->status == 2)
                                                 <span>Đã giao hàng</span>
+                                                @else($order->status == 3)
+                                                <span>Đã hủy đơn</span>
                                                 @endif
                                         <td>{{number_format($order->getTotalAmount() + $order->price_shipping)}}đ</td>
                                         </td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper\ShoppingCart;
+use App\Jobs\SendEmail;
 use App\Models\Attribute;
 use App\Models\Order;
 use App\Models\OrderDetail;
@@ -11,7 +12,7 @@ use App\Models\Product;
 use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
 {
@@ -104,6 +105,17 @@ class CartController extends Controller
                     ]);
                 }
             }
+            $name = $request->full_name;
+            $email = $request->email;
+            Mail::send('mail_order',
+                [
+                    'name' => $name,
+                    'order' => $order,
+                    'items' => $cart->items
+                ], function ($mail) use ($name,$email) {
+                    $mail->from('dth.trongsan@gmail.com');
+                    $mail->to($email, $name)->subject('Đơn đặt hàng!');
+            });
         // Xóa giỏ hàng sau khi thanh toán thành công
             session(['cart' => []]);
             return redirect()->route('shop');

@@ -161,7 +161,25 @@
                                     @endforeach
                                 </div>
                                 <div class="order_button">
-                                    <button type="submit">Đặt hàng</button>
+                                    <button type="button" data-toggle="modal" data-target="#exampleModal">Đặt hàng</button>
+                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel"><strong>Đặt Hàng</strong></h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p style="font-size:15px">Bạn đã kiểm tra đơn hàng đúng số lượng và loại mình đã đặt chưa?
+                                                    Nếu đã đủ và đúng hãy ấn đặt hàng</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                                                <button type="submit" class="btn btn-success">Đặt hàng</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -171,5 +189,11 @@
         </div>
     </div>
     <!--Checkout page section end-->
-
 @endsection
+@section('js')
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+    </script>
+@stop

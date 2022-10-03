@@ -39,7 +39,7 @@ Route::prefix('/')->group(function (){
     Route::get('/delete_cart/{id}',[CartController::class,'delete'])->name('cart.delete');
     Route::get('/cart_clear/',[CartController::class,'clear'])->name('cart.clear');
     Route::get('/about',[HomeController::class,'about'])->name('about');
-    Route::get('/checkout',[CartController::class,'checkout'])->name('checkout');
+    Route::get('/checkout',[CartController::class,'checkout'])->name('checkout')->middleware('auth');
     Route::post('/order',[CartController::class,'order'])->name('order');
     Route::get('/my-account/{id}',[HomeController::class,'my_account'])->middleware('auth');
     Route::post('/my-account{id}',[HomeController::class,'my_account_add'])->middleware('auth');

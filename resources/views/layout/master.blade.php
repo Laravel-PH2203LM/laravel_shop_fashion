@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{asset('fontend/fonts/fontawesome-webfont.woff2')}}">
     <link rel="stylesheet" href="{{asset('fontend/fonts/ionicons.ttf')}}">
     <link rel="stylesheet" href="{{asset('fontend/fonts/Simple-Line-Icons.woff2')}}">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 {{-- EndCss --}}
     <style>
@@ -25,6 +26,7 @@
 </head>
 
 <body>
+{!! Toastr::message() !!}
     <!-- Main Wrapper Start -->
     <!--Offcanvas menu area start-->
     <div class="off_canvars_overlay">
@@ -273,6 +275,7 @@
                 </div>
             </div>
         </div>
+    </footer>
     <!--footer area end-->
 
 <!-- JS
@@ -324,6 +327,7 @@
                     .replace(/[^\w-]+/g, '');
             }
         </script>
+        <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 </body>
 
 </html>

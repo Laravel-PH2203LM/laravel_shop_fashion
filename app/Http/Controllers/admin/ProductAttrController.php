@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Attribute;
+use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
 
 class ProductAttrController extends Controller
@@ -37,13 +38,12 @@ class ProductAttrController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $productAttr =  new Attribute();
-        $productAttr->name = $data['name'];
-        $productAttr->values = $data['values'];
-        $productAttr->status = $data['status'];
-        $productAttr->save();
-        return redirect()->route('productAttr');
+        $data = $request->only('name','values');
+        if(Attribute::create($data)) {
+            return redirect()->route('productAttr')->with('success','Thêm thuộc tính sản phẩm mới thành công');
+        } else {
+            return redirect()->route('productAttr')->with('error','Thêm thuộc tính sản phẩm mới không thành công');
+        }
     }
 
     /**

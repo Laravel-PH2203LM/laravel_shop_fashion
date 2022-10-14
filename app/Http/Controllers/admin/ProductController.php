@@ -50,8 +50,8 @@ class ProductController extends Controller
     //Todo Code chỉ chạy được, sẽ cần sửa lại để tối ưu hơn
     public function store(ProductRequest $request)
     {
-        //dd($request->all());
-        $product = Product::create([
+        try {
+            $product = Product::create([
                 'name'=>$request->name,
                 'brand_id'=>$request->brand_id,
                 'product_category_id'=>$request->product_category_id,
@@ -61,34 +61,37 @@ class ProductController extends Controller
                 'discount'=>$request->discount,
                 'status'=>$request->status,
             ]);
-        for($i = 0; $i < count($request->color_id); $i++) {
-            ProductAttribute::create([
-               'product_id'=>$product->id,
-                'size_id'=>$request->size_id[$i],
-                'color_id'=>$request->color_id[$i]
-            ]);
-        }
-        if($product){
-            $images = $request->images;
-            if($images){
-                $data = [];
-                foreach($images as $file)
-                {
-                    // Lấy tên + thời gian
-                    $name = time().'.'. $file->getClientOriginalName();
-                    $file->move(public_path().'/uploads/', $name);
-                    $data[] = $name;
-                }
-                // mã hoá sang strings và lưu vào database
-                foreach($data as $values) {
-                    $dataInsert['path'] = $values;
-                    $dataInsert['product_id'] =  $product->id;
-                    $dataInsert['status'] =  $product->status;
-                    $imgs = ProductImage::create($dataInsert);
+            for($i = 0; $i < count($request->color_id); $i++) {
+                ProductAttribute::create([
+                    'product_id'=>$product->id,
+                    'size_id'=>$request->size_id[$i],
+                    'color_id'=>$request->color_id[$i]
+                ]);
+            }
+            if($product){
+                $images = $request->images;
+                if($images){
+                    $data = [];
+                    foreach($images as $file)
+                    {
+                        // Lấy tên + thời gian
+                        $name = time().'.'. $file->getClientOriginalName();
+                        $file->move(public_path().'/uploads/', $name);
+                        $data[] = $name;
+                    }
+                    // mã hoá sang strings và lưu vào database
+                    foreach($data as $values) {
+                        $dataInsert['path'] = $values;
+                        $dataInsert['product_id'] =  $product->id;
+                        $dataInsert['status'] =  $product->status;
+                        $imgs = ProductImage::create($dataInsert);
+                    }
                 }
             }
+        } catch (\Exception $exception) {
+            return redirect()->route('product')->with('error','Thêm sản phẩm mới không thành công');
         }
-        return redirect()->route('product')->with('thêm mới thành công');
+        return redirect()->route('product')->with('success','Thêm sản phẩm mới thành công');
     }
 
     /**
@@ -136,55 +139,63 @@ class ProductController extends Controller
     //Todo Code chỉ chạy được, sẽ cần sửa lại để tối ưu hơn
     public function update(ProductRequest $request, $id)
     {
-        $product = Product::find($id);
-        $product->update([
-            'name'=>$request->name,
-            'brand_id'=>$request->brand_id,
-            'product_category_id'=>$request->product_category_id,
-            'description'=>$request->description,
-            'price'=>$request->price,
-            'qty'=>$request->qty,
-            'discount'=>$request->discount,
-            'status'=>$request->status
-        ]);
-        ProductAttribute::where('product_id',$product->id)->delete();
-        for($i = 0; $i < count($request->color_id); $i++) {
-            $data = [
-                'product_id'=>$product->id,
-                'size_id'=>$request->size_id[$i],
-                'color_id'=>$request->color_id[$i]
-            ];
-            ProductAttribute::create($data);
-        }
-        if($product){
-            $images = $request->images;
-            if($images){
-                $data = [];
-                foreach($images as $file)
-                {
-                    // Lấy tên + thời gian
-                    $name = time().'.'. $file->getClientOriginalName();
-                    $file->move(public_path().'/uploads/', $name);
-                    $data[] = $name;
-                }
-                ProductImage::where('product_id',$product->id)->delete();
-                foreach($data as $values) {
-                    $dataInsert['path'] = $values;
-                    $dataInsert['product_id'] =  $product->id;
-                    $dataInsert['status'] =  $product->status;
-                    $imgs = ProductImage::create($dataInsert);
+        try {
+            $product = Product::find($id);
+            $product->update([
+                'name'=>$request->name,
+                'brand_id'=>$request->brand_id,
+                'product_category_id'=>$request->product_category_id,
+                'description'=>$request->description,
+                'price'=>$request->price,
+                'qty'=>$request->qty,
+                'discount'=>$request->discount,
+                'status'=>$request->status
+            ]);
+            ProductAttribute::where('product_id',$product->id)->delete();
+            for($i = 0; $i < count($request->color_id); $i++) {
+                $data = [
+                    'product_id'=>$product->id,
+                    'size_id'=>$request->size_id[$i],
+                    'color_id'=>$request->color_id[$i]
+                ];
+                ProductAttribute::create($data);
+            }
+            if($product){
+                $images = $request->images;
+                if($images){
+                    $data = [];
+                    foreach($images as $file)
+                    {
+                        // Lấy tên + thời gian
+                        $name = time().'.'. $file->getClientOriginalName();
+                        $file->move(public_path().'/uploads/', $name);
+                        $data[] = $name;
+                    }
+                    ProductImage::where('product_id',$product->id)->delete();
+                    foreach($data as $values) {
+                        $dataInsert['path'] = $values;
+                        $dataInsert['product_id'] =  $product->id;
+                        $dataInsert['status'] =  $product->status;
+                        $imgs = ProductImage::create($dataInsert);
+                    }
                 }
             }
+        } catch (\Exception $exception) {
+            return redirect()->route('product')->with('error','Cập nhật sản phẩm không thành công');
         }
-        return redirect()->route('product');
+        return redirect()->route('product')->with('success','Cập nhật sản phẩm thành công');
     }
 
     public function update_status(Request $request,$id)
     {
         $data = $request->only('status');
-        $product = Product::where('id',$id);
-        $product->update($data);
-        return redirect()->back();
+        if($data) {
+            $product = Product::where('id',$id);
+            $product->update($data);
+            return redirect()->back()->with('success','Cập nhật trạng thái sản phẩm thành công');
+        } else {
+            return redirect()->back()->with('error','Cập nhật trạng thái sản phẩm không thành công');
+        }
     }
 
     /**
@@ -195,15 +206,19 @@ class ProductController extends Controller
      */
     public function destroy( Product $product)
     {
-        $del = ProductImage::where('product_id',$product->id)->first();
-        foreach ($del as $img) {
-            if(file_exists(asset('uploads/'.$img))) {
-                $data = unlink(asset('uploads/'.$img));
+        try {
+            $del = ProductImage::where('product_id',$product->id)->first();
+            foreach ($del as $img) {
+                if(file_exists(asset('uploads/'.$img))) {
+                    $data = unlink(asset('uploads/'.$img));
+                }
             }
+            $data = ProductImage::where('product_id',$product->id)->delete();
+            ProductAttribute::where('product_id',$product->id)->delete();
+            $product->delete();
+        } catch (\Exception $exception) {
+            return redirect()->route('product')->with('error','Xoá sản phẩm không thành công');
         }
-        $data = ProductImage::where('product_id',$product->id)->delete();
-        ProductAttribute::where('product_id',$product->id)->delete();
-        $product->delete();
-        return redirect()->route('product');
+        return redirect()->route('product')->with('success','Xoá sản phẩm thành công');
     }
 }

@@ -77,9 +77,13 @@ class OrderController extends Controller
     public function update(Request $request, int $id)
     {
         $data = $request->only('status');
-        $orders = Order::where('id',$id);
-        $orders->update($data);
-        return redirect()->back();
+        if($data) {
+            $orders = Order::where('id',$id);
+            $orders->update($data);
+            return redirect()->back()->with('success','Cập nhật trạng thái đơn hàng thành công');
+        } else {
+            return redirect()->back()->with('error','Cập nhật trạng thái đơn hàng không thành công');
+        }
     }
 
     public function export() {

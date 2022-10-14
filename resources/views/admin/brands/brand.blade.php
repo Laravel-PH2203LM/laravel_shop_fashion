@@ -11,11 +11,18 @@
                                     class="fas fa-plus"></i>
                                 Thêm thương hiệu mới</a>
                         </div>
-                        <div class="col-sm-2">
-                            <a class="btn btn-delete btn-sm" type="button" title="Xóa" onclick="myFunction(this)"><i
-                                    class="fas fa-trash-alt"></i> Xóa tất cả </a>
-                        </div>
                     </div>
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+
+                    @if ($message = Session::get('error'))
+                        <div class="alert alert-block" style="background-color: #f9c9cd !important;color: #a90312 !important">
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
                     <table class="table table-hover table-bordered" id="sampleTable">
                         <thead>
                         <tr>

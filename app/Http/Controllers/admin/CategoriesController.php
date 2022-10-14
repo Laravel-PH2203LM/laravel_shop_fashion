@@ -38,12 +38,12 @@ class CategoriesController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $data = $request->all();
-        $category = new ProductCategory();
-        $category->name = $data['name'];
-        $category->status = $data['status'];
-        $category->save();
-        return redirect()->route('category');
+        $data = $request->only('name','status');
+        if(ProductCategory::create($data)) {
+            return redirect()->route('category')->with('success','Thêm danh mục mới thành công');
+        } else {
+            return redirect()->route('category')->with('error','Thêm danh mục không mới thành công');
+        }
     }
 
     /**
@@ -78,12 +78,16 @@ class CategoriesController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        $data = $request->all();
-        $category = ProductCategory::find($id);
-        $category->name = $data['name'];
-        $category->status = $data['status'];
-        $category->save();
-        return redirect()->route('category');
+        $data = $request->only('name','status');
+        if($data) {
+            $category = ProductCategory::find($id);
+            $category->name = $data['name'];
+            $category->status = $data['status'];
+            $category->save();
+            return redirect()->route('category')->with('success','Cập nhật danh mục thành công');
+        } else {
+            return redirect()->route('category')->with('error','Cập nhật danh mục không thành công');
+        }
     }
 
     /**
@@ -94,7 +98,12 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        ProductCategory::find($id)->delete();
-        return redirect()->route('category');
+        $category = ProductCategory::find($id);
+        try {
+            $category->delete();
+        } catch (\Exception $exception) {
+            return redirect()->route('category')->with('error','Bạn không thể xóa danh mục này');
+        }
+        return redirect()->route('category')->with('success','Xóa danh mục thành công');
     }
 }

@@ -46,39 +46,18 @@
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>ID Đơn hàng</th>
-                                        <th>Tên sản phẩm</th>
-                                        <th>Kích thước</th>
-                                        <th>Màu sắc</th>
-                                        <th>Số lượng</th>
-                                        <th>Giá</th>
-                                        <th>Trạng thái</th>
-                                        <th>Tổng đơn hàng</th>
+                                        <th>ID</th>
+                                        <th>Ngày đặt</th>
+                                        <th>Xem</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($orders as $order)
-                                        @foreach($order->orders as $listord)
                                     <tr>
-                                        <td>{{$listord->order_id}}</td>
-                                        <td>{{$listord->name}}</td>
-                                        <td>{{$listord->size->name}}</td>
-                                        <td>{{$listord->color->name}}</td>
-                                        <td>{{$listord->quantity}}</td>
-                                        <td>{{$listord->amount}}</td>
-                                        <td>@if($order->status == 0)
-                                                <span>Đang xử lý</span>
-                                                @elseif($order->status == 1)
-                                                <span>Đang giao hàng</span>
-                                                @elseif($order->status == 2)
-                                                <span>Đã giao hàng</span>
-                                                @else($order->status == 3)
-                                                <span>Đã hủy đơn</span>
-                                                @endif
-                                        <td>{{number_format($order->getTotalAmount() + $order->price_shipping)}}đ</td>
-                                        </td>
+                                        <td>{{$order->id}}</td>
+                                        <td>{{$order->created_at}}</td>
+                                        <td><a href="{{url('view_order',$order->id)}}">Xem</a></td>
                                     </tr>
-                                        @endforeach
                                     @endforeach
                                     </tbody>
                                 </table>

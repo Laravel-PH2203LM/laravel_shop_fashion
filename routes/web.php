@@ -42,7 +42,7 @@ Route::prefix('/')->group(function (){
     Route::get('/checkout',[CartController::class,'checkout'])->name('checkout')->middleware('auth');
     Route::post('/order',[CartController::class,'order'])->name('order');
     Route::get('/my-account/{id}',[HomeController::class,'my_account'])->middleware('auth');
-    Route::post('/my-account{id}',[HomeController::class,'my_account_add'])->middleware('auth');
+    Route::get('/view_order/{id}',[HomeController::class,'view_order'])->middleware('auth');
 });
 
 Route::group(['prefix'=>'shop/'],function() {

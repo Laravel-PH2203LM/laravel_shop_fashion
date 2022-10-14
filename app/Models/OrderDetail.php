@@ -13,13 +13,20 @@ class OrderDetail extends Model
     protected $guarded = [];
     protected $fillable = ['order_id','product_id','name','quantity','color_id','size_id','amount'];
 
-    public function prod() {
+    public function prod()
+    {
         return $this->hasOne(Product::class,'id','product_id');
     }
-    public function size() {
+    public function size()
+    {
         return $this->hasOne(Attribute::class,'id','size_id');
     }
-    public function color() {
+    public function color()
+    {
         return $this->hasOne(Attribute::class,'id','color_id');
+    }
+    public function get_ord()
+    {
+        return $this->hasOne(Order::class,'id','order_id');
     }
 }

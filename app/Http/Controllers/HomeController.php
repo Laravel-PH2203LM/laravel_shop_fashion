@@ -45,8 +45,18 @@ class HomeController extends Controller
     }
 
     public function my_account($id) {
-        $orders = Order::where('user_id', $id)->get();
+        $orders = Order::where('user_id', $id)->orderBy('created_at','DESC')->limit(5)->get();
         $user = User::where('id',$id)->get();
         return view('my_account',compact('user','orders'));
+    }
+
+    public function view_order($id)
+    {
+        $orders_detail = OrderDetail::where('order_id',$id)->get();
+        $countAmount = 0;
+        foreach ($orders_detail as $total) {
+            $countAmount += $total->amount * $total->quantity;
+        }
+        return view('view_order',compact('orders_detail','countAmount'));
     }
 }
